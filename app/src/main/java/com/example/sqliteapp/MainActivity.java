@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         else
             Toast.makeText(MainActivity.this, "Entry not deleted", Toast.LENGTH_LONG).show();
     }
-
+//comment
     public void updateDataInDB(View v){
         String IDSrc = ID.getText().toString();
         String nameSrc = name.getText().toString();
