@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             name.setText(null);
         }
         else
-            Toast.makeText(MainActivity.this, "New entry is not inserted", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "New entry not inserted", Toast.LENGTH_LONG).show();
     }
 
     public void getDataFromDB(View v){
