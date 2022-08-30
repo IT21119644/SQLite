@@ -89,6 +89,6 @@ public class MainActivity extends AppCompatActivity {
             name.setText(null);
         }
         else
-            Toast.makeText(MainActivity.this, "Entry cannot be updated", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Entry not updated", Toast.LENGTH_LONG).show();
     }
 }
