@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else
-            Toast.makeText(MainActivity.this, "Entry cannot be deleted", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Entry not deleted", Toast.LENGTH_LONG).show();
     }
 
     public void updateDataInDB(View v){
