@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -51,7 +52,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     case R.id.nav_home:
                         Toast.makeText(MainActivity.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_expenses:
-                        Toast.makeText(MainActivity.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
+                        switchToExpenses();
+                        break;
                     case R.id.nav_income:
                         Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_budget:
@@ -79,5 +82,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public void switchToExpenses(){
+        Intent switchActivityIntent = new Intent(this, Expenses.class);
+        startActivity(switchActivityIntent);
     }
 }
