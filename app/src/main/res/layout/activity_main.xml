@@ -11,7 +11,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -21,9 +22,9 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Android"
+                android:background="@color/lightgrey"
                 app:navigationIcon="@drawable/ic_baseline_menu_24"
-                android:background="@color/lightgrey"/>
+                app:title="Budgets" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -34,7 +35,21 @@
             android:layout_centerInParent="true"
             android:text="Navigation view"
             android:textAlignment="center"
+            android:textColor="#000000"
             android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/createBudgetBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="129dp"
+            android:layout_marginBottom="484dp"
+            android:background="@color/purple_500"
+            android:onClick="switchToCreateBudget"
+            android:padding="10dp"
+            android:text="Create Budget" />
 
     </RelativeLayout>
 
@@ -45,7 +60,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/my_navigation"/>
-
 
 
 <!--    <EditText-->

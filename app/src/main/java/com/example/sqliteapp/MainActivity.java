@@ -24,7 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText ID, name;
-    Button insert, read, update, delete;
+    Button createBudget, read, update, delete;
     Spinner spinner;
 
     @Override
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
+        createBudget = findViewById(R.id.createBudgetBtn);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -56,7 +58,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         switchToExpenses();
                         break;
                     case R.id.nav_income:
-                        Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.nav_budget:
                         Toast.makeText(MainActivity.this, "Budget is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_goals:
@@ -65,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         Toast.makeText(MainActivity.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
                     default:
                         return true;
-
                 }
                 return true;
             }
@@ -88,4 +90,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent switchActivityIntent = new Intent(this, Expenses.class);
         startActivity(switchActivityIntent);
     }
+
+    public void switchToCreateBudget(View v){
+        Intent switchActivityIntent = new Intent(this, CreateBudgetUI.class);
+        startActivity(switchActivityIntent);
+    }
+
+
 }
