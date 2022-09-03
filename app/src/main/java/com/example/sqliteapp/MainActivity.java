@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,20 +17,30 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    EditText ID, name;
-    Button createBudget, read, update, delete;
+    Button createBudget;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent i = getIntent();
+//        ArrayList<String> msg = i.getStringArrayListExtra("COOL");
+        String msg = i.getStringExtra("COOL");
+        TextView t = findViewById(R.id.tv);
+        t.setText(msg);
+
 
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -94,6 +105,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent switchActivityIntent = new Intent(this, CreateBudgetUI.class);
         startActivity(switchActivityIntent);
     }
+
+
+
+
 
 
 }
