@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,12 +37,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        LinearLayout yourlayout= (LinearLayout) findViewById(R.id.yourlayout);
 
         Intent i = getIntent();
-//        ArrayList<String> msg = i.getStringArrayListExtra("COOL");
-        String msg = i.getStringExtra("COOL");
-        TextView t = findViewById(R.id.tv);
-        t.setText(msg);
+        ArrayList<String> msg = i.getStringArrayListExtra("COOL");
+        if(msg != null){
+            Log.d("val", msg.get(0));
+            for (int j = 0; j < msg.size(); j++){
+                Button btn = new Button (MainActivity.this);
+                btn.setWidth(20);
+                btn.setHeight(20);
+                btn.setBackgroundColor(Color.parseColor("#fb8d19"));
+                btn.setTextColor(Color.parseColor("#000000"));
+                LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                if(j == 0)
+                    buttonLayoutParams.setMargins(80, 500, 80, 0);
+                else
+                    buttonLayoutParams.setMargins(80, 20, 80, 0);
+                btn.setLayoutParams(buttonLayoutParams);
+                btn.setText(msg.get(j));
+                yourlayout.addView(btn);
+            }
+        }
+
+//        TextView t = findViewById(R.id.tv);
+
 
 
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
@@ -105,10 +127,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent switchActivityIntent = new Intent(this, CreateBudgetUI.class);
         startActivity(switchActivityIntent);
     }
-
-
-
-
-
 
 }

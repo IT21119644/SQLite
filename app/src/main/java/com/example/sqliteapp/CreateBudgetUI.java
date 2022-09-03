@@ -116,26 +116,36 @@ public class CreateBudgetUI extends AppCompatActivity implements AdapterView.OnI
 
     public void getDataFromDB(View v){
         Cursor res = DB.getBudgetData();
-//        ArrayList<String> myArrList = new ArrayList<>();
+        ArrayList<String> myArrList = new ArrayList<>();
+//        String[] str = new String[10];
         if(res.getCount() == 0){
             Toast.makeText(CreateBudgetUI.this, "No entry exists", Toast.LENGTH_LONG).show();
             return;
         }
-        StringBuffer buffer = new StringBuffer();
+//        StringBuffer buffer = new StringBuffer();
+//        int j = 0;
         while(res.moveToNext()){
-            buffer.append("BudgetName " + res.getString(0) + "\n");
-            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
-//            myArrList.add(res.getString(0));
+//            buffer.append("BudgetName " + res.getString(0) + "\n");
+//            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
+            myArrList.add(res.getString(0));
+//            str[j] = res.getString(0);
+//            j++;
         }
+//        myArrList.add("Hello");
+//        myArrList.add("World");
+
 
 //        AlertDialog.Builder builder = new AlertDialog.Builder(CreateBudgetUI.this);
 //        builder.setCancelable(true);
 //        builder.setTitle("Budget Details");
 
-        String info = buffer.toString();
+//        String info = buffer.toString();
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("COOL", info);
-//        i.putStringArrayListExtra("COOL", myArrList);
+//        i.putExtra("COOL", info);
+        i.putStringArrayListExtra("COOL", myArrList);
+
+//        i.putExtra("COOL", str);
+//        Log.d("hh", String.valueOf(j));
         startActivity(i);
 //        builder.setMessage(info);
 //
