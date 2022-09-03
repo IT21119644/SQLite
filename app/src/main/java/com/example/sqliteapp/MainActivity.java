@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     EditText ID, name;
     Button createBudget, read, update, delete;
-    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
