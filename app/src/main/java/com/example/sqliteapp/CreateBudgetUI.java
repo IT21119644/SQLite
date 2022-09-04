@@ -40,6 +40,7 @@ public class CreateBudgetUI extends AppCompatActivity implements AdapterView.OnI
         BAmount = findViewById(R.id.budget_amount);
         Bcategory = findViewById(R.id.categoryTxtV);
 
+        //Error with toggle switches
         almost = findViewById(R.id.almost);
         almostIsSelected = almost.isSelected();
 
@@ -99,8 +100,6 @@ public class CreateBudgetUI extends AppCompatActivity implements AdapterView.OnI
             Toast.makeText(CreateBudgetUI.this, "New entry not inserted", Toast.LENGTH_LONG).show();
     }
 
-
-
     //generated methods for spinner
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -117,38 +116,21 @@ public class CreateBudgetUI extends AppCompatActivity implements AdapterView.OnI
     public void getDataFromDB(View v){
         Cursor res = DB.getBudgetData();
         ArrayList<String> myArrList = new ArrayList<>();
-//        String[] str = new String[10];
+        Intent i = new Intent(this, MainActivity.class);
         if(res.getCount() == 0){
-            Toast.makeText(CreateBudgetUI.this, "No entry exists", Toast.LENGTH_LONG).show();
+            Toast.makeText(CreateBudgetUI.this, "No entry exists", Toast.LENGTH_SHORT).show();
+            i.putExtra("EmptyMsg", "Your budget is empty");
+            startActivity(i);
             return;
         }
-//        StringBuffer buffer = new StringBuffer();
-//        int j = 0;
+
         while(res.moveToNext()){
 //            buffer.append("BudgetName " + res.getString(0) + "\n");
 //            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
             myArrList.add(res.getString(0));
-//            str[j] = res.getString(0);
-//            j++;
         }
-//        myArrList.add("Hello");
-//        myArrList.add("World");
 
-
-//        AlertDialog.Builder builder = new AlertDialog.Builder(CreateBudgetUI.this);
-//        builder.setCancelable(true);
-//        builder.setTitle("Budget Details");
-
-//        String info = buffer.toString();
-        Intent i = new Intent(this, MainActivity.class);
-//        i.putExtra("COOL", info);
         i.putStringArrayListExtra("COOL", myArrList);
-
-//        i.putExtra("COOL", str);
-//        Log.d("hh", String.valueOf(j));
         startActivity(i);
-//        builder.setMessage(info);
-//
-//        builder.show();
     }
 }

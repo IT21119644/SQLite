@@ -101,23 +101,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="316dp"
-        android:text="Amount"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budget_time" />
-
     <EditText
         android:id="@+id/budget_amount"
         android:layout_width="141dp"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="232dp"
         android:background="@drawable/border"
         android:ems="10"
@@ -129,53 +117,78 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="28dp"
-        android:text="Currency"
-        android:textColor="#0C0C0C"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/budget_time" />
-
     <Spinner
         android:id="@+id/currency"
         android:layout_width="115dp"
         android:layout_height="48dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/border"
         app:layout_constraintStart_toEndOf="@+id/budget_amount"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="308dp"
-        android:text="Category"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="316dp"
+        android:text="Amount"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budget_amount" />
+        app:layout_constraintTop_toBottomOf="@+id/budget_time" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="12dp"
+        android:text="Currency"
+        android:textColor="#0C0C0C"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/budget_time" />
 
     <Button
         android:id="@+id/categorybtn"
         android:layout_width="137dp"
         android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
         android:background="@color/purple_500"
         android:onClick="switchToCategoryPage"
         android:padding="5dp"
         android:text="Select Category"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/categoryTxtV"
+        android:layout_width="115dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/border"
+        android:paddingLeft="5dp"
+        android:text="None"
+        android:textColor="#070707"
+        app:layout_constraintStart_toEndOf="@+id/categorybtn"
+        app:layout_constraintTop_toBottomOf="@+id/currency" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="308dp"
+        android:text="Category"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/budget_amount" />
 
     <TextView
         android:id="@+id/notificationLabel"
@@ -217,11 +230,23 @@
         app:layout_constraintTop_toBottomOf="@+id/categoryTxtV"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:text="Budget overspent"
+        android:textColor="#040303"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
     <Switch
         android:id="@+id/overspent"
         android:layout_width="52dp"
         android:layout_height="48dp"
-        android:layout_marginStart="128dp"
+        android:layout_marginStart="132dp"
         android:layout_marginTop="12dp"
         android:background="#C3CACA"
         android:minWidth="48dp"
@@ -233,43 +258,20 @@
         app:layout_constraintTop_toBottomOf="@+id/almost"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:text="Budget overspent"
-        android:textColor="#040303"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
     <Button
         android:id="@+id/updateBtn"
         android:layout_width="79dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="168dp"
         android:background="@drawable/rounded_button"
         android:onClick="insertToDB"
         android:text="create"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/categoryTxtV"
-        android:layout_width="115dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/border"
-        android:paddingLeft="5dp"
-        android:text="None"
-        android:textColor="#070707"
-        app:layout_constraintStart_toEndOf="@+id/categorybtn"
-        app:layout_constraintTop_toBottomOf="@+id/currency" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.295" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

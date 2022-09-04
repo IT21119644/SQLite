@@ -47,4 +47,20 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails", null);
         return cursor;
     }
+
+    public boolean deleteBudgetData(String BName){
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE BudgetName = ?", new String[] {BName});
+        if(cursor.getCount() > 0){
+            long result = DB.delete("BudgetDetails","BudgetName=?", new String[] {BName});
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

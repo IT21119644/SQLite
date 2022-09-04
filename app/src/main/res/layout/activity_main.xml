@@ -45,13 +45,15 @@
 
         <TextView
             android:id="@+id/tv"
-            android:layout_width="347dp"
-            android:layout_height="436dp"
+            android:layout_width="331dp"
+            android:layout_height="49dp"
             android:layout_below="@+id/createBudgetBtn"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="26dp"
-            android:layout_marginEnd="31dp"
-            android:textColor="#0C0C0C" />
+            android:layout_marginEnd="47dp"
+            android:textColor="#0C0C0C"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/yourlayout"
