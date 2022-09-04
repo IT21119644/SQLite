@@ -33,6 +33,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Button createBudget;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +41,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         LinearLayout yourlayout= (LinearLayout) findViewById(R.id.yourlayout);
 
+        DBHelper DB = new DBHelper(this);
+        Cursor res = DB.getBudgetData();
+
+        ArrayList<String> msg = new ArrayList<>();
+        if(res.getCount() == 0){
+            Toast.makeText(MainActivity.this, "Your budget is empty", Toast.LENGTH_SHORT).show();
+
+        }
+
+        while(res.moveToNext()){
+//            buffer.append("BudgetName " + res.getString(0) + "\n");
+//            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
+            msg.add(res.getString(0));
+        }
+
         Intent i = getIntent();
-        ArrayList<String> msg = i.getStringArrayListExtra("COOL");
-        if(msg != null){
+        if(!msg.isEmpty()){
             Log.d("val", msg.get(0));
             for (int j = 0; j < msg.size(); j++){
                 Button btn = new Button (MainActivity.this);
@@ -58,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 DisplayMetrics displayMetrics = new DisplayMetrics();
                 getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 int width = displayMetrics.widthPixels;
-
 
                 LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -79,12 +93,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 yourlayout.addView(btn);
 
                 btn.setOnClickListener(handleOnClick(btn, head));
-//
             }
         }
         else{
             TextView t = findViewById(R.id.tv);
-            t.setText(i.getStringExtra("EmptyMsg"));
+            t.setText("Your budget is empty");
         }
 
 
@@ -167,5 +180,4 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         switchActivityIntent.putExtra("Bow", heading);
         startActivity(switchActivityIntent);
     }
-
 }

@@ -113,24 +113,24 @@ public class CreateBudgetUI extends AppCompatActivity implements AdapterView.OnI
 
     }
 
-    public void getDataFromDB(View v){
-        Cursor res = DB.getBudgetData();
-        ArrayList<String> myArrList = new ArrayList<>();
-        Intent i = new Intent(this, MainActivity.class);
-        if(res.getCount() == 0){
-            Toast.makeText(CreateBudgetUI.this, "No entry exists", Toast.LENGTH_SHORT).show();
-            i.putExtra("EmptyMsg", "Your budget is empty");
-            startActivity(i);
-            return;
-        }
-
-        while(res.moveToNext()){
-//            buffer.append("BudgetName " + res.getString(0) + "\n");
-//            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
-            myArrList.add(res.getString(0));
-        }
-
-        i.putStringArrayListExtra("COOL", myArrList);
-        startActivity(i);
-    }
+//    public void getDataFromDB(View v){
+//        Cursor res = DB.getBudgetData();
+//        ArrayList<String> myArrList = new ArrayList<>();
+//        Intent i = new Intent(this, MainActivity.class);
+//        if(res.getCount() == 0){
+//            Toast.makeText(CreateBudgetUI.this, "No entry exists", Toast.LENGTH_SHORT).show();
+//            i.putExtra("EmptyMsg", "Your budget is empty");
+//            startActivity(i);
+//            return;
+//        }
+//
+//        while(res.moveToNext()){
+////            buffer.append("BudgetName " + res.getString(0) + "\n");
+////            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
+//            myArrList.add(res.getString(0));
+//        }
+//
+//        i.putStringArrayListExtra("COOL", myArrList);
+//        startActivity(i);
+//    }
 }

@@ -15,9 +15,10 @@ import java.util.ArrayList;
 
 public class DisplayBudget extends AppCompatActivity {
     Button deleteBudget;
-    TextView Bheading;
+    TextView Bheading, amt, dt, curr;
     DBHelper DB;
-    String textVal;
+    String textVal, date, currency;
+    float amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +32,29 @@ public class DisplayBudget extends AppCompatActivity {
         Bheading = findViewById(R.id.heading);
         Bheading.setText(textVal);
 
+        amt = findViewById(R.id.amount);
+        dt = findViewById(R.id.date);
+        curr = findViewById(R.id.curr);
+
         DB = new DBHelper(this);
+
+        getSingleBudgetData();
     }
 
     public void deleteFromDB(View v){
         boolean deleteData = DB.deleteBudgetData(textVal);
         if(deleteData){
             Toast.makeText(DisplayBudget.this, "Budget deleted", Toast.LENGTH_LONG).show();
-            switchToMain();
+            switchToMainAfterDeletion();
         }
 
         else
             Toast.makeText(DisplayBudget.this, "Entry not deleted", Toast.LENGTH_LONG).show();
     }
 
-    public void switchToMain(){
+    public void switchToMainAfterDeletion(){
+        //I think this is redundant. You can normally switch to main activity without using intents.
+
         Cursor res = DB.getBudgetData();
         ArrayList<String> myArrList = new ArrayList<>();
         Intent i = new Intent(this, MainActivity.class);
@@ -64,5 +73,25 @@ public class DisplayBudget extends AppCompatActivity {
 
         i.putStringArrayListExtra("COOL", myArrList);
         startActivity(i);
+    }
+
+    public void switchToMainActivity(View v){
+        Intent switchActivityIntent = new Intent(this, MainActivity.class);
+        startActivity(switchActivityIntent);
+    }
+
+    public void getSingleBudgetData(){
+        Cursor res = DB.getSingleBudgetData(textVal);
+        while(res.moveToNext()){
+//            buffer.append("BudgetName " + res.getString(0) + "\n");
+//            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
+            date = res.getString(1);
+            amount = res.getFloat(2);
+            currency = res.getString(3);
+
+            dt.setText(date);
+            amt.setText(String.valueOf(amount));
+            curr.setText(currency);
+        }
     }
 }

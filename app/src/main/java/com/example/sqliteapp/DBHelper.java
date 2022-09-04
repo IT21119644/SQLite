@@ -48,6 +48,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getSingleBudgetData(String BName){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE BudgetName = ?", new String[] {BName});
+        return cursor;
+    }
+
     public boolean deleteBudgetData(String BName){
         SQLiteDatabase DB = this.getWritableDatabase();
 
