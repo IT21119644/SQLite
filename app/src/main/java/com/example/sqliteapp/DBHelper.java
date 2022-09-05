@@ -10,12 +10,12 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
-        super(context, "BudgetData.db", null, 1);
+        super(context, "BudgetDataNew.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("CREATE TABLE BudgetDetails(BudgetName TEXT PRIMARY KEY, Date TEXT, Amount NUMERIC, Currency TEXT, Category TEXT, almostComplete NUMERIC, overspent NUMERIC)");
+        DB.execSQL("CREATE TABLE BudgetDetails(BudgetName TEXT PRIMARY KEY, Date TEXT, Amount NUMERIC, Currency TEXT, Category TEXT, almostComplete NUMERIC, overspent NUMERIC, startDate TEXT, currentAmount NUMERIC)");
     }
 
     @Override
@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("DROP TABLE if exists BudgetDetails");
     }
 
-    public boolean insertBudgetData(String BudName, String date, float amount, String currency, String category, int almostComplete, int overspent){
+    public boolean insertBudgetData(String BudName, String date, float amount, String currency, String category, int almostComplete, int overspent, String startDate, float currentAmount){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("BudgetName", BudName);
@@ -33,6 +33,8 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("Category", category);
         contentValues.put("almostComplete", almostComplete);
         contentValues.put("overspent", overspent);
+        contentValues.put("startDate", startDate);
+        contentValues.put("currentAmount", currentAmount);
 
 
         long result = DB.insert("BudgetDetails", null, contentValues);

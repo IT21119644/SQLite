@@ -1,7 +1,9 @@
 package com.example.sqliteapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -15,9 +17,9 @@ import java.util.ArrayList;
 
 public class DisplayBudget extends AppCompatActivity {
     Button deleteBudget;
-    TextView Bheading, amt, dt, curr;
+    TextView Bheading, amt, dt, curr, cat, stDate, currBal;
     DBHelper DB;
-    String textVal, date, currency;
+    String textVal, date, currency, category, startDate, currBalance;
     float amount;
 
     @Override
@@ -35,6 +37,9 @@ public class DisplayBudget extends AppCompatActivity {
         amt = findViewById(R.id.amount);
         dt = findViewById(R.id.date);
         curr = findViewById(R.id.curr);
+        cat = findViewById(R.id.categoryView);
+        stDate = findViewById(R.id.startDate);
+        currBal = findViewById(R.id.currBalance);
 
         DB = new DBHelper(this);
 
@@ -42,14 +47,31 @@ public class DisplayBudget extends AppCompatActivity {
     }
 
     public void deleteFromDB(View v){
-        boolean deleteData = DB.deleteBudgetData(textVal);
-        if(deleteData){
-            Toast.makeText(DisplayBudget.this, "Budget deleted", Toast.LENGTH_LONG).show();
-            switchToMainAfterDeletion();
-        }
+        //display confirmation pop-up before deletion
+        new AlertDialog.Builder(this)
+                .setTitle("Delete Budget")
+                .setMessage("Are you sure you want to delete this Budget?")
 
-        else
-            Toast.makeText(DisplayBudget.this, "Entry not deleted", Toast.LENGTH_LONG).show();
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        boolean deleteData = DB.deleteBudgetData(textVal);
+                        if(deleteData){
+                            Toast.makeText(DisplayBudget.this, "Budget deleted", Toast.LENGTH_LONG).show();
+                            switchToMainAfterDeletion();
+                        }
+
+                        else
+                            Toast.makeText(DisplayBudget.this, "Entry not deleted", Toast.LENGTH_LONG).show();
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
     }
 
     public void switchToMainAfterDeletion(){
@@ -88,10 +110,16 @@ public class DisplayBudget extends AppCompatActivity {
             date = res.getString(1);
             amount = res.getFloat(2);
             currency = res.getString(3);
+            category = res.getString(4);
+            startDate = res.getString(7);
+            currBalance = res.getString(8);
 
             dt.setText(date);
             amt.setText(String.valueOf(amount));
             curr.setText(currency);
+            cat.setText(category);
+            stDate.setText(startDate);
+            currBal.setText(currBalance);
         }
     }
 }

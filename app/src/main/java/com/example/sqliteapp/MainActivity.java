@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             msg.add(res.getString(0));
         }
 
-        Intent i = getIntent();
+
         if(!msg.isEmpty()){
             Log.d("val", msg.get(0));
             for (int j = 0; j < msg.size(); j++){
