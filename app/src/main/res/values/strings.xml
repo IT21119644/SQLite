@@ -6,4 +6,5 @@
         <item>USD</item>
     </string-array>
     <string name="amount">Amount</string>
+    <string name="inputBudName">inputBudName</string>
 </resources>

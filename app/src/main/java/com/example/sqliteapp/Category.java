@@ -19,11 +19,14 @@ import java.util.Objects;
 
 public class Category extends AppCompatActivity {
     String previousPage;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        DB = new DBHelper(this);
+
         TextView fromPage = findViewById(R.id.fromPage);
         Intent i = getIntent();
 
@@ -76,6 +79,17 @@ public class Category extends AppCompatActivity {
             String head = cat.get(j);
             btn.setText(head);
             yourlayout.addView(btn);
+
+            if(previousPage.equals("CreateBudgetUI")){
+                Cursor res = DB.getBudgetData();
+                while(res.moveToNext()){
+                    String category = res.getString(4);
+                    if(btn.getText().toString().equals(category)){
+                        btn.setEnabled(false);
+                        btn.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                    }
+                }
+            }
 
             btn.setOnClickListener(handleOnClick(btn, head));
         }

@@ -3,23 +3,35 @@ package com.example.sqliteapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Expenses extends AppCompatActivity {
+    DBHelper DB;
+    TextView categoryTxtv;
+    String cat;
+    EditText amtIn;
+    float newAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
-        TextView categoryTxtv = findViewById(R.id.categoryTxtV2);
+        categoryTxtv = findViewById(R.id.categoryTxtV2);
+        amtIn = findViewById(R.id.amountInputField);
+//        newAmount = Double.parseDouble(amtIn.getText().toString());
+//        newAmount = Float.parseFloat(amtIn.getText().toString());
 
         Intent i = getIntent();
-        String cat = i.getStringExtra("category");
+        cat = i.getStringExtra("category");
         if(cat != null){
             categoryTxtv.setText(cat);
         }
+        DB = new DBHelper(this);
     }
 
     public void switchToCategoryPage(View v){
@@ -32,5 +44,23 @@ public class Expenses extends AppCompatActivity {
     public void switchToMainActivity(View v){
         Intent switchActivityIntent = new Intent(this, MainActivity.class);
         startActivity(switchActivityIntent);
+    }
+
+    public void updateCurrBudgetBalance(View v){
+        Cursor res = DB.getSingleBudgetDataUsingCategory(cat);
+        while(res.moveToNext()){
+            float currAmt = res.getFloat(8);
+            newAmount = Float.parseFloat(amtIn.getText().toString());
+            currAmt += newAmount;
+            boolean checkUpdatedData = DB.updateBudgetCurrBalance(currAmt, cat);
+
+            if(checkUpdatedData){
+                Toast.makeText(Expenses.this, "Entry updated", Toast.LENGTH_LONG).show();
+                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+                startActivity(switchActivityIntent);
+            }
+            else
+                Toast.makeText(Expenses.this, "Entry not updated", Toast.LENGTH_LONG).show();
+        }
     }
 }

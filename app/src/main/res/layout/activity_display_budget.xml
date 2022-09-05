@@ -49,12 +49,13 @@
         android:id="@+id/deleteBudgetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="264dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="44dp"
         android:background="@color/brightred"
         android:onClick="deleteFromDB"
         android:text="Delete"
         android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -207,5 +208,19 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoryView" />
+
+    <Button
+        android:id="@+id/updateBudgetBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="88dp"
+        android:background="@color/brightgreen"
+        android:onClick="switchToUpdateBudget"
+        android:text="Update"
+        android:textColor="#37474F"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/deleteBudgetBtn"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

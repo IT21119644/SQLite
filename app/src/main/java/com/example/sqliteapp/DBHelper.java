@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -56,12 +58,56 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getSingleBudgetDataUsingCategory(String category){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
+        return cursor;
+    }
+
     public boolean deleteBudgetData(String BName){
         SQLiteDatabase DB = this.getWritableDatabase();
 
         Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE BudgetName = ?", new String[] {BName});
         if(cursor.getCount() > 0){
             long result = DB.delete("BudgetDetails","BudgetName=?", new String[] {BName});
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean updateBudgetCurrBalance(float newCurrAmt, String category){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("currentAmount", newCurrAmt);
+
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE  Category= ?", new String[] {category});
+        if(cursor.getCount() > 0){
+            long result = DB.update("BudgetDetails", contentValues, "Category=?", new String[] {category});
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean updateBudget(String category, float amt, String compDate, String BName){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("BudgetName", BName);
+        contentValues.put("Amount", amt);
+        contentValues.put("Date", compDate);
+
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
+        if(cursor.getCount() > 0){
+            long result = DB.update("BudgetDetails", contentValues, "Category=?", new String[] {category});
             if(result == -1)
                 return false;
             else

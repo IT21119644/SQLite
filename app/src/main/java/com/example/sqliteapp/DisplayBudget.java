@@ -122,4 +122,11 @@ public class DisplayBudget extends AppCompatActivity {
             currBal.setText(currBalance);
         }
     }
+
+    public void switchToUpdateBudget(View v){
+        Intent switchActivityIntent = new Intent(this, UpdateBudget.class);
+        switchActivityIntent.putExtra("BName", textVal);
+        switchActivityIntent.putExtra("category", category);
+        startActivity(switchActivityIntent);
+    }
 }

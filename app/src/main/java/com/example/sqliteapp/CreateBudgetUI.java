@@ -5,15 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -32,14 +33,16 @@ public class CreateBudgetUI extends AppCompatActivity {
     DBHelper DB;
     Boolean almostIsSelected, overspentIsSelected;
 
+    DatePicker dp = new DatePicker();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_budget_ui);
 
-        initDatePicker();
         dateButton = findViewById(R.id.datePickerBtn);
-        dateButton.setText(getTodaysDate());
+        dateButton.setText(dp.getTodaysDate());
+        dp.initDatePicker(dateButton, this);
 
         BName = findViewById(R.id.budget_name);
         BAmount = findViewById(R.id.budget_amount);
@@ -69,77 +72,10 @@ public class CreateBudgetUI extends AppCompatActivity {
         }
     }
 
-    private String getTodaysDate() {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        month = month + 1; //since month starts from 0
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        return makeDateString(day, month, year);
-    }
 
-    private void initDatePicker()
+    public void openDatePickerMethod(View view)
     {
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
-        {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day)
-            {
-                month = month + 1;
-                String date = makeDateString(day, month, year);
-                dateButton.setText(date);
-            }
-        };
-
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        int style = AlertDialog.THEME_HOLO_LIGHT;
-
-        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-        datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis()); //set the Min date to current date
-
-    }
-
-    private String makeDateString(int day, int month, int year) {
-        return getMonthFormat(month) + " " + day + " " + year;
-    }
-
-    private String getMonthFormat(int month) {
-        if(month == 1)
-            return "JAN";
-        if(month == 2)
-            return "FEB";
-        if(month == 3)
-            return "MAR";
-        if(month == 4)
-            return "APR";
-        if(month == 5)
-            return "MAY";
-        if(month == 6)
-            return "JUN";
-        if(month == 7)
-            return "JUL";
-        if(month == 8)
-            return "AUG";
-        if(month == 9)
-            return "SEP";
-        if(month == 10)
-            return "OCT";
-        if(month == 11)
-            return "NOV";
-        if(month == 12)
-            return "DEC";
-
-        //default should never happen
-        return "JAN";
-    }
-
-    public void openDatePicker(View view)
-    {
-        datePickerDialog.show();
+        dp.openDatePicker();
     }
 
     public void switchToMainActivity(View v){
@@ -150,7 +86,6 @@ public class CreateBudgetUI extends AppCompatActivity {
     public void switchToCategoryPage(View v){
         //Move to shali's page
         Intent switchActivityIntent = new Intent(this, Category.class);
-//        Log.d("className", );
         switchActivityIntent.putExtra("fromPage", this.getClass().getSimpleName());
         startActivity(switchActivityIntent);
     }
@@ -161,7 +96,7 @@ public class CreateBudgetUI extends AppCompatActivity {
         String amountStr = BAmount.getText().toString();
         float amount = Float.parseFloat(amountStr);
         String category = Bcategory.getText().toString();
-        String todayDate = getTodaysDate();
+        String todayDate = dp.getTodaysDate();
         float currentAmt = 0;
 
         int almost, overspent;
@@ -175,16 +110,22 @@ public class CreateBudgetUI extends AppCompatActivity {
         else
             overspent = 1;
 
+        if( TextUtils.isEmpty(BName.getText())){
+            Toast.makeText(CreateBudgetUI.this, "Please Insert budget name", Toast.LENGTH_LONG).show();
 
-        boolean checkInsertData = DB.insertBudgetData(name, date, amount, "LKR", category, almost, overspent, todayDate, currentAmt);
-        if(checkInsertData){
-            Toast.makeText(CreateBudgetUI.this, "New Budget inserted", Toast.LENGTH_LONG).show();
-            BName.setText(null);
-            BAmount.setText(null);
-            Bcategory.setText("None");
+            BName.setError( "First name is required!" );
         }
-        else
-            Toast.makeText(CreateBudgetUI.this, "New entry not inserted", Toast.LENGTH_LONG).show();
+        else{
+            boolean checkInsertData = DB.insertBudgetData(name, date, amount, "LKR", category, almost, overspent, todayDate, currentAmt);
+            if(checkInsertData){
+                Toast.makeText(CreateBudgetUI.this, "New Budget inserted", Toast.LENGTH_LONG).show();
+                BName.setText(null);
+                BAmount.setText(null);
+                Bcategory.setText("None");
+            }
+            else
+                Toast.makeText(CreateBudgetUI.this, "New entry not inserted", Toast.LENGTH_LONG).show();
+        }
     }
 
     //generated methods for spinner
