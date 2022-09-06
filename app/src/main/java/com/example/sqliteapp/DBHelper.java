@@ -36,41 +36,6 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public boolean updateUserData(String ID, String name){
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("ID", ID);
-        contentValues.put("name", name);
-
-        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails WHERE id = ?", new String[] {ID});
-        if(cursor.getCount() > 0){
-            long result = DB.update("UserDetails", contentValues, "ID=?", new String[] {ID});
-            if(result == -1)
-                return false;
-            else
-                return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public boolean deleteUserData(String ID){
-        SQLiteDatabase DB = this.getWritableDatabase();
-
-        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails WHERE ID = ?", new String[] {ID});
-        if(cursor.getCount() > 0){
-            long result = DB.delete("UserDetails","ID=?", new String[] {ID});
-            if(result == -1)
-                return false;
-            else
-                return true;
-        }
-        else{
-            return false;
-        }
-    }
-
     public Cursor getData(){
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails", null);
