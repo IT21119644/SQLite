@@ -10,12 +10,13 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
-        super(context, "UserData.db", null, 1);
+
+        super(context, "BudgetDataNew.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("CREATE TABLE UserDetails(ID TEXT PRIMARY KEY, name TEXT)");
+        DB.execSQL("CREATE TABLE UserDetails(Name TEXT , Currency TEXT, PIN NUMERIC PRIMARY KEY)");
     }
 
     @Override
@@ -23,11 +24,12 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("DROP TABLE if exists UerDetails");
     }
 
-    public boolean insertUserData(String ID, String name){
+    public boolean insertUserData(String name, String currency, int PIN){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("ID", ID);
-        contentValues.put("name", name);
+        contentValues.put("Name", name);
+        contentValues.put("Currency", currency);
+        contentValues.put("PIN", PIN);
 
         long result = DB.insert("UserDetails", null, contentValues);
         if(result == -1)
