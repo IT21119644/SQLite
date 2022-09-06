@@ -71,7 +71,6 @@ public class DisplayBudget extends AppCompatActivity {
                 .setNegativeButton(android.R.string.no, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
-
     }
 
     public void switchToMainAfterDeletion(){
@@ -127,6 +126,7 @@ public class DisplayBudget extends AppCompatActivity {
         Intent switchActivityIntent = new Intent(this, UpdateBudget.class);
         switchActivityIntent.putExtra("BName", textVal);
         switchActivityIntent.putExtra("category", category);
+        switchActivityIntent.putExtra("amount", String.valueOf(amount));
         startActivity(switchActivityIntent);
     }
 }

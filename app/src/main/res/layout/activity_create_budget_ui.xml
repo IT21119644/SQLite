@@ -30,7 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/back_img_btn" />
 
     <TextView
         android:id="@+id/textView2"
@@ -38,11 +39,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="208dp"
-        android:text="New Budget"
+        android:text="@string/new_budget_headet_txt"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/budget_name"
@@ -55,10 +57,13 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:hint="@string/budname_hint_newbudget"
         android:textColor="#0B0B0B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/budget_amount"
@@ -71,10 +76,12 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:textColor="#090909"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView4"
@@ -82,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="252dp"
-        android:text="Completion Date"
+        android:text="@string/budget_completion_date"
         android:textColor="#070707"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +102,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="216dp"
         android:onClick="openDatePickerMethod"
-        android:text="Button"
+        android:text="@string/date_picker_btn_txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -105,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="316dp"
-        android:text="Amount"
+        android:text="@string/amount"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="264dp"
-        android:text="Budget Name"
+        android:text="@string/budget_name_txtV"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +139,7 @@
         android:background="@color/purple_500"
         android:onClick="switchToCategoryPage"
         android:padding="5dp"
-        android:text="Select Category"
+        android:text="@string/select_category_btn_txt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -142,7 +149,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
-        android:text="Category"
+        android:text="@string/category_txtV"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +163,8 @@
         android:layout_marginTop="56dp"
         android:background="@drawable/border"
         android:paddingLeft="5dp"
-        android:text="None"
+        android:paddingRight="5dp"
+        android:text="@string/none"
         android:textColor="#070707"
         app:layout_constraintStart_toEndOf="@+id/categorybtn"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -167,7 +175,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="232dp"
-        android:text="Notifications"
+        android:text="@string/notifications_txt"
         android:textColor="#090909"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -179,7 +187,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="244dp"
-        android:text="90% completion"
+        android:text="@string/_90_completion"
         android:textColor="#0B0A0A"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +215,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
-        android:text="Budget overspent"
+        android:text="@string/budget_overspent_txt"
         android:textColor="#040303"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/overspent"
@@ -241,12 +249,13 @@
         android:layout_marginEnd="184dp"
         android:background="@drawable/rounded_button"
         android:onClick="insertToDB"
-        android:text="create"
-        android:textColor="#000000"
+        android:text="@string/create_btn_txt"
+        android:textColor="#090909"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
