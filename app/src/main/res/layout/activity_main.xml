@@ -47,6 +47,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="@color/deepPink"
+        android:onClick="login"
         android:text="Log In"
         android:textAlignment="center"
         android:textSize="24sp"
