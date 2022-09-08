@@ -19,7 +19,7 @@ public class DisplayBudget extends AppCompatActivity {
     Button deleteBudget;
     TextView Bheading, amt, dt, curr, cat, stDate, currBal;
     DBHelper DB;
-    String textVal, date, currency, category, startDate, currBalance;
+    String textVal, date, currency, category, startDate, currBalance, prevCat;
     float amount;
 
     @Override
@@ -28,7 +28,8 @@ public class DisplayBudget extends AppCompatActivity {
         setContentView(R.layout.activity_display_budget);
 
         Intent i = getIntent();
-        textVal = i.getStringExtra("Bow");
+        textVal = i.getStringExtra("BName");
+        prevCat = i.getStringExtra("BCategory");
 
         deleteBudget = findViewById(R.id.deleteBudgetBtn);
         Bheading = findViewById(R.id.heading);
@@ -56,7 +57,7 @@ public class DisplayBudget extends AppCompatActivity {
                 // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        boolean deleteData = DB.deleteBudgetData(textVal);
+                        boolean deleteData = DB.deleteBudgetData(prevCat);
                         if(deleteData){
                             Toast.makeText(DisplayBudget.this, "Budget deleted", Toast.LENGTH_LONG).show();
                             switchToMainAfterDeletion();
@@ -87,8 +88,6 @@ public class DisplayBudget extends AppCompatActivity {
         }
 
         while(res.moveToNext()){
-//            buffer.append("BudgetName " + res.getString(0) + "\n");
-//            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
             myArrList.add(res.getString(0));
         }
 
@@ -102,10 +101,8 @@ public class DisplayBudget extends AppCompatActivity {
     }
 
     public void getSingleBudgetData(){
-        Cursor res = DB.getSingleBudgetData(textVal);
+        Cursor res = DB.getSingleBudgetData(prevCat);
         while(res.moveToNext()){
-//            buffer.append("BudgetName " + res.getString(0) + "\n");
-//            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
             date = res.getString(1);
             amount = res.getFloat(2);
             currency = res.getString(3);

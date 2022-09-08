@@ -52,9 +52,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor getSingleBudgetData(String BName){
+    public Cursor getSingleBudgetData(String category){
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE BudgetName = ?", new String[] {BName});
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
         return cursor;
     }
 
@@ -64,12 +64,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public boolean deleteBudgetData(String BName){
+    public boolean deleteBudgetData(String category){
         SQLiteDatabase DB = this.getWritableDatabase();
 
-        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE BudgetName = ?", new String[] {BName});
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
         if(cursor.getCount() > 0){
-            long result = DB.delete("BudgetDetails","BudgetName=?", new String[] {BName});
+            long result = DB.delete("BudgetDetails","Category=?", new String[] {category});
             if(result == -1)
                 return false;
             else

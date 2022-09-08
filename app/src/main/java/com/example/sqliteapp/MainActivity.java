@@ -44,22 +44,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         DBHelper DB = new DBHelper(this);
         Cursor res = DB.getBudgetData();
 
-        ArrayList<String> msg = new ArrayList<>();
+        ArrayList<String> BudNames = new ArrayList<>();
+        ArrayList<String> categories = new ArrayList<>();
+
         if(res.getCount() == 0){
             Toast.makeText(MainActivity.this, "Your budget is empty", Toast.LENGTH_SHORT).show();
-
         }
 
         while(res.moveToNext()){
-//            buffer.append("BudgetName " + res.getString(0) + "\n");
-//            buffer.append("Amount: " + res.getFloat(2) + "\n\n");
-            msg.add(res.getString(0));
+            BudNames.add(res.getString(0));
+            categories.add(res.getString(4));
         }
 
 
-        if(!msg.isEmpty()){
-            Log.d("val", msg.get(0));
-            for (int j = 0; j < msg.size(); j++){
+        if(!BudNames.isEmpty()){
+            Log.d("val", BudNames.get(0));
+            for (int j = 0; j < BudNames.size(); j++){
                 Button btn = new Button (MainActivity.this);
                 btn.setWidth(5);
                 btn.setHeight(20);
@@ -88,11 +88,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 btn.setLayoutParams(buttonLayoutParams);
 
                 //Set button text
-                String head = msg.get(j);
+                String head = BudNames.get(j);
+                String category = categories.get(j);
                 btn.setText(head);
                 yourlayout.addView(btn);
 
-                btn.setOnClickListener(handleOnClick(btn, head));
+                btn.setOnClickListener(handleOnClick(btn, head, category));
             }
         }
         else{
@@ -165,19 +166,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(switchActivityIntent);
     }
 
-    View.OnClickListener handleOnClick(final Button button, String heading) {
+    View.OnClickListener handleOnClick(final Button button, String heading, String category) {
         return new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Button is clicked", Toast.LENGTH_SHORT).show();
                 Log.d("gg", "Button clicked");
-                switchToDisplayBudget(heading);
+                switchToDisplayBudget(heading, category);
             }
         };
     }
 
-    public void switchToDisplayBudget(String heading){
+    public void switchToDisplayBudget(String heading, String category){
         Intent switchActivityIntent = new Intent(this, DisplayBudget.class);
-        switchActivityIntent.putExtra("Bow", heading);
+        switchActivityIntent.putExtra("BName", heading);
+        switchActivityIntent.putExtra("BCategory", category);
         startActivity(switchActivityIntent);
     }
 }

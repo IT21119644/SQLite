@@ -86,5 +86,12 @@ public class UpdateBudget extends AppCompatActivity {
         startActivity(switchActivityIntent);
     }
 
+    public void backToDisplayBudget(View v){
+        Intent i = new Intent(this, DisplayBudget.class);
+        i.putExtra("BCategory", category);
+        i.putExtra("BName", budName);
+        startActivity(i);
+    }
+
 
 }
