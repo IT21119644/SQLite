@@ -30,7 +30,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     Button createBudget;
     DBHelper DB;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         LinearLayout yourlayout= (LinearLayout) findViewById(R.id.yourlayout);
 
-        DBHelper DB = new DBHelper(this);
+        DB = new DBHelper(this);
         Cursor res = DB.getBudgetData();
 
         ArrayList<String> BudNames = new ArrayList<>();
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             categories.add(res.getString(4));
         }
 
-
         if(!BudNames.isEmpty()){
             Log.d("val", BudNames.get(0));
             for (int j = 0; j < BudNames.size(); j++){
@@ -65,8 +64,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 btn.setHeight(20);
                 btn.setTextSize(25);
                 btn.setPadding(20, 0, 0, 0);
+
                 btn.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
-                btn.setBackgroundColor(Color.parseColor("#fb8d19"));
+
+                if(categories.get(j).equals("Shopping") || categories.get(j).equals("Housing"))
+                    btn.setBackgroundColor(Color.parseColor("#FEB450"));
+                else if(categories.get(j).equals("Food and drinks") || categories.get(j).equals("Entertainment"))
+                    btn.setBackgroundColor(Color.parseColor("#EE5F5F"));
+                else if(categories.get(j).equals("Health"))
+                    btn.setBackgroundColor(Color.parseColor("#FBEE4A"));
+                else if(categories.get(j).equals("Transport"))
+                    btn.setBackgroundColor(Color.parseColor("#57C7F1"));
+                else if(categories.get(j).equals("Communication"))
+                    btn.setBackgroundColor(Color.parseColor("#E668FA"));
+                else if(categories.get(j).equals("Investments"))
+                    btn.setBackgroundColor(Color.parseColor("#42E375"));
+
                 btn.setTextColor(Color.parseColor("#000000"));
 
                 //Get the width of the screen
@@ -145,16 +158,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     // dropdown menu methods
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String choice = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(getApplicationContext(), choice, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//        String choice = adapterView.getItemAtPosition(i).toString();
+//        Toast.makeText(getApplicationContext(), choice, Toast.LENGTH_LONG).show();
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//    }
 
     public void switchToExpenses(){
         Intent switchActivityIntent = new Intent(this, Expenses.class);

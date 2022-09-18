@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">SQLiteApp</string>
-    <string-array name="languages">
-        <item>LKR</item>
-        <item>EUR</item>
-        <item>USD</item>
-    </string-array>
+<!--    <string-array name="languages">-->
+<!--        <item>LKR</item>-->
+<!--        <item>EUR</item>-->
+<!--        <item>USD</item>-->
+<!--    </string-array>-->
     <string name="amount">Amount</string>
     <string name="inputBudName">inputBudName</string>
     <string name="update_budget_header_txt">Update Budget</string>
@@ -22,4 +22,10 @@
     <string name="budget_overspent_txt">Budget overspent</string>
     <string name="create_btn_txt">create</string>
     <string name="select_category_btn_txt">Select Category</string>
+    <string name="display_budget_viewTxt">Display Budget</string>
+    <string name="deleteBtnTxt">Delete</string>
+    <string name="completion_date">Completion date</string>
+    <string name="current_balance">Current Balance</string>
+    <string name="updateBtnTxt">Update</string>
+    <string name="currencyTxtv">Currency</string>
 </resources>
