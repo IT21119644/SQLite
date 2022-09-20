@@ -6,13 +6,14 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
     <RelativeLayout
         android:id="@+id/relLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@drawable/purple_back">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"

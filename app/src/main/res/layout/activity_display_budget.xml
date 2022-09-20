@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DisplayBudget"
-    android:background="@color/white">
+    android:background="@drawable/purple_back"
+    tools:ignore="MissingClass">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -45,26 +46,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <app.futured.donut.DonutProgressView
+        android:id="@+id/dpvChart"
+        android:layout_width="161dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="124dp"
+        app:donut_gapAngle="270"
+        app:donut_gapWidth="20"
+        app:donut_strokeWidth="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
     <Button
         android:id="@+id/deleteBudgetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="76dp"
         android:background="@color/brightred"
         android:onClick="deleteFromDB"
         android:text="@string/deleteBtnTxt"
         android:textColor="#000000"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeLeftTxtV" />
 
     <TextView
         android:id="@+id/amount"
-        android:layout_width="132dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="128dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="44dp"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,10 +85,10 @@
 
     <TextView
         android:id="@+id/curr"
-        android:layout_width="134dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="28dp"
+        android:layout_width="80dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="92dp"
         android:textColor="#050505"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,8 +98,8 @@
         android:id="@+id/categoryView"
         android:layout_width="133dp"
         android:layout_height="38dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
         android:textColor="#070707"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,8 +109,8 @@
         android:id="@+id/date"
         android:layout_width="138dp"
         android:layout_height="43dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:textColor="#050505"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,10 +120,10 @@
         android:id="@+id/textView9"
         android:layout_width="102dp"
         android:layout_height="38dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="96dp"
         android:text="@string/amount"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="#040303"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -121,10 +134,10 @@
         android:id="@+id/textView12"
         android:layout_width="177dp"
         android:layout_height="41dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/completion_date"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="#040303"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -135,24 +148,25 @@
         android:id="@+id/textView13"
         android:layout_width="99dp"
         android:layout_height="40dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="96dp"
         android:text="@string/currencyTxtv"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="#040303"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/curr"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
+
     <TextView
         android:id="@+id/textView15"
         android:layout_width="107dp"
         android:layout_height="40dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="92dp"
         android:text="@string/category_txtV"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="#040303"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -161,66 +175,106 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="162dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="48dp"
-        android:textAlignment="center"
+        android:layout_width="124dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="76dp"
+        android:text="Start Date"
+        android:textAlignment="viewStart"
         android:textColor="#020202"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/startDate"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        tools:text="Start Date" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
 
     <TextView
         android:id="@+id/startDate"
-        android:layout_width="131dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="114dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
         android:textColor="#040303"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amount" />
 
     <TextView
+        android:id="@+id/currBalance"
+        android:layout_width="125dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="#070707"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoryView" />
+
+    <TextView
         android:id="@+id/textView18"
         android:layout_width="153dp"
         android:layout_height="46dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
         android:text="@string/current_balance"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/currBalance"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
-    <TextView
-        android:id="@+id/currBalance"
-        android:layout_width="125dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
-        android:textColor="#070707"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryView" />
-
     <Button
         android:id="@+id/updateBudgetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="96dp"
         android:background="@color/brightgreen"
         android:onClick="switchToUpdateBudget"
         android:text="@string/updateBtnTxt"
         android:textColor="#37474F"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/deleteBudgetBtn"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="118dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="80dp"
+        android:text="Time Left"
+        android:textAlignment="viewStart"
+        android:textColor="#050505"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/timeLeftTxtV"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/timeLeftTxtV"
+        android:layout_width="126dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="40dp"
+        android:textColor="#020202"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currBalance" />
+
+    <TextView
+        android:id="@+id/remainingPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EX"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/dpvChart"
+        app:layout_constraintEnd_toEndOf="@+id/dpvChart"
+        app:layout_constraintStart_toStartOf="@+id/dpvChart"
+        app:layout_constraintTop_toTopOf="@+id/dpvChart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

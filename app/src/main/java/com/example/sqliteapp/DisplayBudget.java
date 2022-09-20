@@ -3,9 +3,11 @@ package com.example.sqliteapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,14 +15,23 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+
+import app.futured.donut.DonutProgressView;
+import app.futured.donut.DonutSection;
 
 public class DisplayBudget extends AppCompatActivity {
     Button deleteBudget;
-    TextView Bheading, amt, dt, curr, cat, stDate, currBal;
+    TextView Bheading, amt, dt, curr, cat, stDate, currBal, timeLeft, remainingPer;
     DBHelper DB;
     String textVal, date, currency, category, startDate, currBalance, prevCat;
     float amount;
+    DonutProgressView dpvChart;
+    float balancePercentage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +52,22 @@ public class DisplayBudget extends AppCompatActivity {
         cat = findViewById(R.id.categoryView);
         stDate = findViewById(R.id.startDate);
         currBal = findViewById(R.id.currBalance);
+        timeLeft = findViewById(R.id.timeLeftTxtV);
+        remainingPer = findViewById(R.id.remainingPer);
 
         DB = new DBHelper(this);
 
-        getSingleBudgetData();
+        try {
+            getSingleBudgetData();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        dpvChart = findViewById(R.id.dpvChart);
+
+        DonutSection section1 = new DonutSection("Section 1 Name", Color.parseColor("#f44336"), balancePercentage);
+        dpvChart.setCap(100f);
+        dpvChart.submitData(new ArrayList<>(Collections.singleton(section1)));
     }
 
     public void deleteFromDB(View v){
@@ -100,15 +123,39 @@ public class DisplayBudget extends AppCompatActivity {
         startActivity(switchActivityIntent);
     }
 
-    public void getSingleBudgetData(){
+    public void getSingleBudgetData() throws ParseException {
         Cursor res = DB.getSingleBudgetData(prevCat);
         while(res.moveToNext()){
             date = res.getString(1);
+            Log.d("dt", date);
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+            Date compDate = formatter.parse(date);
+            String dd1 = formatter.format(compDate);
+
+//            Log.d("compDate", formatter.format(compDate));
+
             amount = res.getFloat(2);
             currency = res.getString(3);
             category = res.getString(4);
+
             startDate = res.getString(7);
+            Date sDate = formatter.parse(startDate);
+            String dd2 = formatter.format(sDate);
+//            @SuppressLint("SimpleDateFormat") Date sDate = new SimpleDateFormat("dd-MMM-yyyy").parse(date);
+
+            //Today date
+            DatePicker dp = new DatePicker();
+            Date today = formatter.parse(dp.getTodaysDate());
+
+
             currBalance = res.getString(8);
+
+            balancePercentage = (Float.parseFloat(currBalance)/ amount) * 100;
+            String bPercentage = String.format("%.2f", balancePercentage) + "%";
+            remainingPer.setText(bPercentage);
+            if(bPercentage.equals("100%")){
+                Toast.makeText(DisplayBudget.this, "You have reached the limit", Toast.LENGTH_SHORT).show();
+            }
 
             dt.setText(date);
             amt.setText(String.valueOf(amount));
@@ -116,6 +163,22 @@ public class DisplayBudget extends AppCompatActivity {
             cat.setText(category);
             stDate.setText(startDate);
             currBal.setText(currBalance);
+
+            if (compDate != null && today != null) {
+                long difference = Math.abs(compDate.getTime() - today.getTime());
+                Log.d("left", String.valueOf(difference) + " days");
+                long difftDays = difference / (24 * 60 * 60 * 1000);
+
+                String timeDiff = String.valueOf(difftDays) + " days";
+                timeLeft.setText(timeDiff);
+
+                //calculate total time difference
+//                long totDifference = Math.abs(compDate.getTime() - sDate.getTime());
+//                Log.d("left", String.valueOf(difference) + " days");
+//                long totDifftDays = difference / (24 * 60 * 60 * 1000);
+//                this.totalTimeDiff = (float) (difftDays / totDifftDays) * 100;
+            }
+
         }
     }
 
