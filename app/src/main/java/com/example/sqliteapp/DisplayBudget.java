@@ -8,6 +8,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -68,6 +71,17 @@ public class DisplayBudget extends AppCompatActivity {
         DonutSection section1 = new DonutSection("Section 1 Name", Color.parseColor("#f44336"), balancePercentage);
         dpvChart.setCap(100f);
         dpvChart.submitData(new ArrayList<>(Collections.singleton(section1)));
+
+        //notification when the budget is reached
+        if(balancePercentage == 100f){
+            try {
+                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+                r.play();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void deleteFromDB(View v){

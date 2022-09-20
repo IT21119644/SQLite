@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -29,9 +30,7 @@ public class CreateBudgetUI extends AppCompatActivity {
     EditText BName, BAmount;
     TextView Bcategory;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    Switch almost, overspent;
     DBHelper DB;
-    Boolean almostIsSelected, overspentIsSelected;
 
     DatePicker dp = new DatePicker();
 
@@ -48,12 +47,6 @@ public class CreateBudgetUI extends AppCompatActivity {
         BAmount = findViewById(R.id.budget_amount);
         Bcategory = findViewById(R.id.categoryTxtV);
 
-        //Error with toggle switches
-        almost = findViewById(R.id.almost);
-        almostIsSelected = almost.isSelected();
-
-        overspent = findViewById(R.id.overspent);
-        overspentIsSelected = overspent.isSelected();
 
         //dropdown menu
 //        spinner = findViewById(R.id.currency);
@@ -99,29 +92,21 @@ public class CreateBudgetUI extends AppCompatActivity {
         String todayDate = dp.getTodaysDate();
         float currentAmt = 0;
 
-        int almost, overspent;
-        if(almostIsSelected)
-            almost = 0;
-        else
-            almost = 1;
-
-        if(overspentIsSelected)
-            overspent = 0;
-        else
-            overspent = 1;
 
         if( TextUtils.isEmpty(BName.getText())){
             Toast.makeText(CreateBudgetUI.this, "Please Insert budget name", Toast.LENGTH_LONG).show();
 
-            BName.setError( "First name is required!" );
+            BName.setError( "Budget name is required!" );
         }
         else{
-            boolean checkInsertData = DB.insertBudgetData(name, date, amount, "LKR", category, almost, overspent, todayDate, currentAmt);
+            boolean checkInsertData = DB.insertBudgetData(name, date, amount, "LKR", category, 1, 1, todayDate, currentAmt);
             if(checkInsertData){
                 Toast.makeText(CreateBudgetUI.this, "New Budget inserted", Toast.LENGTH_LONG).show();
                 BName.setText(null);
                 BAmount.setText(null);
                 Bcategory.setText("None");
+                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+                startActivity(switchActivityIntent);
             }
             else
                 Toast.makeText(CreateBudgetUI.this, "New entry not inserted", Toast.LENGTH_LONG).show();
