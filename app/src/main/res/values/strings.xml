@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">SQLiteApp</string>
+    <string name="title_activity_view_goal">ViewGoal</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="createBtnTxt">Create</string>
+    <string name="updateBtnTxt">Update</string>
+    <string name="categoryBtnTxt">Category</string>
+    <string name="goalDescriptionTxt">Goal Description</string>
+    <string name="addSavingsTxt">Add Savings</string>
+    <string name="dateBtn">JAN 01 2022</string>
+    <string name="goalAmountTxt">Goal Amount</string>
+    <string name="estimatedDateTxt">Estimated Date</string>
+    <string name="nameTxt">Name</string>
+    <string name="remainingTimeTxt">Remaining Time</string>
+    <string name="remainingAmountTxt">Remaining amount</string>
+    <string name="nameProgressTxt">Rate to reach the goal</string>
+    <string name="remainTimeValueTxt">Rate to reach the goal</string>
+    <string name="remainingAmountValueTxt">Rate to reach the goal</string>
+    <string name="rateToReachTheGoalValueTxt">Rate to reach the goal</string>
+    <string name="rateToReachTheGoal">Rate to reach the goal</string>
+
+
+
+    <string name="updateBtn">Update</string>
+    <string name="deleteBtn">delete</string>
 </resources>
