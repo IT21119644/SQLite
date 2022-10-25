@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -20,13 +24,17 @@ import android.widget.Toast;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    EditText ID, name, amount;
+    DatePickerDialog datePickerDialog;
+    EditText itemID, amountT;
     TextView currentInc;
-    Button category;
+    Button btncategory, btndate;
     ImageButton btnOk;
     Spinner spinner;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +42,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
-        DrawerLayout drawerLayout = findViewById(R.id.btnCategory);
+        DrawerLayout drawerLayout = findViewById(R.id.addIncome);
         NavigationView navigationView = findViewById(R.id.navigation_view);
+
+
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -70,27 +81,68 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        amount = (EditText)findViewById(R.id.amount);
+        amountT = (EditText)findViewById(R.id.amount);
         currentInc =(TextView)findViewById(R.id.currentInc);
         btnOk = (ImageButton)findViewById(R.id.btnOk);
 
         onAdd();
 
-        category = findViewById(R.id.btncategory);
-        category.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Category.class);
-                startActivity(intent);
-            }
-        });
+       btncategory = findViewById(R.id.btncategory);
+
+        initDatePicker();
+
+        btndate = findViewById(R.id.date);
+        btndate.setText(getTodaysDate());
+
+
     }
+
+    private String getTodaysDate() {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        month +=1;
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        return makeDateString(day, month, year);
+    }
+
+    public void switchToCategory(View view){
+        Intent switchActivityIntent = new Intent(this, Category.class);
+        startActivity(switchActivityIntent);
+    }
+
+    public void insertTODB(View view){
+        String category = btncategory.getText().toString();
+        String date = btndate.getText().toString();
+        String amount = amountT.getText().toString();
+        float amnt = Float.parseFloat(amount);
+
+        if( TextUtils.isEmpty(itemID.getText())){
+            Toast.makeText(MainActivity.this, "Please Insert budget name", Toast.LENGTH_LONG).show();
+
+            itemID.setError( "Budget name is required!" );
+        }
+        else{
+            boolean checkInsertData = DB.insertIncomeData("", category, date, amnt);
+            if(checkInsertData){
+                Toast.makeText(MainActivity.this, "New Budget inserted", Toast.LENGTH_LONG).show();
+                btncategory.setText(null);
+                amountT.setText(null);
+                btncategory.setText("None");
+                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+                startActivity(switchActivityIntent);
+            }
+            else
+                Toast.makeText(MainActivity.this, "New entry not inserted", Toast.LENGTH_LONG).show();
+        }
+    }
+
     //add amount to the current amount
     private void onAdd() {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                double value = Double.parseDouble(amount.getText().toString());
+                double value = Double.parseDouble(amountT.getText().toString());
                 double currentVal = Double.parseDouble(currentInc.getText().toString());
                 currentVal += value;
                 currentInc.setText(Double.toString(currentVal));
@@ -112,5 +164,67 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    private void initDatePicker(){
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int month, int day, int year) {
+                month = month+1;
+                String sDate = makeDateString(day,month,year);
+                btndate.setText(sDate);
 
+            }
+        };
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        int style = AlertDialog.THEME_HOLO_LIGHT;
+
+        datePickerDialog = new DatePickerDialog(this, style,dateSetListener,year,month,day);
+
+    }
+
+    private String makeDateString(int day, int month, int year){
+        return getMonthFormat(month) + " " +day+ " " + year;
+    }
+
+    private String getMonthFormat(int month) {
+        if(month == 1)
+            return "JAN";
+        if(month == 2)
+            return "FEB";
+        if(month == 3)
+            return "MAR";
+        if(month == 4)
+            return "APR";
+        if(month == 5)
+            return "MAY";
+        if(month == 6)
+            return "JUN";
+        if(month == 7)
+            return "JUL";
+        if(month == 8)
+            return "AUG";
+        if(month == 9)
+            return "SEP";
+        if(month == 10)
+            return "OCT";
+        if(month == 11)
+            return "NOV";
+        if(month == 12)
+            return "DEC";
+        return "JAN";
+    }
+
+    public void openDatePicker(View view) {
+        datePickerDialog.show();
+    }
+
+
+//    public void sw(View view) {
+//        Intent i = new Intent(this, Income.class);
+//        startActivity(i);
+//    }
 }

@@ -5,82 +5,63 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Category extends AppCompatActivity{ //implements AdapterView.OnItemSelectedListener{
+public class Category extends AppCompatActivity {
 
-    private static final String TAG = "Category";
+    RecyclerView recyclerView;
+    LinearLayoutManager layoutManager;
+    List<ModelClass> userList;
+    Adaptor adaptor;
 
-    private ArrayList<Integer> mImages = new ArrayList<>();
-    private ArrayList<String> mCategoryName = new ArrayList<>();
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        Log.d(TAG, "onCreate: started");
 
         initData();
-    }
-
-    private void initData(){
-        mImages.add(R.drawable.check_book);
-        mCategoryName.add("Checks, Coupons");
-
-        mImages.add(R.drawable.romper);
-        mCategoryName.add("Child Support");
-
-        mImages.add(R.drawable.dues);
-        mCategoryName.add("Dues & grants");
-
-        mImages.add(R.drawable.gifts);
-        mCategoryName.add("Gifts");
-
-        mImages.add(R.drawable.interests);
-        mCategoryName.add("Interests, Dividends");
-
-        mImages.add(R.drawable.rent);
-        mCategoryName.add("Lending, Renting");
-
-        mImages.add(R.drawable.dice);
-        mCategoryName.add("Lottery, Gambling");
-
-        mImages.add(R.drawable.refund);
-        mCategoryName.add("Refunds (tax, purchase)");
-
-        mImages.add(R.drawable.rent_income);
-        mCategoryName.add("Rental Income");
-
-        mImages.add(R.drawable.sales);
-        mCategoryName.add("Sales");
-
-        mImages.add(R.drawable.wages);
-        mCategoryName.add("Wage, Invoice");
-
-        mImages.add(R.drawable.other);
-        mCategoryName.add("Other");
-
         initRecyclerView();
     }
 
+    private void initData() {
+        userList = new ArrayList<>();
+
+        userList.add(new ModelClass(R.drawable.check_book,"Checks, Coupons"));
+
+        userList.add(new ModelClass(R.drawable.romper,"Child Support"));
+
+        userList.add(new ModelClass(R.drawable.dues,"Dues & Grants"));
+
+        userList.add(new ModelClass(R.drawable.gifts,"Gifts"));
+
+        userList.add(new ModelClass(R.drawable.interests,"Interests, Dividends"));
+
+        userList.add(new ModelClass(R.drawable.rent,"Lending, Renting"));
+
+        userList.add(new ModelClass(R.drawable.dice,"Lottery, Gambling"));
+
+        userList.add(new ModelClass(R.drawable.refund,"Refunds (Tax,Purchase)"));
+
+        userList.add(new ModelClass(R.drawable.rent_income,"Rental Income"));
+
+        userList.add(new ModelClass(R.drawable.sales,"Sale"));
+
+        userList.add(new ModelClass(R.drawable.wages,"Wage, Invoices"));
+
+        userList.add(new ModelClass(R.drawable.other,"Other"));
+
+
+    }
+
     private void initRecyclerView(){
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mImages,mCategoryName,this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        recyclerView=findViewById(R.id.recyclerview);
+        layoutManager= new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        adaptor= new Adaptor(userList);
+        recyclerView.setAdapter(adaptor);
+        adaptor.notifyDataSetChanged();
     }
-   /* @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }*/
-};
+}
