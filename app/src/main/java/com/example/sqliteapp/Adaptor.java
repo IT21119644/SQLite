@@ -1,11 +1,13 @@
 package com.example.sqliteapp;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,6 +52,18 @@ public class Adaptor extends RecyclerView.Adapter<Adaptor.ViewHolder> {
             imageView = itemView.findViewById(R.id.imageview1);
 //            textView = itemView.findViewById(R.id.text1);
             clkBtn = itemView.findViewById(R.id.clkBtn);
+            clkBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String btnTxt = clkBtn.getText().toString();
+                    Toast.makeText(view.getContext(), btnTxt + " clicked", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(view.getContext(), MainActivity.class);
+
+                    i.putExtra("BtnTxt", btnTxt);
+                    view.getContext().startActivity(i);
+
+                }
+            });
         }
 
         public void setData(int resource, String name) {
@@ -61,8 +75,5 @@ public class Adaptor extends RecyclerView.Adapter<Adaptor.ViewHolder> {
 
         }
 
-        public void myClick(View v){
-            //code
-        }
     }
 }

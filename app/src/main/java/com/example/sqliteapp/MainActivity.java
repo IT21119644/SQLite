@@ -10,6 +10,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,9 +42,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        amountT = (EditText)findViewById(R.id.amount);
+        currentInc =(TextView)findViewById(R.id.currentInc);
+        btnOk = (ImageButton)findViewById(R.id.btnOk);
+        btncategory = findViewById(R.id.btncategory);
+        btndate = findViewById(R.id.date);
+
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
         DrawerLayout drawerLayout = findViewById(R.id.addIncome);
         NavigationView navigationView = findViewById(R.id.navigation_view);
+
+        Intent i = getIntent();
+        String cat = i.getStringExtra("BtnTxt");
+        if(cat != null){
+            btncategory.setText(cat);
+        }
+        DB = new DBHelper(this);
 
 
 
@@ -81,17 +95,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        amountT = (EditText)findViewById(R.id.amount);
-        currentInc =(TextView)findViewById(R.id.currentInc);
-        btnOk = (ImageButton)findViewById(R.id.btnOk);
 
-        onAdd();
-
-       btncategory = findViewById(R.id.btncategory);
 
         initDatePicker();
-
-        btndate = findViewById(R.id.date);
         btndate.setText(getTodaysDate());
 
 
@@ -111,43 +117,116 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(switchActivityIntent);
     }
 
-    public void insertTODB(View view){
-        String category = btncategory.getText().toString();
-        String date = btndate.getText().toString();
-        String amount = amountT.getText().toString();
-        float amnt = Float.parseFloat(amount);
-
-        if( TextUtils.isEmpty(itemID.getText())){
-            Toast.makeText(MainActivity.this, "Please Insert budget name", Toast.LENGTH_LONG).show();
-
-            itemID.setError( "Budget name is required!" );
-        }
-        else{
-            boolean checkInsertData = DB.insertIncomeData("", category, date, amnt);
-            if(checkInsertData){
-                Toast.makeText(MainActivity.this, "New Budget inserted", Toast.LENGTH_LONG).show();
-                btncategory.setText(null);
-                amountT.setText(null);
-                btncategory.setText("None");
-                Intent switchActivityIntent = new Intent(this, MainActivity.class);
-                startActivity(switchActivityIntent);
-            }
-            else
-                Toast.makeText(MainActivity.this, "New entry not inserted", Toast.LENGTH_LONG).show();
-        }
-    }
+//    public void insertIncomeToDB(View view){
+//        Toast.makeText(MainActivity.this, "Tick clicked", Toast.LENGTH_LONG).show();
+//        String category = btncategory.getText().toString();
+//        String date = btndate.getText().toString();
+//        String amount = amountT.getText().toString();
+//        float amnt = Float.parseFloat(amount);
+//
+//        if( TextUtils.isEmpty(amountT.getText())){
+//            Toast.makeText(MainActivity.this, "Please Insert amount", Toast.LENGTH_LONG).show();
+//
+//            amountT.setError( "Amount name is required!" );
+//        }
+//        else{
+//            boolean checkInsertData = DB.insertIncomeData(0, category, date, amnt);
+//            if(checkInsertData){
+//                Toast.makeText(MainActivity.this, "New Income inserted", Toast.LENGTH_LONG).show();
+//                btncategory.setText(null);
+//                amountT.setText(null);
+//                btncategory.setText("None");
+////                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+////                startActivity(switchActivityIntent);
+//            }
+//            else
+//                Toast.makeText(MainActivity.this, "New entry not inserted", Toast.LENGTH_LONG).show();
+//        }
+//    }
 
     //add amount to the current amount
     private void onAdd() {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                double value = Double.parseDouble(amountT.getText().toString());
-                double currentVal = Double.parseDouble(currentInc.getText().toString());
-                currentVal += value;
-                currentInc.setText(Double.toString(currentVal));
+//                Toast.makeText(MainActivity.this, "Please Insert amount", Toast.LENGTH_LONG).show();
+//                double value = Double.parseDouble(amountT.getText().toString());
+//                double currentVal = Double.parseDouble(currentInc.getText().toString());
+//                currentVal += value;
+//                currentInc.setText(Double.toString(currentVal));
+                Toast.makeText(MainActivity.this, "Tick clicked", Toast.LENGTH_LONG).show();
+                String category = btncategory.getText().toString();
+                String date = btndate.getText().toString();
+                String amount = amountT.getText().toString();
+                float amnt = Float.parseFloat(amount);
+
+                Log.d("COW", category+" "+date+" "+amnt);
+
+                if( TextUtils.isEmpty(amountT.getText())){
+                    Toast.makeText(MainActivity.this, "Please Insert amount", Toast.LENGTH_LONG).show();
+                    amountT.setError( "Amount name is required!" );
+                }
+                else{
+                    boolean checkInsertData = DB.insertIncomeData("0", category, date, "amnt");
+//                DB.insertIncomeData("0", "CAR", "DATE", "12000");
+                if(checkInsertData){
+                    Toast.makeText(MainActivity.this, "New Income inserted", Toast.LENGTH_LONG).show();
+//                        btncategory.setText(null);
+//                        amountT.setText(null);
+//                        btncategory.setText("None");
+////                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+////                startActivity(switchActivityIntent);
+                }
+                else
+                    Toast.makeText(MainActivity.this, "New entry not inserted", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
+    }
+
+    public void st(View v){
+        String category = btncategory.getText().toString();
+        String date = btndate.getText().toString();
+        String amount = amountT.getText().toString();
+        float amnt = Float.parseFloat(amount);
+
+        Toast.makeText(MainActivity.this, "Please Insert amount", Toast.LENGTH_LONG).show();
+        boolean b = DB.insertIncomeData("145", category, date, "12334");
+        if(b){
+            Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(MainActivity.this, "FAILED", Toast.LENGTH_LONG).show();
+        }
+
+//        Toast.makeText(MainActivity.this, "Tick clicked", Toast.LENGTH_LONG).show();
+//        String category = btncategory.getText().toString();
+//        String date = btndate.getText().toString();
+//        String amount = amountT.getText().toString();
+//        float amnt = Float.parseFloat(amount);
+//
+//        Log.d("COW", category+" "+date+" "+amnt);
+//
+//        if( TextUtils.isEmpty(amountT.getText())){
+//            Toast.makeText(MainActivity.this, "Please Insert amount", Toast.LENGTH_LONG).show();
+//            amountT.setError( "Amount name is required!" );
+//        }
+//        else{
+//            boolean checkInsertData = DB.insertIncomeData("0", category, date, "amnt");
+////                DB.insertIncomeData("0", "CAR", "DATE", "12000");
+//            if(checkInsertData){
+//                Toast.makeText(MainActivity.this, "New Income inserted", Toast.LENGTH_LONG).show();
+////                        btncategory.setText(null);
+////                        amountT.setText(null);
+////                        btncategory.setText("None");
+//////                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+//////                startActivity(switchActivityIntent);
+//            }
+//            else
+//                Toast.makeText(MainActivity.this, "New entry not inserted", Toast.LENGTH_LONG).show();
+//        }
+
     }
 
 
@@ -222,9 +301,38 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         datePickerDialog.show();
     }
 
+//    public void insertIncomeToDB(View v){
+//        String name = BName.getText().toString();
+//        String date = dateButton.getText().toString();
+//        String amountStr = BAmount.getText().toString();
+//        float amount = Float.parseFloat(amountStr);
+//        String category = Bcategory.getText().toString();
+//        String todayDate = dp.getTodaysDate();
+//        float currentAmt = 0;
+//
+//
+//        if( TextUtils.isEmpty(BName.getText())){
+//            Toast.makeText(CreateBudgetUI.this, "Please Insert budget name", Toast.LENGTH_LONG).show();
+//
+//            BName.setError( "Budget name is required!" );
+//        }
+//        else{
+//            boolean checkInsertData = DB.insertBudgetData(name, date, amount, "LKR", category, 1, 1, todayDate, currentAmt);
+//            if(checkInsertData){
+//                Toast.makeText(CreateBudgetUI.this, "New Budget inserted", Toast.LENGTH_LONG).show();
+//                BName.setText(null);
+//                BAmount.setText(null);
+//                Bcategory.setText("None");
+//                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+//                startActivity(switchActivityIntent);
+//            }
+//            else
+//                Toast.makeText(CreateBudgetUI.this, "New entry not inserted", Toast.LENGTH_LONG).show();
+//        }
+//    }
+
 
 //    public void sw(View view) {
-//        Intent i = new Intent(this, Income.class);
-//        startActivity(i);
+//        Toast.makeText(this, "Btn clicked", Toast.LENGTH_SHORT).show();
 //    }
 }
