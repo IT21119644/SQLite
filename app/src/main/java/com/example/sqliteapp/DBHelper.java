@@ -16,7 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("CREATE TABLE IncomeDetails(incomeID TEXT PRIMARY KEY, category TEXT, date TEXT, amount TEXT)");
+        DB.execSQL("CREATE TABLE IncomeDetails(incomeID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, category TEXT, date TEXT, amount REAL)");
     }
 
     @Override
@@ -24,10 +24,9 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("DROP TABLE if exists IncomeDetails");
     }
 
-    public boolean insertIncomeData(String incomeID, String category, String date, String amount){
+    public boolean insertIncomeData(String category, String date, float amount){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("incomeID", incomeID);
         contentValues.put("category", category);
         contentValues.put("date", date);
         contentValues.put("amount", amount);
@@ -37,6 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
+
     }
 
 
