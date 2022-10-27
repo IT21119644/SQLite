@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">SQLiteApp</string>
     <string name="title_activity_view_goal">ViewGoal</string>
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="hello_first_fragment">Hello first fragment</string>
@@ -19,13 +17,15 @@
     <string name="remainingTimeTxt">Remaining Time</string>
     <string name="remainingAmountTxt">Remaining amount</string>
     <string name="nameProgressTxt">Rate to reach the goal</string>
-    <string name="remainTimeValueTxt">Rate to reach the goal</string>
-    <string name="remainingAmountValueTxt">Rate to reach the goal</string>
-    <string name="rateToReachTheGoalValueTxt">Rate to reach the goal</string>
+    <string name="remainTimeValueTxt"></string>
+    <string name="remainingAmountValueTxt"></string>
+    <string name="rateToReachTheGoalValueTxt"></string>
     <string name="rateToReachTheGoal">Rate to reach the goal</string>
-
 
 
     <string name="updateBtn">Update</string>
     <string name="deleteBtn">delete</string>
+    <string name="title_activity_delete_goal">DeleteGoal</string>
+    <string name="back_img_btn" />
+    <string name="display_goal_viewTxt" />
 </resources>

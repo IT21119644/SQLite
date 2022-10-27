@@ -3,26 +3,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ViewGoal"
+    android:background="@drawable/purple_back"
+    tools:ignore="MissingClass">
 
-    <RelativeLayout
-        android:id="@+id/relLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/purple_back">
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/relLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@drawable/purple_back">-->
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/lightgrey"
-            app:navigationIcon="@drawable/ic_baseline_menu_24"
-            app:title="Buy a Car" />
-    </com.google.android.material.appbar.AppBarLayout>
-    </RelativeLayout>
+<!--        <com.google.android.material.appbar.MaterialToolbar-->
+<!--            android:id="@+id/topAppBar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:background="@color/lightgrey"-->
+<!--            app:navigationIcon="@drawable/ic_baseline_menu_24"-->
+<!--            app:title="Buy a Car" />-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+<!--    </RelativeLayout>-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="@color/lightgrey"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="344dp"
+        android:background="@color/lightgrey"
+        android:minHeight="48dp"
+
+        android:onClick="switchToMainActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/GoalHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="208dp"
+        android:text="@string/display_goal_viewTxt"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -31,7 +71,6 @@
         android:layout_height="137dp"
         android:layout_marginStart="136dp"
         android:layout_marginTop="75dp"
-        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,6 +94,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:text="@string/remainingTimeTxt"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_money" />
 
@@ -79,6 +119,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:text="@string/remainingAmountTxt"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -98,11 +139,12 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="138dp"
-        android:layout_height="27dp"
+        android:layout_width="140dp"
+        android:layout_height="31dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:text="@string/rateToReachTheGoal"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -125,18 +167,19 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:text="@string/goalDescriptionTxt"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/goalDesc"
         android:layout_width="329dp"
         android:layout_height="88dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/border"
-        android:text="Buy a Toyota Corolla"
+        android:text=""
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -28,7 +30,6 @@ public class AddNewGoal extends AppCompatActivity {
         setContentView(R.layout.new_goal);
 
 
-
         name = findViewById(R.id.name);
         goalAmount = findViewById(R.id.goalAmount);
         goalDescription = findViewById(R.id.goalDescription);
@@ -40,26 +41,40 @@ public class AddNewGoal extends AppCompatActivity {
 
         create = findViewById(R.id.create);
         DB = new DBHelper(this);
-
-        create.setOnClickListener(new View.OnClickListener() {
-            @Override
+    }
             public void onClick(View view) {
                 String nameSrc = name.getText().toString();
-                float goalAmountSrc = goalAmount.getAlpha();
+                String goalAmountSrc = goalAmount.getText().toString();
+                float goalAmounts = Float.parseFloat(goalAmountSrc);
                 String goalDescriptionSrc = goalDescription.getText().toString();
                 String estimatedDateSrc = estimatedDate.getText().toString();
                 String categorySrc = category.getText().toString();
-                float addSavingsSrc = addSavings.getAlpha();
+                String addSavingsSrc = addSavings.getText().toString();
+                float addSavingsAmount = Float.parseFloat(addSavingsSrc);
 
-                Boolean cheackinsertdata = DB.insertGoalData(nameSrc, estimatedDateSrc, goalAmountSrc, categorySrc, goalDescriptionSrc, addSavingsSrc);
-                if(cheackinsertdata==true){
+                if( TextUtils.isEmpty(name.getText())){
+                    Toast.makeText(AddNewGoal.this, "Please Insert goal name", Toast.LENGTH_LONG).show();
+
+                    name.setError( "Goal name is required!" );
+                }else{
+
+                Boolean cheackinsertdata = DB.insertGoalData(nameSrc, estimatedDateSrc, goalAmounts, categorySrc, goalDescriptionSrc, addSavingsAmount);
+                if(cheackinsertdata){
                     Toast.makeText(AddNewGoal.this, "New Entry inserted", Toast.LENGTH_SHORT).show();
+                    name.setText(null);
+                    goalAmount.setText(null);
+                    goalDescription.setText(null);
+                    estimatedDate.setText(null);
+                    category.setText("Category");
+                    addSavings.setText(null);
+                    Intent switchActivityIntent = new Intent(this, GoalHome.class);
+                    startActivity(switchActivityIntent);
                 }else{
                     Toast.makeText(AddNewGoal.this, "New Entry Not inserted", Toast.LENGTH_SHORT).show();
                 }
+                }
             }
-        });
-    }
+
 
     private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
@@ -124,18 +139,16 @@ public class AddNewGoal extends AppCompatActivity {
         return "JAN";
     }
 
-    public void addNewGoal(View v) {
-
-
-        //Toast.makeText(this, nameSrc, Toast.LENGTH_LONG).show();
-        //Toast.makeText(this, estimatedDateSrc, Toast.LENGTH_LONG).show();
-
-    }
 
     public void addDatePop(View v) {
 
         datePickerDialog.show();
 
+    }
+
+    public void switchToMainActivity(View v){
+        Intent switchActivityIntent = new Intent(this, GoalHome.class);
+        startActivity(switchActivityIntent);
     }
 
 

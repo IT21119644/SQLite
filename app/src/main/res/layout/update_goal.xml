@@ -32,6 +32,7 @@
         android:layout_marginEnd="156dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@android:color/holo_green_light"
+        android:onClick="onClick"
         android:text="@string/updateBtnTxt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

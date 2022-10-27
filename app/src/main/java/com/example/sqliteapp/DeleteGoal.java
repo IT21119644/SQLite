@@ -2,10 +2,7 @@ package com.example.sqliteapp;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -18,17 +15,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 
-public class UpdateGoal extends AppCompatActivity {
+public class DeleteGoal extends AppCompatActivity {
 
     EditText name, goalAmount, goalDescription, addSavings;
     DatePickerDialog datePickerDialog;
-    Button update, estimatedDate, category;
+    Button delete, estimatedDate, category;
     DBHelper DB;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.update_goal);
+        setContentView(R.layout.view_goal);
 
         goalAmount = findViewById(R.id.goalAmount);
         goalDescription = findViewById(R.id.goalDescription);
@@ -37,54 +34,28 @@ public class UpdateGoal extends AppCompatActivity {
         estimatedDate.setText(getTodaysDate());
         addSavings = findViewById(R.id.addSavings);
 
-        update = findViewById(R.id.update);
+        delete = findViewById(R.id.delete);
         DB = new DBHelper(this);
-    }
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 String nameSrc = name.getText().toString();
-                String goalAmountSrc = goalAmount.getText().toString();
-                float goalAmounts = Float.parseFloat(goalAmountSrc);
+                float goalAmountSrc = goalAmount.getAlpha();
                 String goalDescriptionSrc = goalDescription.getText().toString();
                 String estimatedDateSrc = estimatedDate.getText().toString();
                 String categorySrc = category.getText().toString();
-                String addSavingsSrc = addSavings.getText().toString();
-                float addSavingsAmount = Float.parseFloat(addSavingsSrc);
+                float addSavingsSrc = addSavings.getAlpha();
 
-                if( TextUtils.isEmpty(name.getText()) || goalAmounts == 0){
-                    Toast.makeText(UpdateGoal.this, "Please Insert goal name", Toast.LENGTH_LONG).show();
-
-                    name.setError( "Goal name is required!" );
+                Boolean checkdeletedata = DB.deleteGoalData(nameSrc);
+                if(checkdeletedata==true){
+                    Toast.makeText(DeleteGoal.this, "Entry deleted", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(DeleteGoal.this, "Entry Not deleted", Toast.LENGTH_SHORT).show();
                 }
-                //display confirmation pop-up before deletion
-                new AlertDialog.Builder(this)
-                        .setTitle("Update Goal")
-                        .setMessage("Are you sure you want to Update this Goal?")
-
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                Boolean checkupdatedata = DB.updateGoalData(nameSrc, estimatedDateSrc, goalAmounts, categorySrc, goalDescriptionSrc, addSavingsAmount);
-                                if (checkupdatedata == true) {
-                                    Toast.makeText(UpdateGoal.this, "Entry updated", Toast.LENGTH_SHORT).show();
-                                    switchToMainActivity();
-                                } else {
-                                    Toast.makeText(UpdateGoal.this, "Entry Not updated", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                            })
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.no, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-
             }
-    public void switchToMainActivity(){
-        Intent switchActivityIntent = new Intent(this, MainActivity.class);
-        startActivity(switchActivityIntent);
+        });
     }
-
     private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
