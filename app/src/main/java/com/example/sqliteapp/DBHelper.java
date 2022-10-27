@@ -5,9 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context){
@@ -77,9 +74,10 @@ public class DBHelper extends SQLiteOpenHelper {
 //        }
 //    }
 
-//    public Cursor getData(){
-//        SQLiteDatabase DB = this.getWritableDatabase();
-//        Cursor cursor = DB.rawQuery("SELECT * FROM ItemDetails", null);
-//        return cursor;
-//    }
+    public Cursor getIncomeData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM IncomeDetails", null);
+        return cursor;
+    }
+
 }

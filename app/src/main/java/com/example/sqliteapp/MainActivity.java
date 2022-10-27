@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -58,6 +59,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             btncategory.setText(cat);
         }
         DB = new DBHelper(this);
+
+        Cursor res = DB.getIncomeData();
+        float sum = 0;
+        while(res.moveToNext()){
+            sum += res.getFloat(3);
+        }
+        currentInc.setText(String.valueOf(sum));
 
 
 
@@ -195,6 +203,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         boolean b = DB.insertIncomeData(category, date, amnt);
         if(b){
             Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_LONG).show();
+            Intent switchActivityIntent = new Intent(this, MainActivity.class);
+            startActivity(switchActivityIntent);
         }
         else{
             Toast.makeText(MainActivity.this, "FAILED", Toast.LENGTH_LONG).show();
