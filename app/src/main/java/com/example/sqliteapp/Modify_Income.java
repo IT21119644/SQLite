@@ -1,9 +1,8 @@
 package com.example.sqliteapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,11 +10,9 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Modify_Income extends AppCompatActivity {
     DBHelper DB;
@@ -29,6 +26,7 @@ public class Modify_Income extends AppCompatActivity {
         DB = new DBHelper(this);
         Cursor res = DB.getIncomeData();
         ArrayList<String> incCat = new ArrayList<>();
+        ArrayList<Integer> incID = new ArrayList<>();
 //        ArrayList<String> IncNames = new ArrayList<>();
 
         if(res.getCount() == 0){
@@ -37,6 +35,7 @@ public class Modify_Income extends AppCompatActivity {
 
         while(res.moveToNext()){
             incCat.add(res.getString(1));
+            incID.add(res.getInt(0));
 //            categories.add(res.getString(4));
         }
         if(!incCat.isEmpty()){
@@ -64,7 +63,7 @@ public class Modify_Income extends AppCompatActivity {
                 buttonLayoutParams.width = buttonWidth;
 
                 if(j == 0)
-                    buttonLayoutParams.setMargins(80, 500, 80, 0);
+                    buttonLayoutParams.setMargins(80, 300, 80, 0);
                 else
                     buttonLayoutParams.setMargins(80, 20, 80, 0);
 
@@ -72,12 +71,28 @@ public class Modify_Income extends AppCompatActivity {
 
                 //Set button text
                 String head = incCat.get(j);
+                int id = incID.get(j);
                 btn.setText(head);
                 yourlayout.addView(btn);
 
-//                    btn.setOnClickListener(handleOnClick(btn, head, category));
+                btn.setOnClickListener(handleOnClick(btn, head, id));
             }
         }
     }
 
+    View.OnClickListener handleOnClick(final Button button, String heading, int id) {
+        return new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(Modify_Income.this, "Button is clicked", Toast.LENGTH_SHORT).show();
+                switchToDisplayBudget(heading, id);
+            }
+        };
+    }
+
+    public void switchToDisplayBudget(String heading, int id){
+        Intent switchActivityIntent = new Intent(this, DisplayIncomeDetails.class);
+        switchActivityIntent.putExtra("BName", heading);
+        switchActivityIntent.putExtra("incID", String.valueOf(id));
+        startActivity(switchActivityIntent);
+    }
 }

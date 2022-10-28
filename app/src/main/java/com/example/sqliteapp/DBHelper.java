@@ -80,4 +80,11 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getSingleIncomeDataUsingIncomeID(int id){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        String query  = "SELECT * FROM IncomeDetails WHERE incomeID = " + id;
+        Cursor cursor = DB.rawQuery(query, null);
+        return cursor;
+    }
+
 }
