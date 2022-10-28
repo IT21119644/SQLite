@@ -42,7 +42,7 @@ public class Adaptor extends RecyclerView.Adapter<Adaptor.ViewHolder> {
         return userList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView imageView;
         private TextView textView;
         private Button clkBtn;

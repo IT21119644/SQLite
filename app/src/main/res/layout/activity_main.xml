@@ -78,7 +78,7 @@
             android:backgroundTint="#F0CCFF"
             android:contentDescription="@string/btnOk"
             android:minHeight="48dp"
-            android:onClick="st"
+            android:onClick="insertIncome"
             app:srcCompat="@drawable/ic_baseline_check_24"
             tools:ignore="DuplicateSpeakableTextCheck,UsingOnClickInXml" />
 
@@ -125,6 +125,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:backgroundTint="#10B0F8"
+            android:onClick="modifyIncome"
             android:text="@string/btnUpdate"
             tools:ignore="TextContrastCheck" />
 

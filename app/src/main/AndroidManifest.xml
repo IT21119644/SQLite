@@ -20,9 +20,6 @@
             android:name=".Income"
             android:exported="false" />
         <activity
-            android:name=".modify"
-            android:exported="false" />
-        <activity
             android:name=".Modify_Income"
             android:exported="false" />
         <activity

@@ -125,75 +125,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(switchActivityIntent);
     }
 
-//    public void insertIncomeToDB(View view){
-//        Toast.makeText(MainActivity.this, "Tick clicked", Toast.LENGTH_LONG).show();
-//        String category = btncategory.getText().toString();
-//        String date = btndate.getText().toString();
-//        String amount = amountT.getText().toString();
-//        float amnt = Float.parseFloat(amount);
-//
-//        if( TextUtils.isEmpty(amountT.getText())){
-//            Toast.makeText(MainActivity.this, "Please Insert amount", Toast.LENGTH_LONG).show();
-//
-//            amountT.setError( "Amount name is required!" );
-//        }
-//        else{
-//            boolean checkInsertData = DB.insertIncomeData(0, category, date, amnt);
-//            if(checkInsertData){
-//                Toast.makeText(MainActivity.this, "New Income inserted", Toast.LENGTH_LONG).show();
-//                btncategory.setText(null);
-//                amountT.setText(null);
-//                btncategory.setText("None");
-////                Intent switchActivityIntent = new Intent(this, MainActivity.class);
-////                startActivity(switchActivityIntent);
-//            }
-//            else
-//                Toast.makeText(MainActivity.this, "New entry not inserted", Toast.LENGTH_LONG).show();
-//        }
-//    }
+    public void modifyIncome(View view){
+        Intent switchActivityIntent = new Intent(this, Modify_Income.class);
+        startActivity(switchActivityIntent);
+    }
 
-    //add amount to the current amount
-//    private void onAdd() {
-//        btnOk.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                Toast.makeText(MainActivity.this, "Please Insert amount", Toast.LENGTH_LONG).show();
-////                double value = Double.parseDouble(amountT.getText().toString());
-////                double currentVal = Double.parseDouble(currentInc.getText().toString());
-////                currentVal += value;
-////                currentInc.setText(Double.toString(currentVal));
-//                Toast.makeText(MainActivity.this, "Tick clicked", Toast.LENGTH_LONG).show();
-//                String category = btncategory.getText().toString();
-//                String date = btndate.getText().toString();
-//                String amount = amountT.getText().toString();
-//                float amnt = Float.parseFloat(amount);
-//
-//                Log.d("COW", category+" "+date+" "+amnt);
-//
-//                if( TextUtils.isEmpty(amountT.getText())){
-//                    Toast.makeText(MainActivity.this, "Please Insert amount", Toast.LENGTH_LONG).show();
-//                    amountT.setError( "Amount name is required!" );
-//                }
-//                else{
-//                    boolean checkInsertData = DB.insertIncomeData("0", category, date, "amnt");
-////                DB.insertIncomeData("0", "CAR", "DATE", "12000");
-//                if(checkInsertData){
-//                    Toast.makeText(MainActivity.this, "New Income inserted", Toast.LENGTH_LONG).show();
-////                        btncategory.setText(null);
-////                        amountT.setText(null);
-////                        btncategory.setText("None");
-//////                Intent switchActivityIntent = new Intent(this, MainActivity.class);
-//////                startActivity(switchActivityIntent);
-//                }
-//                else
-//                    Toast.makeText(MainActivity.this, "New entry not inserted", Toast.LENGTH_LONG).show();
-//                }
-//
-//            }
-//        });
-//    }
 
-    public void st(View v){
+    public void insertIncome(View v){
         String category = btncategory.getText().toString();
         String date = btndate.getText().toString();
         String amount = amountT.getText().toString();
@@ -209,34 +147,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         else{
             Toast.makeText(MainActivity.this, "FAILED", Toast.LENGTH_LONG).show();
         }
-
-//        Toast.makeText(MainActivity.this, "Tick clicked", Toast.LENGTH_LONG).show();
-//        String category = btncategory.getText().toString();
-//        String date = btndate.getText().toString();
-//        String amount = amountT.getText().toString();
-//        float amnt = Float.parseFloat(amount);
-//
-//        Log.d("COW", category+" "+date+" "+amnt);
-//
-//        if( TextUtils.isEmpty(amountT.getText())){
-//            Toast.makeText(MainActivity.this, "Please Insert amount", Toast.LENGTH_LONG).show();
-//            amountT.setError( "Amount name is required!" );
-//        }
-//        else{
-//            boolean checkInsertData = DB.insertIncomeData("0", category, date, "amnt");
-////                DB.insertIncomeData("0", "CAR", "DATE", "12000");
-//            if(checkInsertData){
-//                Toast.makeText(MainActivity.this, "New Income inserted", Toast.LENGTH_LONG).show();
-////                        btncategory.setText(null);
-////                        amountT.setText(null);
-////                        btncategory.setText("None");
-//////                Intent switchActivityIntent = new Intent(this, MainActivity.class);
-//////                startActivity(switchActivityIntent);
-//            }
-//            else
-//                Toast.makeText(MainActivity.this, "New entry not inserted", Toast.LENGTH_LONG).show();
-//        }
-
     }
 
 
