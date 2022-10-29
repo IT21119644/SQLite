@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
+
 public class DisplayIncomeDetails extends AppCompatActivity {
     DBHelper DB;
     int idInt;
@@ -35,7 +37,12 @@ public class DisplayIncomeDetails extends AppCompatActivity {
 
         DB = new DBHelper(this);
 
-        getSingleIncomeData(idInt);
+        try {
+            getSingleIncomeData(idInt);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void getSingleIncomeData(int id){
