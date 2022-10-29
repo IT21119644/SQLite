@@ -57,7 +57,7 @@ public class Adaptor extends RecyclerView.Adapter<Adaptor.ViewHolder> {
                 public void onClick(View view) {
                     String btnTxt = clkBtn.getText().toString();
                     Toast.makeText(view.getContext(), btnTxt + " clicked", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(view.getContext(), MainActivity.class);
+                    Intent i = new Intent(view.getContext(), Income.class);
 
                     i.putExtra("BtnTxt", btnTxt);
                     view.getContext().startActivity(i);
