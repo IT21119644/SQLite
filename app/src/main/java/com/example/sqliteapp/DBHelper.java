@@ -76,4 +76,36 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails", null);
         return cursor;
     }
+
+    public Cursor getBudgetData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails", null);
+        return cursor;
+    }
+
+    public Cursor getSingleBudgetData(String category){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
+        return cursor;
+    }
+
+    public Cursor getSingleBudgetDataUsingCategory(String category){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
+        return cursor;
+    }
+
+    public Cursor getIncomeData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM IncomeDetails", null);
+        return cursor;
+    }
+
+    public Cursor getSingleIncomeDataUsingIncomeID(int id){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        String query  = "SELECT * FROM IncomeDetails WHERE incomeID = " + id;
+        Cursor cursor = DB.rawQuery(query, null);
+        return cursor;
+    }
+
 }
