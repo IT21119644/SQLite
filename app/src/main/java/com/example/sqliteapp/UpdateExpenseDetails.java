@@ -120,8 +120,8 @@ public class UpdateExpenseDetails extends AppCompatActivity {
 */
 
         new AlertDialog.Builder(this)
-                .setTitle("Update Budget")
-                .setMessage("Are you sure you want to Update this Budget?")
+                .setTitle("Update Expense")
+                .setMessage("Are you sure you want to Update this Expense?")
 
                 // Specifying a listener allows you to take an action before dismissing the dialog.
                 // The dialog is automatically dismissed when a dialog button is clicked.
@@ -129,7 +129,7 @@ public class UpdateExpenseDetails extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         boolean checkUpdatedData = Database.updateExpense(idU,categoryU, newDate, newAmount);
                         if(checkUpdatedData){
-                            Toast.makeText(UpdateExpenseDetails.this, "Income updated", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateExpenseDetails.this, "Expense updated", Toast.LENGTH_LONG).show();
                             switchToMainActivity();
                         }
                         else
