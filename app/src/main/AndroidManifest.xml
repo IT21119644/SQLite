@@ -17,7 +17,7 @@
             android:name=".DisplayIncomeDetails"
             android:exported="false" />
         <activity
-            android:name=".Category"
+            android:name=".CategoryIncome"
             android:exported="false" />
         <activity
             android:name=".Update_details"

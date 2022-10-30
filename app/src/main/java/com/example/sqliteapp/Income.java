@@ -39,7 +39,7 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_income);
 
         amountT = (EditText)findViewById(R.id.amount);
         currentInc =(TextView)findViewById(R.id.currentInc);
@@ -119,7 +119,7 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
     }
 
     public void switchToCategory(View view){
-        Intent switchActivityIntent = new Intent(this, Category.class);
+        Intent switchActivityIntent = new Intent(this, CategoryIncome.class);
         startActivity(switchActivityIntent);
     }
 

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Category extends AppCompatActivity {
+public class CategoryIncome extends AppCompatActivity {
 
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
