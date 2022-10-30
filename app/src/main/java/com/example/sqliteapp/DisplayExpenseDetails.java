@@ -68,7 +68,7 @@ public class DisplayExpenseDetails extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         boolean deleteData = DB.deleteExpenseData(idInt);
                         if(deleteData){
-                            Toast.makeText(DisplayExpenseDetails.this, "Income deleted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DisplayExpenseDetails.this, "Expense deleted", Toast.LENGTH_LONG).show();
                             switchToMainAfterDeletion();
                         }
 

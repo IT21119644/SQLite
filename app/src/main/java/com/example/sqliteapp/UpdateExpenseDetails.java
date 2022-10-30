@@ -129,7 +129,7 @@ public class UpdateExpenseDetails extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         boolean checkUpdatedData = Database.updateExpense(idU,categoryU, newDate, newAmount);
                         if(checkUpdatedData){
-                            Toast.makeText(UpdateExpenseDetails.this, "Income updated", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateExpenseDetails.this, "Expense updated", Toast.LENGTH_LONG).show();
                             switchToMainActivity();
                         }
                         else
