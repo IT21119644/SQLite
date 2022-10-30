@@ -113,7 +113,7 @@
             android:layout_marginEnd="24dp"
             android:backgroundTint="#10B0F8"
             android:onClick="modifyIncome"
-            android:text="@string/btnUpdate"
+            android:text="Modify Expense"
             tools:ignore="TextContrastCheck" />
 
         <Button
@@ -143,7 +143,7 @@
             android:layout_marginEnd="113dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:text="@string/amount"
+            android:text="@string/amountVal"
             android:textAlignment="center"
             android:textSize="34sp" />
 
@@ -169,7 +169,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/lightgrey"
             app:navigationIcon="@drawable/ic_baseline_menu_24"
-            app:title="Android" />
+            app:title="Expense" />
 
     </RelativeLayout>
 
