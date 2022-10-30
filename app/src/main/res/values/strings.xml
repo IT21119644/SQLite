@@ -71,4 +71,12 @@
     <string name="deleteBtn">delete</string>
     <string name="title_activity_delete_goal">DeleteGoal</string>
     <string name="display_goal_viewTxt">Add New Goal</string>
+    <string name="username">Username</string>
+    <string name="log_in">Log In</string>
+    <string name="password">password</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="my_wallet">My Wallet</string>
+    <string name="currency">Currency</string>
+    <string name="confirm_pin">Confirm Pin</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

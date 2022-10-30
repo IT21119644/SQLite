@@ -336,4 +336,26 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery(query, null);
         return cursor;
     }
+
+
+    public boolean insertUserData(String name, String currency, int PIN){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Name", name);
+        contentValues.put("Currency", currency);
+        contentValues.put("PIN", PIN);
+
+        long result = DB.insert("UserDetails", null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+
+    }
+
+    public Cursor getUserData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails", null);
+        return cursor;
+    }
 }
