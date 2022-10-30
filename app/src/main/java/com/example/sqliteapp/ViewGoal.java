@@ -31,7 +31,7 @@ import app.futured.donut.DonutSection;
 
 public class ViewGoal extends AppCompatActivity {
         Button delete, update;
-        TextView goalDescription, goalHeading, timeLeft,remainingPer, amountLeft, goal_date;
+        TextView goalDescription, goalHeading, timeLeft,remainingPer, amountLeft, goal_date, categoryView;
         String textVal, goalDesc, goalHead;
         //
         DonutProgressView dpvChart;
@@ -51,6 +51,7 @@ public class ViewGoal extends AppCompatActivity {
             update = findViewById(R.id.update);
             delete = findViewById(R.id.delete);
 
+            categoryView = findViewById(R.id.categoryValue);
             goal_date = findViewById(R.id.goal_date);
             amountLeft  =findViewById(R.id.progress_rem_amount);
             timeLeft = findViewById(R.id.progress_rem_time);
@@ -119,6 +120,8 @@ public class ViewGoal extends AppCompatActivity {
 //                amountLeft.setText(String.valueOf(goalAmt));
 //                amountLeft.setText(String.valueOf(goalAmt));
                 goal_date.setText("     "+goalDate);
+                categoryView.setText("         "+goalcategory);
+
 
                 //
                 @SuppressLint("SimpleDateFormat")
@@ -135,7 +138,7 @@ public class ViewGoal extends AppCompatActivity {
                     long difftDays = difference / (24 * 60 * 60 * 1000);
 
                     String timeDiff = String.valueOf(difftDays) + " days";
-                    timeLeft.setText("   "+timeDiff);
+                    timeLeft.setText(""+timeDiff);
                 }
 
                 balancePercentage = (goalSavings)/ (goalAmt) * 100;
@@ -148,7 +151,7 @@ public class ViewGoal extends AppCompatActivity {
                 remainingAmnt = goalAmt - goalSavings;
 //                String remAmnt = String.valueOf(remainingAmnt);
 //                Log.d("remt", remAmnt);
-                amountLeft.setText("      LKR "+String.valueOf(remainingAmnt));
+                amountLeft.setText("LKR "+String.valueOf(remainingAmnt));
 
             }
         }

@@ -28,30 +28,30 @@ public class Category extends AppCompatActivity {
     private void initData() {
         userList = new ArrayList<>();
 
-        userList.add(new ModelClass(R.drawable.check_book,"Checks, Coupons"));
+        userList.add(new ModelClass(R.drawable.rent_income,"New Home"));
 
-        userList.add(new ModelClass(R.drawable.romper,"Child Support"));
+        userList.add(new ModelClass(R.drawable.check_book,"New Vehicle"));
 
-        userList.add(new ModelClass(R.drawable.dues,"Dues & Grants"));
+        userList.add(new ModelClass(R.drawable.dues,"Holiday Trip"));
 
-        userList.add(new ModelClass(R.drawable.gifts,"Gifts"));
+        userList.add(new ModelClass(R.drawable.interests,"Education"));
 
-        userList.add(new ModelClass(R.drawable.interests,"Interests, Dividends"));
+        userList.add(new ModelClass(R.drawable.interests,"Emergency Fund"));
 
-        userList.add(new ModelClass(R.drawable.rent,"Lending, Renting"));
+        userList.add(new ModelClass(R.drawable.rent,"Health Care"));
 
-        userList.add(new ModelClass(R.drawable.dice,"Lottery, Gambling"));
+        userList.add(new ModelClass(R.drawable.dice,"Party"));
 
-        userList.add(new ModelClass(R.drawable.refund,"Refunds (Tax,Purchase)"));
+        userList.add(new ModelClass(R.drawable.romper,"Kids Spoiling"));
 
-        userList.add(new ModelClass(R.drawable.rent_income,"Rental Income"));
-
-        userList.add(new ModelClass(R.drawable.sales,"Sale"));
-
-        userList.add(new ModelClass(R.drawable.wages,"Wage, Invoices"));
+        userList.add(new ModelClass(R.drawable.gifts,"Charity"));
 
         userList.add(new ModelClass(R.drawable.other,"Other"));
 
+//        userList.add(new ModelClass(R.drawable.sales,"Sale"));
+//
+//        userList.add(new ModelClass(R.drawable.wages,"Wage, Invoices"));
+//        userList.add(new ModelClass(R.drawable.refund,"Refunds (Tax,Purchase)"));
 
     }
 

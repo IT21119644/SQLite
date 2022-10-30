@@ -21,6 +21,7 @@
     <string name="remainingAmountValueTxt"></string>
     <string name="goalDateValueTxt"></string>
     <string name="goalDate">Goal Date</string>
+    <string name="categoryTxt">Category</string>
 
 
     <string name="updateBtn">Update</string>

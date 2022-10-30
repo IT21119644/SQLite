@@ -171,7 +171,7 @@
         android:text="@string/goalDescriptionTxt"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/goalDesc"
@@ -193,7 +193,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@android:color/holo_green_light"
         android:onClick="launchUpdateGoal"
         android:text="@string/updateBtn"
@@ -204,8 +204,8 @@
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@android:color/holo_red_light"
         android:onClick="deleteGoal"
         android:text="@string/deleteBtn"
@@ -237,5 +237,27 @@
         app:layout_constraintEnd_toEndOf="@+id/dpvChart"
         app:layout_constraintStart_toStartOf="@+id/dpvChart"
         app:layout_constraintTop_toTopOf="@+id/dpvChart" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="138dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/categoryTxt"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/categoryValue"
+        android:layout_width="149dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:text=""
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_rem_amount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
