@@ -103,4 +103,13 @@ public class DisplayExpenseDetails extends AppCompatActivity {
         i.putStringArrayListExtra("COOL", myArrList);
         startActivity(i);
     }
+
+    public void switchToUpdateExpense(View v){
+        Intent switchActivityIntent = new Intent(this, UpdateExpenseDetails.class);
+        switchActivityIntent.putExtra("itemID", String.valueOf(idInt));
+        switchActivityIntent.putExtra("category", category);
+        switchActivityIntent.putExtra("date", date);
+        switchActivityIntent.putExtra("amount", String.valueOf(amount));
+        startActivity(switchActivityIntent);
+    }
 }

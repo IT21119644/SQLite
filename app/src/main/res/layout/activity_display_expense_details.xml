@@ -29,7 +29,7 @@
         android:layout_height="38dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="144dp"
-        android:text="Income Details"
+        android:text="Expense Details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
 
@@ -107,6 +107,7 @@
         android:layout_marginTop="80dp"
         android:backgroundTint="#2DA331"
         android:text="Update"
+        android:onClick="switchToUpdateExpense"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -117,6 +118,7 @@
         android:layout_marginStart="88dp"
         android:layout_marginTop="80dp"
         android:backgroundTint="#EF3528"
+        android:onClick="deleteFromDB"
         android:text="Delete"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/amtTxtV" />

@@ -32,7 +32,7 @@
         android:textColor="#1A2FA5"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/catBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/tablecat" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -46,6 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/lightgrey"
+        android:onClick="backToDisplayBudget"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
         app:title="Update"
         tools:ignore="MissingConstraints" />
@@ -62,15 +63,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
 
-    <Button
-        android:id="@+id/catBtn"
-        android:layout_width="168dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/btncategory"
+    <TextView
+        android:id="@+id/tablecat"
+        android:layout_width="117dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/category_m"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_u" />
+
 
     <Button
         android:id="@+id/btndate"
@@ -78,6 +80,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="108dp"
         android:layout_marginTop="4dp"
+        android:onClick="openDatePicker"
         android:text="@string/date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date_u" />
@@ -103,6 +106,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="72dp"
         android:backgroundTint="#5FD564"
+        android:onClick="onClickSave"
         android:text="@string/btnModiEx"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amount_update" />

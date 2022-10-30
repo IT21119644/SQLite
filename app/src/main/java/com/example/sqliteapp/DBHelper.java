@@ -39,27 +39,28 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-//        public boolean updateExpense(String itemID, String category, String date, float amount){
-//        SQLiteDatabase DB = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("ID", itemID);
-//        contentValues.put("Category", category);
-//        contentValues.put("Date", date);
-//        contentValues.put("Amount", amount);
-//
-//        Cursor cursor = DB.rawQuery("SELECT * FROM IncomeDetails WHERE incomeID = ?", new String[] {itemID});
-//        if(cursor.getCount() > 0){
-//            long result = DB.update("IncomeDetails", contentValues, "ID=?", new String[] {itemID});
-//            if(result == -1)
-//                return false;
-//            else
-//                return true;
-//        }
-//        else{
-//            return false;
-//        }
-//    }
-//
+        public boolean updateExpense(String itemID, String category, String date, float amount){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ID", itemID);
+        contentValues.put("Category", category);
+        contentValues.put("Date", date);
+        contentValues.put("Amount", amount);
+
+            String query  = "SELECT * FROM ExpenseDetails WHERE expenseID = " + itemID;
+        Cursor cursor = DB.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            long result = DB.update("ExpenseDetails", contentValues, "expenseID=?",new String[]{itemID});
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public boolean deleteExpenseData(int itemID){
         SQLiteDatabase DB = this.getWritableDatabase();
 

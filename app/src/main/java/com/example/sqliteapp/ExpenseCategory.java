@@ -27,29 +27,24 @@ public class ExpenseCategory extends AppCompatActivity {
     private void initData() {
         userList = new ArrayList<>();
 
-//        userList.add(new ExpenseModelClass(R.drawable.check_book,"Checks, Coupons"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.romper,"Child Support"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.dues,"Dues & Grants"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.gifts,"Gifts"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.interests,"Interests, Dividends"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.rent,"Lending, Renting"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.dice,"Lottery, Gambling"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.refund,"Refunds (Tax,Purchase)"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.rent_income,"Rental Income"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.sales,"Sale"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.wages,"Wage, Invoices"));
-//
-//        userList.add(new ExpenseModelClass(R.drawable.other,"Other"));
+        userList.add(new ExpenseModelClass(R.drawable.food,"Food & Drinks"));
+
+        userList.add(new ExpenseModelClass(R.drawable.house,"Housing"));
+
+        userList.add(new ExpenseModelClass(R.drawable.shopping,"Shopping"));
+
+        userList.add(new ExpenseModelClass(R.drawable.transport,"Transportation"));
+
+        userList.add(new ExpenseModelClass(R.drawable.vehicle,"Vehicle"));
+
+        userList.add(new ExpenseModelClass(R.drawable.entertain,"Life & Entertainment"));
+
+        userList.add(new ExpenseModelClass(R.drawable.pc,"Communication, PC"));
+
+        userList.add(new ExpenseModelClass(R.drawable.coin,"Financial Expenses"));
+
+        userList.add(new ExpenseModelClass(R.drawable.invest,"Investments"));
+
 
 
     }

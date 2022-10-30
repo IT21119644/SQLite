@@ -92,9 +92,9 @@ public class Modify_Expense extends AppCompatActivity {
     }
 
     public void switchToDisplayBudget(String heading, int id){
-//        Intent switchActivityIntent = new Intent(this, DisplayIncomeDetails.class);
-//        switchActivityIntent.putExtra("BName", heading);
-//        switchActivityIntent.putExtra("incID", String.valueOf(id));
-//        startActivity(switchActivityIntent);
+        Intent switchActivityIntent = new Intent(this, DisplayExpenseDetails.class);
+        switchActivityIntent.putExtra("BName", heading);
+        switchActivityIntent.putExtra("incID", String.valueOf(id));
+        startActivity(switchActivityIntent);
     }
 }

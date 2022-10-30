@@ -14,7 +14,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -40,7 +39,7 @@ public class Expense extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_expense);
 
         amountT = (EditText)findViewById(R.id.amount);
         currentInc =(TextView)findViewById(R.id.currentInc);
@@ -165,7 +164,7 @@ public class Expense extends AppCompatActivity {
     private void initDatePicker(){
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int month, int day, int year) {
+            public void onDateSet(DatePicker datePicker, int year,int month, int day) {
                 month = month+1;
                 String sDate = makeDateString(day,month,year);
                 btndate.setText(sDate);
