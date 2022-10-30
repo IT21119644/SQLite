@@ -69,7 +69,7 @@ public class Category extends AppCompatActivity {
             buttonLayoutParams.width = buttonWidth;
 
             if(j == 0)
-                buttonLayoutParams.setMargins(80, 500, 80, 0);
+                buttonLayoutParams.setMargins(80, 300, 80, 0);
             else
                 buttonLayoutParams.setMargins(80, 20, 80, 0);
 
