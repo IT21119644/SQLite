@@ -124,6 +124,28 @@ public class MainActivity<createBudget> extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void switchToGoal(View v){
+        Intent i = new Intent(this, GoalHome.class);
+        startActivity(i);
+    }
+
+    public void switchToBudget(View v){
+        Intent i = new Intent(this, Budget.class);
+        startActivity(i);
+    }
+
+    public void ModifyIncome(View v){
+        Intent i = new Intent(this, Modify_Income.class);
+        startActivity(i);
+    }
+
+    public void ModifyExpense(View v){
+        Intent i = new Intent(this, Modify_Expense.class);
+        startActivity(i);
+    }
+
+
+
     public void generateIncomeChart(){
         float checks=0,
                 childSupport=0,
