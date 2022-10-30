@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -30,9 +31,11 @@ public class Update_details extends AppCompatActivity {
     ArrayAdapter<String> arrA_cat;*/
     Button btndate;
     DatePickerDialog datePickerDialog;
-    String dateU, amountU,categoryU;
+    String dateU, amountU,categoryU, idU;
     TextView tablecat;
     EditText amount_update;
+    DBHelper Database = new DBHelper(this);
+    int intId;
 
 
 
@@ -73,6 +76,8 @@ public class Update_details extends AppCompatActivity {
         dateU = i.getStringExtra("date");
         amountU = i.getStringExtra("amount");
         categoryU = i.getStringExtra("category");
+        idU =  i.getStringExtra("itemID");
+        intId = Integer.parseInt(idU);
 
 
         btndate = findViewById(R.id.btndate);
@@ -179,13 +184,13 @@ public class Update_details extends AppCompatActivity {
                 // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        boolean checkUpdatedData = DB.updateBudget(category, budgetAmt, newCompDate, budgetName);
+                        boolean checkUpdatedData = Database.updateIncomeData(intId,categoryU, newDate, newAmount);
                         if(checkUpdatedData){
-                            Toast.makeText(UpdateBudget.this, "Budget updated", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Update_details.this, "Income updated", Toast.LENGTH_LONG).show();
                             switchToMainActivity();
                         }
                         else
-                            Toast.makeText(UpdateBudget.this, "Entry not updated", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Update_details.this, "Entry not updated", Toast.LENGTH_LONG).show();
                     }
                 })
 
@@ -196,15 +201,15 @@ public class Update_details extends AppCompatActivity {
     }
 
     public void switchToMainActivity(){
-        Intent switchActivityIntent = new Intent(this, MainActivity.class);
+        Intent switchActivityIntent = new Intent(this, Income.class);
         startActivity(switchActivityIntent);
     }
 
     public void backToDisplayBudget(View v){
-        Intent i = new Intent(this, DisplayBudget.class);
-        i.putExtra("BCategory", category);
-        i.putExtra("BName", budName);
-        startActivity(i);
+        Intent intent = new Intent(this, DisplayIncomeDetails.class);
+        intent.putExtra("incID", idU);
+
+        startActivity(intent);
     }
 
 }

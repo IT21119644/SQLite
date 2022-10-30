@@ -45,10 +45,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean updateIncomeData(String itemID, String category, String date, float amount){
+    public boolean updateIncomeData(int itemID, String category, String date, float amount){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-//        contentValues.put("ID", itemID);
+        //contentValues.put("ID", itemID);
         contentValues.put("Category", category);
         contentValues.put("Date", date);
         contentValues.put("Amount", amount);

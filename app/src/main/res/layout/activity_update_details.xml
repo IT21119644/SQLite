@@ -110,6 +110,7 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="44dp"
       android:backgroundTint="#5FD564"
+      android:onClick="onClickSave"
       android:text="@string/btnModiEx"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/amount_update" />

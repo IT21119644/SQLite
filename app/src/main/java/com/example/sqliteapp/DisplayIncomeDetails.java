@@ -108,6 +108,7 @@ public class DisplayIncomeDetails extends AppCompatActivity {
 
     public void switchToUpdateIncome(View v){
         Intent switchActivityIntent = new Intent(this, Update_details.class);
+        switchActivityIntent.putExtra("itemID", String.valueOf(idInt));
         switchActivityIntent.putExtra("category", category);
         switchActivityIntent.putExtra("date", date);
         switchActivityIntent.putExtra("amount", String.valueOf(amount));
