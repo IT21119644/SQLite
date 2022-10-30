@@ -25,43 +25,106 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/lightgrey"
                 app:navigationIcon="@drawable/ic_baseline_menu_24"
-                app:title="Budgets" />
+                app:title="Home" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <app.futured.donut.DonutProgressView
             android:id="@+id/incDpvChart"
-            app:donut_strokeCap="butt"
-            android:layout_width="215dp"
-            android:layout_height="178dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="146dp"
-            android:layout_marginEnd="89dp"
-            app:donut_gapAngle="270"
-            app:donut_gapWidth="0"
-            app:donut_strokeWidth="40dp" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="124dp"
-            android:layout_height="50dp"
+            android:layout_width="144dp"
+            android:layout_height="144dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="104dp"
+            app:donut_gapAngle="270"
+            app:donut_gapWidth="0"
+            app:donut_strokeCap="butt"
+            app:donut_strokeWidth="40dp" />
+
+        <app.futured.donut.DonutProgressView
+            android:id="@+id/expDpvChart"
+            android:layout_width="148dp"
+            android:layout_height="114dp"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="61dp"
-            android:layout_marginTop="102dp"
-            android:layout_marginEnd="226dp"
-            android:text="Income"
-            android:textSize="16sp" />
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="104dp"
+            android:layout_marginEnd="26dp"
+            android:layout_toEndOf="@+id/incDpvChart"
+            app:donut_gapAngle="270"
+            app:donut_gapWidth="0"
+            app:donut_strokeCap="butt"
+            app:donut_strokeWidth="40dp" />
+
+        <app.futured.donut.DonutProgressView
+            android:id="@+id/budDpvChart"
+            android:layout_width="150dp"
+            android:layout_height="160dp"
+            android:layout_below="@+id/expDpvChart"
+            android:layout_marginStart="41dp"
+            android:layout_marginTop="204dp"
+            android:layout_toEndOf="@+id/goalDpvChart"
+            app:donut_gapAngle="270"
+            app:donut_gapWidth="0"
+            app:donut_strokeCap="butt"
+            app:donut_strokeWidth="40dp" />
+
+        <app.futured.donut.DonutProgressView
+            android:id="@+id/goalDpvChart"
+            android:layout_width="149dp"
+            android:layout_height="156dp"
+            android:layout_below="@+id/incDpvChart"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="199dp"
+            app:donut_gapAngle="270"
+            app:donut_gapWidth="0"
+            app:donut_strokeCap="butt"
+            app:donut_strokeWidth="40dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/incDpvChart"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="22dp"
+            android:text="More Details" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="153dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expDpvChart"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@+id/button"
+            android:text="More Details" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/goalDpvChart"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginBottom="-79dp"
+            android:text="More Details" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="153dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/budDpvChart"
+            android:layout_marginStart="49dp"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@+id/button3"
+            android:text="More Details" />
+
 
     </RelativeLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
@@ -70,5 +133,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/my_navigation"/>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

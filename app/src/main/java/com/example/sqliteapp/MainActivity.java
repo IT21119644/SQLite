@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
 import android.graphics.Color;
@@ -33,8 +35,6 @@ public class MainActivity<createBudget> extends AppCompatActivity {
     DBHelper DB;
     DonutProgressView dpvChart;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +50,6 @@ public class MainActivity<createBudget> extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
@@ -82,7 +81,6 @@ public class MainActivity<createBudget> extends AppCompatActivity {
             }
         });
         getBudgetData();
-
         generateIncomeChart();
 
         //notification when the budget is reached
@@ -96,6 +94,8 @@ public class MainActivity<createBudget> extends AppCompatActivity {
 //            }
 //        }
     }
+
+
 
 
     public void getBudgetData(){
