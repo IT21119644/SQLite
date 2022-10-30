@@ -28,23 +28,23 @@ public class Category extends AppCompatActivity {
     private void initData() {
         userList = new ArrayList<>();
 
-        userList.add(new ModelClass(R.drawable.rent_income,"New Home"));
+        userList.add(new ModelClass(R.drawable.new_house,"New Home"));
 
-        userList.add(new ModelClass(R.drawable.check_book,"New Vehicle"));
+        userList.add(new ModelClass(R.drawable.new_vehicle,"New Vehicle"));
 
-        userList.add(new ModelClass(R.drawable.dues,"Holiday Trip"));
+        userList.add(new ModelClass(R.drawable.holiday_trip,"Holiday Trip"));
 
-        userList.add(new ModelClass(R.drawable.interests,"Education"));
+        userList.add(new ModelClass(R.drawable.education,"Education"));
 
-        userList.add(new ModelClass(R.drawable.interests,"Emergency Fund"));
+        userList.add(new ModelClass(R.drawable.emergency_fund,"Emergency Fund"));
 
-        userList.add(new ModelClass(R.drawable.rent,"Health Care"));
+        userList.add(new ModelClass(R.drawable.health_care,"Health Care"));
 
-        userList.add(new ModelClass(R.drawable.dice,"Party"));
+        userList.add(new ModelClass(R.drawable.party,"Party"));
 
-        userList.add(new ModelClass(R.drawable.romper,"Kids Spoiling"));
+        userList.add(new ModelClass(R.drawable.kids_spoiling,"Kids Spoiling"));
 
-        userList.add(new ModelClass(R.drawable.gifts,"Charity"));
+        userList.add(new ModelClass(R.drawable.charity,"Charity"));
 
         userList.add(new ModelClass(R.drawable.other,"Other"));
 
