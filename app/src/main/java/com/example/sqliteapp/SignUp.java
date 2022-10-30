@@ -3,7 +3,6 @@ package com.example.sqliteapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +44,7 @@ public class SignUp extends AppCompatActivity {
                 Curr.setText(null);
                 Pin.setText(null);
                 ConfPin.setText(null);
-                Intent i = new Intent(this, MainActivity.class);
+                Intent i = new Intent(this, Login.class);
                 startActivity(i);
             }
             else
@@ -54,7 +53,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void switchToLogIn(View v){
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, Login.class);
         startActivity(i);
     }
 }

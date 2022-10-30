@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     EditText PIN;
     Button login;
     int pinNo, count = 1;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         PIN = findViewById(R.id.pin);
 
         login = findViewById(R.id.logInBtn);
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("pin", "pin: " + pin );
         Cursor res = DB.getUserData();
         if(res.getCount() == 0 || pin == null){
-            Toast.makeText(MainActivity.this, "Please sign up", Toast.LENGTH_LONG).show();
+            Toast.makeText(Login.this, "Please sign up", Toast.LENGTH_LONG).show();
         }
         else{
             while(res.moveToNext()){
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     PIN.setText(null);
 
                     //move to success page
-                    Intent i = new Intent(this, Home.class);
+                    Intent i = new Intent(this, Homelog.class);
                     startActivity(i);
                 }
                 else{
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     if(count > 3){
                         login.setEnabled(false);
                     }
-                    Toast.makeText(MainActivity.this, "Incorrect PIN", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Incorrect PIN", Toast.LENGTH_LONG).show();
                     PIN.setText(null);
                 }
 
