@@ -45,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean updateIncomeData(int itemID, String category, String date, float amount){
+    public boolean updateIncomeData(String itemID, String category, String date, float amount){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         //contentValues.put("ID", itemID);
@@ -56,7 +56,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String query  = "SELECT * FROM IncomeDetails WHERE incomeID = " + itemID;
         Cursor cursor = DB.rawQuery(query,null);
         if(cursor.getCount() > 0){
-            long result = DB.update("IncomeDetails", contentValues, "incomeID=?"+itemID, null);
+            long result = DB.update("IncomeDetails", contentValues, "incomeID=?", new String[]{itemID} );
             if(result == -1)
                 return false;
             else

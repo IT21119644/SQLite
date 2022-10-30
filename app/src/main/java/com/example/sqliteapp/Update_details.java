@@ -184,7 +184,7 @@ public class Update_details extends AppCompatActivity {
                 // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        boolean checkUpdatedData = Database.updateIncomeData(intId,categoryU, newDate, newAmount);
+                        boolean checkUpdatedData = Database.updateIncomeData(idU,categoryU, newDate, newAmount);
                         if(checkUpdatedData){
                             Toast.makeText(Update_details.this, "Income updated", Toast.LENGTH_LONG).show();
                             switchToMainActivity();
