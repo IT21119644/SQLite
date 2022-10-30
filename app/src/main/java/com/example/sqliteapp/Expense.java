@@ -12,6 +12,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,8 @@ public class Expense extends AppCompatActivity {
     ImageButton btnOk;
     Spinner spinner;
     DBHelper DB;
+    String category, date, amount;
+    float newAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class Expense extends AppCompatActivity {
 
         Intent i = getIntent();
         String cat = i.getStringExtra("BtnTxt");
+//        String cat = i.getStringExtra("category");
         if(cat != null){
             btncategory.setText(cat);
         }
@@ -82,13 +86,18 @@ public class Expense extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch(id){
                     case R.id.nav_home:
-                        Toast.makeText(Expense.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Expense.this, "Home is clicked", Toast.LENGTH_SHORT).show();
+                        switchToHome();
                     case R.id.nav_expenses:
                         Toast.makeText(Expense.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_income:
-                        Toast.makeText(Expense.this, "Income is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Expense.this, "Income is clicked", Toast.LENGTH_SHORT).show();
+                        switchToIncome();
+                        break;
                     case R.id.nav_budget:
-                        Toast.makeText(Expense.this, "Budget is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Expense.this, "Budget is clicked", Toast.LENGTH_SHORT).show();
+                        switchToBudget();
+                        break;
                     case R.id.nav_goals:
                         Toast.makeText(Expense.this, "Goal is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_login:
@@ -109,6 +118,23 @@ public class Expense extends AppCompatActivity {
 
     }
 
+    public void switchToBudget(){
+        Intent i = new Intent(this, Budget.class);
+        startActivity(i);
+    }
+
+
+    public void switchToHome(){
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+
+
+    public void switchToIncome(){
+        Intent i = new Intent(this, Income.class);
+        startActivity(i);
+    }
+
     private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -119,7 +145,12 @@ public class Expense extends AppCompatActivity {
     }
 
     public void switchToCategory(View view){
+//        Intent switchActivityIntent = new Intent(this, ExpenseCategory.class);
+//        Intent switchActivityIntent = new Intent(this, BudCategory.class);
+//        startActivity(switchActivityIntent);
+
         Intent switchActivityIntent = new Intent(this, ExpenseCategory.class);
+        switchActivityIntent.putExtra("fromPage", this.getClass().getSimpleName());
         startActivity(switchActivityIntent);
     }
 
@@ -130,15 +161,16 @@ public class Expense extends AppCompatActivity {
 
 
     public void insertIncome(View v){
-        String category = btncategory.getText().toString();
-        String date = btndate.getText().toString();
-        String amount = amountT.getText().toString();
+        category = btncategory.getText().toString();
+        date = btndate.getText().toString();
+        amount = amountT.getText().toString();
         float amnt = Float.parseFloat(amount);
 
         Toast.makeText(Expense.this, "Please Insert amount", Toast.LENGTH_LONG).show();
         boolean b = DB.insertExpenseData(category, date, amnt);
         if(b){
             Toast.makeText(Expense.this, "Correct", Toast.LENGTH_LONG).show();
+            updateCurrBudgetBalance();
             Intent switchActivityIntent = new Intent(this, Expense.class);
             startActivity(switchActivityIntent);
         }
@@ -147,19 +179,6 @@ public class Expense extends AppCompatActivity {
         }
     }
 
-
-
-//    // dropdown menu methods
-//    @Override
-//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        String choice = adapterView.getItemAtPosition(i).toString();
-//        Toast.makeText(getApplicationContext(), choice, Toast.LENGTH_LONG).show();
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//    }
 
     private void initDatePicker(){
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -217,6 +236,25 @@ public class Expense extends AppCompatActivity {
 
     public void openDatePicker(View view) {
         datePickerDialog.show();
+    }
+
+    public void updateCurrBudgetBalance(){
+        Cursor res = DB.getSingleBudgetDataUsingCategory(category);
+        Log.d("CAT", category);
+        while(res.moveToNext()){
+            float currAmt = res.getFloat(8);
+            newAmount = Float.parseFloat(amount);
+            currAmt += newAmount;
+            boolean checkUpdatedData = DB.updateBudgetCurrBalance(currAmt, category);
+
+            if(checkUpdatedData){
+                Toast.makeText(Expense.this, "Entry updated", Toast.LENGTH_LONG).show();
+//                Intent switchActivityIntent = new Intent(this, Expense.class);
+//                startActivity(switchActivityIntent);
+            }
+            else
+                Toast.makeText(Expense.this, "Entry not updated", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

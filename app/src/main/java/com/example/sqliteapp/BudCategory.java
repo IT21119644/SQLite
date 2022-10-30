@@ -35,13 +35,16 @@ public class BudCategory extends AppCompatActivity {
 
         ArrayList<String> cat = new ArrayList<>();
         cat.add("Shopping");
-        cat.add("Food and drinks");
-        cat.add("Entertainment");
-        cat.add("Health");
-        cat.add("Transport");
+        cat.add("Food & Drinks");
         cat.add("Housing");
-        cat.add("Communication");
+        cat.add("Transportation");
+        cat.add("Vehicle");
+        cat.add("Life & Entertainment");
         cat.add("Investments");
+        cat.add("Financial Expenses");
+        cat.add("Communication, PC");
+        cat.add("Others");
+
 
 
         Log.d("val", cat.get(0));
@@ -63,11 +66,11 @@ public class BudCategory extends AppCompatActivity {
             LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             //calculate and set the button width
-            int buttonWidth = (int) (width / 1.5);
+            int buttonWidth = (int) (width / 1.3);
             buttonLayoutParams.width = buttonWidth;
 
             if(j == 0)
-                buttonLayoutParams.setMargins(80, 300, 80, 0);
+                buttonLayoutParams.setMargins(80, 200, 80, 0);
             else
                 buttonLayoutParams.setMargins(80, 20, 80, 0);
 
@@ -110,8 +113,8 @@ public class BudCategory extends AppCompatActivity {
             switchActivityIntent.putExtra("category", category);
             startActivity(switchActivityIntent);
         }
-        else if(previousPage.equals("BudExpenses")){
-            switchActivityIntent = new Intent(this, BudExpenses.class);
+        else if(previousPage.equals("Expense")){
+            switchActivityIntent = new Intent(this, Expense.class);
             switchActivityIntent.putExtra("category", category);
             startActivity(switchActivityIntent);
         }

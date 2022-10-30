@@ -86,7 +86,9 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
                         switchToHome();
                         break;
                     case R.id.nav_expenses:
-                        Toast.makeText(Income.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Income.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
+                        switchToExpense();
+                        break;
                     case R.id.nav_income:
                         Toast.makeText(Income.this, "Income is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_budget:
@@ -117,6 +119,11 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
 
     public void switchToHome(){
         Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void switchToExpense(){
+        Intent i = new Intent(this, Expense.class);
         startActivity(i);
     }
 

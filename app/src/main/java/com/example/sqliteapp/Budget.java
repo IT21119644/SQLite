@@ -164,7 +164,7 @@ public class Budget extends AppCompatActivity {
     }
 
     public void switchToExpenses(){
-        Intent switchActivityIntent = new Intent(this, BudExpenses.class);
+        Intent switchActivityIntent = new Intent(this, Expense.class);
         startActivity(switchActivityIntent);
     }
 

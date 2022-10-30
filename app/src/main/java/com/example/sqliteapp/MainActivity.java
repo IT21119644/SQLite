@@ -65,6 +65,7 @@ public class MainActivity<createBudget> extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_expenses:
                         Toast.makeText(MainActivity.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
+                        switchToExpense();
                         break;
                     case R.id.nav_income:
                         Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();
@@ -108,6 +109,11 @@ public class MainActivity<createBudget> extends AppCompatActivity {
 
     public void switchToIncome(){
         Intent i = new Intent(this, Income.class);
+        startActivity(i);
+    }
+
+    public void switchToExpense(){
+        Intent i = new Intent(this, Expense.class);
         startActivity(i);
     }
 
@@ -210,17 +216,17 @@ public class MainActivity<createBudget> extends AppCompatActivity {
                 Shopping = res.getFloat(2);
             else if (res.getString(4).equals("Housing"))
                 Housing = res.getFloat(2);
-            else if (res.getString(4).equals("Food and drinks"))
+            else if (res.getString(4).equals("Food & Drinks"))
                 FoodAndDrinks = res.getFloat(2);
             else if (res.getString(4).equals("Transportation"))
                 Transportation = res.getFloat(2);
             else if (res.getString(4).equals("Vehicle"))
                 Vehicle = res.getFloat(2);
-            else if (res.getString(4).equals("Entertainment"))
+            else if (res.getString(4).equals("Life & Entertainment"))
                 Entertainment = res.getFloat(2);
-            else if (res.getString(4).equals("Communication"))
+            else if (res.getString(4).equals("Communication, PC"))
                 Communication = res.getFloat(2);
-            else if (res.getString(4).equals("Financial"))
+            else if (res.getString(4).equals("Financial Expenses"))
                 Financial = res.getFloat(2);
             else if (res.getString(4).equals("Investments"))
                 Investments = res.getFloat(2);
@@ -349,22 +355,22 @@ public class MainActivity<createBudget> extends AppCompatActivity {
                 Shopping = res.getFloat(3);
             else if (res.getString(1).equals("Housing"))
                 Housing = res.getFloat(3);
-            else if (res.getString(1).equals("Food and drinks"))
+            else if (res.getString(1).equals("Food & Drinks"))
                 FoodAndDrinks = res.getFloat(3);
             else if (res.getString(1).equals("Transportation"))
                 Transportation = res.getFloat(3);
             else if (res.getString(1).equals("Vehicle"))
                 Vehicle = res.getFloat(3);
-            else if (res.getString(1).equals("Entertainment"))
+            else if (res.getString(1).equals("Life & Entertainment"))
                 Entertainment = res.getFloat(3);
-            else if (res.getString(1).equals("Communication"))
+            else if (res.getString(1).equals("Communication, PC"))
                 Communication = res.getFloat(3);
-            else if (res.getString(1).equals("Financial"))
+            else if (res.getString(1).equals("Financial Expenses"))
                 Financial = res.getFloat(3);
-            else if (res.getString(4).equals("Investments"))
-                Investments = res.getFloat(2);
-            else if (res.getString(4).equals("Others"))
-                Others = res.getFloat(2);
+            else if (res.getString(1).equals("Investments"))
+                Investments = res.getFloat(3);
+            else if (res.getString(1).equals("Others"))
+                Others = res.getFloat(3);
         }
 
         DonutSection section1 = new DonutSection("Section 1 Name", Color.parseColor("#f44336"), (FoodAndDrinks/totalExpense)*100);

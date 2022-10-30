@@ -45,6 +45,8 @@ public class ExpenseCategory extends AppCompatActivity {
 
         userList.add(new ExpenseModelClass(R.drawable.invest,"Investments"));
 
+        userList.add(new ExpenseModelClass(R.drawable.invest,"Others"));
+
 
 
     }

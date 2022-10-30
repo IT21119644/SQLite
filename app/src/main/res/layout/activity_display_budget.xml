@@ -160,7 +160,6 @@
         android:layout_height="160dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="108dp"
-        app:donut_gapAngle="270"
         app:donut_gapWidth="20"
         app:donut_strokeWidth="16dp"
         app:layout_constraintEnd_toEndOf="parent"
