@@ -22,7 +22,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/dues">
+                android:src="@drawable/ic_baseline_arrow_back_24">
 
             </ImageView>
 
