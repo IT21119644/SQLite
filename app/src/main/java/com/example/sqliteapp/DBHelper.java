@@ -53,6 +53,20 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+    public boolean insertIncomeData(String category, String date, float amount){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("category", category);
+        contentValues.put("date", date);
+        contentValues.put("amount", amount);
+
+        long result = DB.insert("IncomeDetails", null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+
+    }
 
     public Cursor getBudgetData(){
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -132,6 +146,51 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getGoalData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM GoalData", null);
+        return cursor;
+    }
+
+    public boolean updateIncomeData(String itemID, String category, String date, float amount){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        //contentValues.put("ID", itemID);
+        contentValues.put("Category", category);
+        contentValues.put("Date", date);
+        contentValues.put("Amount", amount);
+
+        String query  = "SELECT * FROM IncomeDetails WHERE incomeID = " + itemID;
+        Cursor cursor = DB.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            long result = DB.update("IncomeDetails", contentValues, "incomeID=?", new String[]{itemID} );
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean deleteIncomeData(int itemID){
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        String query  = "SELECT * FROM IncomeDetails WHERE incomeID = " + itemID;
+        Cursor cursor = DB.rawQuery(query, null);
+        if(cursor.getCount() > 0){
+            long result = DB.delete("IncomeDetails","incomeID= "+itemID, null);
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public Cursor getIncomeData(){
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("SELECT * FROM IncomeDetails", null);
@@ -146,9 +205,4 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public Cursor getGoalData(){
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM GoalData", null);
-        return cursor;
-    }
 }

@@ -35,7 +35,19 @@
             android:name=".Home"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".DisplayIncomeDetails"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryIncome"
+            android:exported="false" />
+        <activity
+            android:name=".Update_details"
+            android:exported="false" />
+        <activity
+            android:name=".Modify_Income"
+            android:exported="false" />
+        <activity
+            android:name=".Income"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,3 +58,14 @@
     </application>
 
 </manifest>
+
+    <!--<manifest xmlns:android ="http://schemas.android.com/apk/res/android"
+    >
+    <application>
+    <activity android:name ="com.example.sqliteapp.Update_details"
+    android:exported="false"
+
+     />
+    </application>
+    </manifest>-->
+
