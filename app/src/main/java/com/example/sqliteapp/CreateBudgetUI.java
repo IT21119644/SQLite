@@ -36,14 +36,6 @@ public class CreateBudgetUI extends AppCompatActivity {
         BAmount = findViewById(R.id.budget_amount);
         Bcategory = findViewById(R.id.categoryTxtV);
 
-
-        //dropdown menu
-//        spinner = findViewById(R.id.currency);
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(adapter);
-//        spinner.setOnItemSelectedListener(this);
-
         //create a DBHelper object
         DB = new DBHelper(this);
 
@@ -101,18 +93,5 @@ public class CreateBudgetUI extends AppCompatActivity {
                 Toast.makeText(CreateBudgetUI.this, "New entry not inserted", Toast.LENGTH_LONG).show();
         }
     }
-
-    //generated methods for spinner
-//    @Override
-//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        spinnerChoice = adapterView.getItemAtPosition(i).toString();
-//        ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
-//        Toast.makeText(getApplicationContext(), spinnerChoice, Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//    }
 
 }

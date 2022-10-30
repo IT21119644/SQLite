@@ -186,11 +186,6 @@ public class DisplayBudget extends AppCompatActivity {
                 String timeDiff = String.valueOf(difftDays) + " days";
                 timeLeft.setText(timeDiff);
 
-                //calculate total time difference
-//                long totDifference = Math.abs(compDate.getTime() - sDate.getTime());
-//                Log.d("left", String.valueOf(difference) + " days");
-//                long totDifftDays = difference / (24 * 60 * 60 * 1000);
-//                this.totalTimeDiff = (float) (difftDays / totDifftDays) * 100;
             }
 
         }
