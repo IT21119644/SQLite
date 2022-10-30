@@ -14,13 +14,13 @@
         android:theme="@style/Theme.SQLiteApp"
         tools:targetApi="31">
         <activity
-            android:name=".ModelClass"
+            android:name=".GoalModelClass"
             android:exported="false" />
         <activity
-            android:name=".Adaptor"
+            android:name=".GoalAdaptor"
             android:exported="false" />
         <activity
-            android:name=".Category"
+            android:name=".GoalCategory"
             android:exported="false" />
         <activity
             android:name=".DeleteGoal"
@@ -28,7 +28,7 @@
             android:label="@string/title_activity_delete_goal"
             android:theme="@style/Theme.SQLiteApp.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Goal"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

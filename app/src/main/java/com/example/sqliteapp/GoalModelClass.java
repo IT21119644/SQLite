@@ -1,10 +1,10 @@
 package com.example.sqliteapp;
 
-public class ModelClass {
+public class GoalModelClass {
     private int imageview1;
     private String text1;
 
-    ModelClass(int imageview1, String text1) {
+    GoalModelClass(int imageview1, String text1) {
         this.imageview1 = imageview1;
         this.text1 = text1;
     }

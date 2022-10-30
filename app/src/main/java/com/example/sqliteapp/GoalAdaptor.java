@@ -14,23 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class Adaptor extends RecyclerView.Adapter<Adaptor.ViewHolder> {
+public class GoalAdaptor extends RecyclerView.Adapter<GoalAdaptor.ViewHolder> {
 
-    private List<ModelClass> userList;
+    private List<GoalModelClass> userList;
 
-    public Adaptor(List<ModelClass> userList) {
+    public GoalAdaptor(List<GoalModelClass> userList) {
         this.userList = userList;
     }
 
     @NonNull
     @Override
-    public Adaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+    public GoalAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.goal_item_list, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adaptor.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GoalAdaptor.ViewHolder holder, int position) {
         int resource=userList.get(position).getImageview1();
         String name=userList.get(position).getText1();
 

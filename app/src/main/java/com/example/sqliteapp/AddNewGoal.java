@@ -160,7 +160,7 @@ public class AddNewGoal extends AppCompatActivity implements AdapterView.OnItemS
     }
 
     public void switchToCategory(View view){
-        Intent switchActivityIntent = new Intent(this, Category.class);
+        Intent switchActivityIntent = new Intent(this, GoalCategory.class);
         startActivity(switchActivityIntent);
     }
 
