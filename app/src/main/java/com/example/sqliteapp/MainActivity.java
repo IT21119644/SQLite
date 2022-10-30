@@ -33,7 +33,7 @@ public class MainActivity<createBudget> extends AppCompatActivity {
     TextView tv;
     Button insert, read, update, delete;
     DBHelper DB;
-    DonutProgressView dpvChart;
+    DonutProgressView incChart, expChart, goalChart, budChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,19 +95,6 @@ public class MainActivity<createBudget> extends AppCompatActivity {
 //        }
     }
 
-
-
-
-    public void getBudgetData(){
-        ArrayList<Float> cat = new ArrayList<>();
-        Cursor res = DB.getIncomeData();
-        while(res.moveToNext()){
-            cat.add(res.getFloat(3));
-        }
-
-        Log.d("FFFGGG", String.valueOf(cat.get(0)));
-    }
-
     public void generateIncomeChart(){
         float checks=0,
                 childSupport=0,
@@ -122,35 +109,35 @@ public class MainActivity<createBudget> extends AppCompatActivity {
                 wage=0,
                 other=0;
 
-        dpvChart = findViewById(R.id.incDpvChart);
-        Cursor res = DB.getIncomeData();
+        incChart = findViewById(R.id.incDpvChart);
+        Cursor res2 = DB.getIncomeData();
         float totalIncome = 0;
-        while(res.moveToNext()){
-            totalIncome += res.getFloat(3);
-            if(res.getString(1).equals("Checks, Coupons"))
-                checks = res.getFloat(3);
-            else if(res.getString(1).equals("Child Support"))
-                childSupport = res.getFloat(3);
-            else if(res.getString(1).equals("Dues & Grants"))
-                duesAndGrants = res.getFloat(3);
-            else if(res.getString(1).equals("Gifts"))
-                gifts = res.getFloat(3);
-            else if(res.getString(1).equals("Interests, Dividends"))
-                interests = res.getFloat(3);
-            else if(res.getString(1).equals("Lending, Renting"))
-                lending = res.getFloat(3);
-            else if(res.getString(1).equals("Lottery, Gambling"))
-                lottery = res.getFloat(3);
-            else if(res.getString(1).equals("Refunds (Tax,Purchase)"))
-                refunds = res.getFloat(3);
-            else if(res.getString(1).equals("Rental Income"))
-                rental = res.getFloat(3);
-            else if(res.getString(1).equals("Sale"))
-                sale = res.getFloat(3);
-            else if(res.getString(1).equals("Wage, Invoices"))
-                wage = res.getFloat(3);
-            else if(res.getString(1).equals("Other"))
-                other = res.getFloat(3);
+        while(res2.moveToNext()){
+            totalIncome += res2.getFloat(3);
+            if(res2.getString(1).equals("Checks, Coupons"))
+                checks = res2.getFloat(3);
+            else if(res2.getString(1).equals("Child Support"))
+                childSupport = res2.getFloat(3);
+            else if(res2.getString(1).equals("Dues & Grants"))
+                duesAndGrants = res2.getFloat(3);
+            else if(res2.getString(1).equals("Gifts"))
+                gifts = res2.getFloat(3);
+            else if(res2.getString(1).equals("Interests, Dividends"))
+                interests = res2.getFloat(3);
+            else if(res2.getString(1).equals("Lending, Renting"))
+                lending = res2.getFloat(3);
+            else if(res2.getString(1).equals("Lottery, Gambling"))
+                lottery = res2.getFloat(3);
+            else if(res2.getString(1).equals("Refunds (Tax,Purchase)"))
+                refunds = res2.getFloat(3);
+            else if(res2.getString(1).equals("Rental Income"))
+                rental = res2.getFloat(3);
+            else if(res2.getString(1).equals("Sale"))
+                sale = res2.getFloat(3);
+            else if(res2.getString(1).equals("Wage, Invoices"))
+                wage = res2.getFloat(3);
+            else if(res2.getString(1).equals("Other"))
+                other = res2.getFloat(3);
         }
 
         DonutSection section1 = new DonutSection("Section 1 Name", Color.parseColor("#f44336"), (checks/totalIncome)*100);
@@ -166,7 +153,7 @@ public class MainActivity<createBudget> extends AppCompatActivity {
         DonutSection section11 = new DonutSection("Section 11 Name", Color.parseColor("#CCFFFF"), (wage/totalIncome)*100);
         DonutSection section12 = new DonutSection("Section 12 Name", Color.parseColor("#7B68EE"), (other/totalIncome)*100);
 
-        dpvChart.setCap(100f);
+        incChart.setCap(100f);
         ArrayList<DonutSection> ar = new ArrayList();
         ar.add(section1);
         ar.add(section2);
@@ -181,7 +168,77 @@ public class MainActivity<createBudget> extends AppCompatActivity {
         ar.add(section11);
         ar.add(section12);
 
-        dpvChart.submitData(ar);
+        incChart.submitData(ar);
+    }
+
+    public void getBudgetData() {
+        float FoodAndDrinks = 0,
+                Shopping = 0,
+                Housing = 0,
+                Transportation = 0,
+                Vehicle = 0,
+                Entertainment = 0,
+                Communication = 0,
+                Financial = 0,
+                Investments = 0,
+                Others = 0;
+
+        budChart = findViewById(R.id.budDpvChart);
+        Cursor res = DB.getBudgetData();
+        float totalBudget = 0;
+
+        while (res.moveToNext()) {
+            totalBudget += res.getFloat(2);
+
+            if (res.getString(4).equals("Shopping"))
+                Shopping = res.getFloat(2);
+            else if (res.getString(4).equals("Housing"))
+                Housing = res.getFloat(2);
+            else if (res.getString(4).equals("Food and drinks"))
+                FoodAndDrinks = res.getFloat(2);
+            else if (res.getString(4).equals("Transportation"))
+                Transportation = res.getFloat(2);
+            else if (res.getString(4).equals("Vehicle"))
+                Vehicle = res.getFloat(2);
+            else if (res.getString(4).equals("Entertainment"))
+                Entertainment = res.getFloat(2);
+            else if (res.getString(4).equals("Communication"))
+                Communication = res.getFloat(2);
+            else if (res.getString(4).equals("Financial"))
+                Financial = res.getFloat(2);
+            else if (res.getString(4).equals("Investments"))
+                Investments = res.getFloat(2);
+            else if (res.getString(4).equals("Others"))
+                Others = res.getFloat(2);
+        }
+
+        DonutSection section1 = new DonutSection("Section 1 Name", Color.parseColor("#f44336"), (FoodAndDrinks/totalBudget)*100);
+        DonutSection section2 = new DonutSection("Section 2 Name", Color.parseColor("#4fb200"), (Housing/totalBudget)*100);
+        DonutSection section3 = new DonutSection("Section 3 Name", Color.parseColor("#3c2ada"), (Transportation/totalBudget)*100);
+        DonutSection section4 = new DonutSection("Section 4 Name", Color.parseColor("#FF6600"), (Vehicle/totalBudget)*100);
+        DonutSection section5 = new DonutSection("Section 5 Name", Color.parseColor("#FFCC00"), (Entertainment/totalBudget)*100);
+        DonutSection section6 = new DonutSection("Section 6 Name", Color.parseColor("#663300"), (Communication/totalBudget)*100);
+        DonutSection section7 = new DonutSection("Section 7 Name", Color.parseColor("#003333"), (Financial/totalBudget)*100);
+        DonutSection section8 = new DonutSection("Section 8 Name", Color.parseColor("#FF33FF"), (Investments/totalBudget)*100);
+        DonutSection section9 = new DonutSection("Section 9 Name", Color.parseColor("#00FFFF"), (Others/totalBudget)*100);
+        DonutSection section10 = new DonutSection("Section 10 Name", Color.parseColor("#9933FF"), (Shopping/totalBudget)*100);
+
+
+        budChart.setCap(100f);
+        ArrayList<DonutSection> budAr = new ArrayList();
+        budAr.add(section1);
+        budAr.add(section2);
+        budAr.add(section3);
+        budAr.add(section4);
+        budAr.add(section5);
+        budAr.add(section6);
+        budAr.add(section7);
+        budAr.add(section8);
+        budAr.add(section9);
+        budAr.add(section10);
+
+
+        budChart.submitData(budAr);
     }
 }
 

@@ -44,13 +44,13 @@
 
         <app.futured.donut.DonutProgressView
             android:id="@+id/expDpvChart"
-            android:layout_width="148dp"
-            android:layout_height="114dp"
+            android:layout_width="142dp"
+            android:layout_height="136dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="47dp"
-            android:layout_marginTop="104dp"
-            android:layout_marginEnd="26dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="103dp"
+            android:layout_marginEnd="29dp"
             android:layout_toEndOf="@+id/incDpvChart"
             app:donut_gapAngle="270"
             app:donut_gapWidth="0"
@@ -62,8 +62,8 @@
             android:layout_width="150dp"
             android:layout_height="160dp"
             android:layout_below="@+id/expDpvChart"
-            android:layout_marginStart="41dp"
-            android:layout_marginTop="204dp"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="197dp"
             android:layout_toEndOf="@+id/goalDpvChart"
             app:donut_gapAngle="270"
             app:donut_gapWidth="0"
@@ -72,8 +72,8 @@
 
         <app.futured.donut.DonutProgressView
             android:id="@+id/goalDpvChart"
-            android:layout_width="149dp"
-            android:layout_height="156dp"
+            android:layout_width="150dp"
+            android:layout_height="154dp"
             android:layout_below="@+id/incDpvChart"
             android:layout_alignParentStart="true"
             android:layout_marginStart="36dp"
@@ -115,7 +115,7 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="153dp"
+            android:layout_width="158dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/budDpvChart"
             android:layout_marginStart="49dp"
