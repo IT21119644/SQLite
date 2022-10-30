@@ -169,7 +169,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/lightgrey"
             app:navigationIcon="@drawable/ic_baseline_menu_24"
-            app:title="Android" />
+            app:title="Income" />
 
         <!--<LinearLayout
             android:layout_width="match_parent"
