@@ -82,13 +82,17 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch(id){
                     case R.id.nav_home:
-                        Toast.makeText(Income.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Income.this, "Home is clicked", Toast.LENGTH_SHORT).show();
+                        switchToHome();
+                        break;
                     case R.id.nav_expenses:
                         Toast.makeText(Income.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_income:
                         Toast.makeText(Income.this, "Income is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_budget:
-                        Toast.makeText(Income.this, "Budget is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Income.this, "Budget is clicked", Toast.LENGTH_SHORT).show();
+                        switchToBudget();
+                        break;
                     case R.id.nav_goals:
                         Toast.makeText(Income.this, "Goal is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_login:
@@ -101,12 +105,19 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
             }
         });
 
-
-
         initDatePicker();
         btndate.setText(getTodaysDate());
+    }
+
+    public void switchToBudget(){
+        Intent i = new Intent(this, Budget.class);
+        startActivity(i);
+    }
 
 
+    public void switchToHome(){
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 
     private String getTodaysDate() {

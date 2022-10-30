@@ -19,7 +19,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase DB) {
         DB.execSQL("CREATE TABLE BudgetDetails(BudgetName TEXT PRIMARY KEY, Date TEXT, Amount NUMERIC, Currency TEXT, Category TEXT, almostComplete NUMERIC, overspent NUMERIC, startDate TEXT, currentAmount NUMERIC)");
         DB.execSQL("CREATE TABLE IncomeDetails(incomeID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, category TEXT, date TEXT, amount REAL)");
-        DB.execSQL("CREATE TABLE GoalData(name TEXT PRIMARY KEY, estimated_date TEXT, gaol_amount REAL, category TEXT, goal_description TEXT, add_savings REAL)");
+        DB.execSQL("CREATE TABLE GoalData(name TEXT PRIMARY KEY, estimated_date TEXT, gaol_amount REAL, category TEXT, goal_description TEXT, add_savings REAL, today_date TEXT)");
         DB.execSQL("CREATE TABLE UserDetails(Name TEXT , Currency TEXT, PIN NUMERIC PRIMARY KEY)");
         DB.execSQL("CREATE TABLE ExpenseDetails(expenseID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, category TEXT, date TEXT, amount REAL)");
     }
@@ -52,20 +52,6 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
-    }
-    public boolean insertIncomeData(String category, String date, float amount){
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("category", category);
-        contentValues.put("date", date);
-        contentValues.put("amount", amount);
-
-        long result = DB.insert("IncomeDetails", null, contentValues);
-        if(result == -1)
-            return false;
-        else
-            return true;
-
     }
 
     public Cursor getBudgetData(){
@@ -140,16 +126,21 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getExpenseData(){
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM ExpenseDetails", null);
-        return cursor;
-    }
 
-    public Cursor getGoalData(){
+
+    public boolean insertIncomeData(String category, String date, float amount){
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM GoalData", null);
-        return cursor;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("category", category);
+        contentValues.put("date", date);
+        contentValues.put("amount", amount);
+
+        long result = DB.insert("IncomeDetails", null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+
     }
 
     public boolean updateIncomeData(String itemID, String category, String date, float amount){
@@ -205,4 +196,23 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+
+
+    public Cursor getGoalData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM GoalData", null);
+        return cursor;
+    }
+
+
+
+
+    public Cursor getExpenseData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM ExpenseDetails", null);
+        return cursor;
+    }
+
 }
+
+

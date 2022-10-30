@@ -137,6 +137,7 @@ public class Budget extends AppCompatActivity {
                         break;
                     case R.id.nav_income:
                         Toast.makeText(Budget.this, "Income is clicked", Toast.LENGTH_SHORT).show();
+                        switchToIncome();
                         break;
                     case R.id.nav_budget:
                         Toast.makeText(Budget.this, "Budget is clicked", Toast.LENGTH_SHORT).show();break;
@@ -154,6 +155,11 @@ public class Budget extends AppCompatActivity {
 
     public void switchToHome(){
         Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void switchToIncome(){
+        Intent i = new Intent(this, Income.class);
         startActivity(i);
     }
 
