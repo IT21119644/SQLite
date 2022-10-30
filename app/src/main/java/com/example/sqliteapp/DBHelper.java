@@ -10,41 +10,63 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
-        super(context, "UserData.db", null, 1);
+        super(context, "Wallet.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("CREATE TABLE UserDetails(ID TEXT PRIMARY KEY, name TEXT)");
+        DB.execSQL("CREATE TABLE ExpenseDetails(expenseID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, category TEXT, date TEXT, amount REAL)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase DB, int i, int i1) {
-        DB.execSQL("DROP TABLE if exists UerDetails");
+        DB.execSQL("DROP TABLE if exists ExpenseDetails");
     }
 
-    public boolean insertUserData(String ID, String name){
+    public boolean insertExpenseData(String category, String date, float amount){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("ID", ID);
-        contentValues.put("name", name);
+        contentValues.put("category", category);
+        contentValues.put("date", date);
+        contentValues.put("amount", amount);
 
-        long result = DB.insert("UserDetails", null, contentValues);
+        long result = DB.insert("ExpenseDetails", null, contentValues);
         if(result == -1)
             return false;
         else
             return true;
+
     }
 
-    public boolean updateUserData(String ID, String name){
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("ID", ID);
-        contentValues.put("name", name);
 
-        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails WHERE id = ?", new String[] {ID});
+//        public boolean updateExpense(String itemID, String category, String date, float amount){
+//        SQLiteDatabase DB = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("ID", itemID);
+//        contentValues.put("Category", category);
+//        contentValues.put("Date", date);
+//        contentValues.put("Amount", amount);
+//
+//        Cursor cursor = DB.rawQuery("SELECT * FROM IncomeDetails WHERE incomeID = ?", new String[] {itemID});
+//        if(cursor.getCount() > 0){
+//            long result = DB.update("IncomeDetails", contentValues, "ID=?", new String[] {itemID});
+//            if(result == -1)
+//                return false;
+//            else
+//                return true;
+//        }
+//        else{
+//            return false;
+//        }
+//    }
+//
+    public boolean deleteExpenseData(int itemID){
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        String query  = "SELECT * FROM ExpenseDetails WHERE expenseID = " + itemID;
+        Cursor cursor = DB.rawQuery(query, null);
         if(cursor.getCount() > 0){
-            long result = DB.update("UserDetails", contentValues, "ID=?", new String[] {ID});
+            long result = DB.delete("ExpenseDetails","expenseID= "+itemID, null);
             if(result == -1)
                 return false;
             else
@@ -55,25 +77,16 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean deleteUserData(String ID){
+    public Cursor getExpenseData(){
         SQLiteDatabase DB = this.getWritableDatabase();
-
-        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails WHERE ID = ?", new String[] {ID});
-        if(cursor.getCount() > 0){
-            long result = DB.delete("UserDetails","ID=?", new String[] {ID});
-            if(result == -1)
-                return false;
-            else
-                return true;
-        }
-        else{
-            return false;
-        }
+        Cursor cursor = DB.rawQuery("SELECT * FROM ExpenseDetails", null);
+        return cursor;
     }
 
-    public Cursor getData(){
+    public Cursor getSingleExpenseDataUsingIncomeID(int id){
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails", null);
+        String query  = "SELECT * FROM ExpenseDetails WHERE expenseID = " + id;
+        Cursor cursor = DB.rawQuery(query, null);
         return cursor;
     }
 }

@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">SQLiteApp</string>
+    <string name="date_m">Date</string>
+    <string name="currentInctxt">Current Income</string>
+    <string name="currentInc">0.00</string>
+    <string name="amounttxt">Amount</string>
+    <string name="amount">0.00</string>
+    <string name="btncategory">Category</string>
+    <string name="btnUpdate">Modify Income</string>
+    <string name="btnDelete">Delete Income</string>
+    <string name="btnOk">Okay</string>
+    <string name="category_m">Category</string>
+    <string name="btnModiEx">Update</string>
+    <string name="btnSearch">Search Bar</string>
+    <string name="date">June 05 2022</string>
+
+
 </resources>
