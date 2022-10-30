@@ -12,19 +12,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class Category extends AppCompatActivity {
+public class BudCategory extends AppCompatActivity {
     String previousPage;
     DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_budcategory);
         DB = new DBHelper(this);
 
         TextView fromPage = findViewById(R.id.fromPage);
@@ -48,7 +46,7 @@ public class Category extends AppCompatActivity {
 
         Log.d("val", cat.get(0));
         for (int j = 0; j < cat.size(); j++){
-            Button btn = new Button (Category.this);
+            Button btn = new Button (BudCategory.this);
             btn.setWidth(5);
             btn.setHeight(20);
             btn.setTextSize(25);
@@ -99,7 +97,7 @@ public class Category extends AppCompatActivity {
     View.OnClickListener handleOnClick(final Button button, String heading) {
         return new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("className", Category.this.getClass().getSimpleName());
+                Log.d("className", BudCategory.this.getClass().getSimpleName());
                 switchToCreateBudget(heading);
             }
         };
@@ -112,8 +110,8 @@ public class Category extends AppCompatActivity {
             switchActivityIntent.putExtra("category", category);
             startActivity(switchActivityIntent);
         }
-        else if(previousPage.equals("Expenses")){
-            switchActivityIntent = new Intent(this, Expenses.class);
+        else if(previousPage.equals("BudExpenses")){
+            switchActivityIntent = new Intent(this, BudExpenses.class);
             switchActivityIntent.putExtra("category", category);
             startActivity(switchActivityIntent);
         }

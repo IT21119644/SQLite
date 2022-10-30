@@ -3,26 +3,15 @@ package com.example.sqliteapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Calendar;
 
 public class CreateBudgetUI extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
@@ -72,13 +61,13 @@ public class CreateBudgetUI extends AppCompatActivity {
     }
 
     public void switchToMainActivity(View v){
-        Intent switchActivityIntent = new Intent(this, MainActivity.class);
+        Intent switchActivityIntent = new Intent(this, Budget.class);
         startActivity(switchActivityIntent);
     }
 
     public void switchToCategoryPage(View v){
         //Move to shali's page
-        Intent switchActivityIntent = new Intent(this, Category.class);
+        Intent switchActivityIntent = new Intent(this, BudCategory.class);
         switchActivityIntent.putExtra("fromPage", this.getClass().getSimpleName());
         startActivity(switchActivityIntent);
     }
@@ -105,7 +94,7 @@ public class CreateBudgetUI extends AppCompatActivity {
                 BName.setText(null);
                 BAmount.setText(null);
                 Bcategory.setText("None");
-                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+                Intent switchActivityIntent = new Intent(this, Budget.class);
                 startActivity(switchActivityIntent);
             }
             else

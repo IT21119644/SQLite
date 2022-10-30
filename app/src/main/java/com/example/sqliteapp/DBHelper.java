@@ -69,7 +69,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
         if(cursor.getCount() > 0){
-            long result = DB.delete("BudgetDetails","Category=?", new String[] {category});
+            long result = DB.delete("BudgetDetails","BudCategory=?", new String[] {category});
             if(result == -1)
                 return false;
             else
@@ -87,7 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE  Category= ?", new String[] {category});
         if(cursor.getCount() > 0){
-            long result = DB.update("BudgetDetails", contentValues, "Category=?", new String[] {category});
+            long result = DB.update("BudgetDetails", contentValues, "BudCategory=?", new String[] {category});
             if(result == -1)
                 return false;
             else
@@ -107,7 +107,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
         if(cursor.getCount() > 0){
-            long result = DB.update("BudgetDetails", contentValues, "Category=?", new String[] {category});
+            long result = DB.update("BudgetDetails", contentValues, "BudCategory=?", new String[] {category});
             if(result == -1)
                 return false;
             else

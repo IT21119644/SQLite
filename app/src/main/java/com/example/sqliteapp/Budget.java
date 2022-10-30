@@ -1,8 +1,6 @@
 package com.example.sqliteapp;
 
-import androidx.annotation.Dimension;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -15,13 +13,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class Budget extends AppCompatActivity {
 
     Button createBudget;
     DBHelper DB;
@@ -48,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> categories = new ArrayList<>();
 
         if(res.getCount() == 0){
-            Toast.makeText(MainActivity.this, "Your budget is empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Budget.this, "Your budget is empty", Toast.LENGTH_SHORT).show();
         }
 
         while(res.moveToNext()){
@@ -59,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         if(!BudNames.isEmpty()){
             Log.d("val", BudNames.get(0));
             for (int j = 0; j < BudNames.size(); j++){
-                Button btn = new Button (MainActivity.this);
+                Button btn = new Button (Budget.this);
                 btn.setWidth(5);
                 btn.setHeight(20);
                 btn.setTextSize(25);
@@ -135,20 +128,20 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch(id){
                     case R.id.nav_home:
-                        Toast.makeText(MainActivity.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Budget.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_expenses:
-                        Toast.makeText(MainActivity.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Budget.this, "BudExpenses is clicked", Toast.LENGTH_SHORT).show();
                         switchToExpenses();
                         break;
                     case R.id.nav_income:
-                        Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Budget.this, "Income is clicked", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_budget:
-                        Toast.makeText(MainActivity.this, "Budget is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Budget.this, "Budget is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_goals:
-                        Toast.makeText(MainActivity.this, "Goal is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Budget.this, "Goal is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_login:
-                        Toast.makeText(MainActivity.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Budget.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
                     default:
                         return true;
                 }
@@ -170,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     public void switchToExpenses(){
-        Intent switchActivityIntent = new Intent(this, Expenses.class);
+        Intent switchActivityIntent = new Intent(this, BudExpenses.class);
         startActivity(switchActivityIntent);
     }
 
@@ -182,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener handleOnClick(final Button button, String heading, String category) {
         return new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Button is clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Budget.this, "Button is clicked", Toast.LENGTH_SHORT).show();
                 Log.d("gg", "Button clicked");
                 switchToDisplayBudget(heading, category);
             }

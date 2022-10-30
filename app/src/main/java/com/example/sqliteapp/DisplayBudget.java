@@ -116,7 +116,7 @@ public class DisplayBudget extends AppCompatActivity {
 
         Cursor res = DB.getBudgetData();
         ArrayList<String> myArrList = new ArrayList<>();
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, Budget.class);
         if(res.getCount() == 0){
             Toast.makeText(DisplayBudget.this, "No entry exists", Toast.LENGTH_SHORT).show();
             i.putExtra("EmptyMsg", "Your budget is empty");
@@ -133,7 +133,7 @@ public class DisplayBudget extends AppCompatActivity {
     }
 
     public void switchToMainActivity(View v){
-        Intent switchActivityIntent = new Intent(this, MainActivity.class);
+        Intent switchActivityIntent = new Intent(this, Budget.class);
         startActivity(switchActivityIntent);
     }
 

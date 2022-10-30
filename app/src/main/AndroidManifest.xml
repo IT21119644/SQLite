@@ -17,7 +17,7 @@
             android:name=".UpdateBudget"
             android:exported="false" />
         <activity
-            android:name=".Category"
+            android:name=".BudCategory"
             android:exported="false" />
         <activity
             android:name=".DisplayBudget"
@@ -26,10 +26,10 @@
             android:name=".CreateBudgetUI"
             android:exported="false" />
         <activity
-            android:name=".Expenses"
+            android:name=".BudExpenses"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Budget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

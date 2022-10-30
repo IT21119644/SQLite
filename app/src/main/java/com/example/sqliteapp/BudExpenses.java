@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Expenses extends AppCompatActivity {
+public class BudExpenses extends AppCompatActivity {
     DBHelper DB;
     TextView categoryTxtv;
     String cat;
@@ -20,7 +20,7 @@ public class Expenses extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expenses);
+        setContentView(R.layout.activity_budexpenses);
         categoryTxtv = findViewById(R.id.categoryTxtV2);
         amtIn = findViewById(R.id.amountInputField);
 //        newAmount = Double.parseDouble(amtIn.getText().toString());
@@ -36,13 +36,13 @@ public class Expenses extends AppCompatActivity {
 
     public void switchToCategoryPage(View v){
         //Move to shali's page
-        Intent switchActivityIntent = new Intent(this, Category.class);
+        Intent switchActivityIntent = new Intent(this, BudCategory.class);
         switchActivityIntent.putExtra("fromPage", this.getClass().getSimpleName());
         startActivity(switchActivityIntent);
     }
 
     public void switchToMainActivity(View v){
-        Intent switchActivityIntent = new Intent(this, MainActivity.class);
+        Intent switchActivityIntent = new Intent(this, Budget.class);
         startActivity(switchActivityIntent);
     }
 
@@ -55,12 +55,12 @@ public class Expenses extends AppCompatActivity {
             boolean checkUpdatedData = DB.updateBudgetCurrBalance(currAmt, cat);
 
             if(checkUpdatedData){
-                Toast.makeText(Expenses.this, "Entry updated", Toast.LENGTH_LONG).show();
-                Intent switchActivityIntent = new Intent(this, MainActivity.class);
+                Toast.makeText(BudExpenses.this, "Entry updated", Toast.LENGTH_LONG).show();
+                Intent switchActivityIntent = new Intent(this, Budget.class);
                 startActivity(switchActivityIntent);
             }
             else
-                Toast.makeText(Expenses.this, "Entry not updated", Toast.LENGTH_LONG).show();
+                Toast.makeText(BudExpenses.this, "Entry not updated", Toast.LENGTH_LONG).show();
         }
     }
 }
