@@ -25,7 +25,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/lightgrey"
                 app:navigationIcon="@drawable/ic_baseline_menu_24"
-                app:title="Budgets" />
+                app:title="Expense" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
