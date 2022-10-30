@@ -46,6 +46,7 @@
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
       android:background="@color/lightgrey"
+      android:onClick="backToDisplayBudget"
       app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
       app:title="Update"
       tools:ignore="MissingConstraints" />
