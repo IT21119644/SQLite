@@ -10,17 +10,25 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
-        super(context, "UserData.db", null, 1);
+        super(context, "Wallet.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("CREATE TABLE UserDetails(ID TEXT PRIMARY KEY, name TEXT)");
+        DB.execSQL("CREATE TABLE BudgetDetails(BudgetName TEXT PRIMARY KEY, Date TEXT, Amount NUMERIC, Currency TEXT, Category TEXT, almostComplete NUMERIC, overspent NUMERIC, startDate TEXT, currentAmount NUMERIC)");
+        DB.execSQL("CREATE TABLE IncomeDetails(incomeID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, category TEXT, date TEXT, amount REAL)");
+        DB.execSQL("CREATE TABLE GoalData(name TEXT PRIMARY KEY, estimated_date TEXT, gaol_amount REAL, category TEXT, goal_description TEXT, add_savings REAL)");
+        DB.execSQL("CREATE TABLE UserDetails(Name TEXT , Currency TEXT, PIN NUMERIC PRIMARY KEY)");
+        DB.execSQL("CREATE TABLE ExpenseDetails(expenseID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, category TEXT, date TEXT, amount REAL)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase DB, int i, int i1) {
-        DB.execSQL("DROP TABLE if exists UerDetails");
+        DB.execSQL("DROP TABLE if exists BudgetDetails");
+        DB.execSQL("DROP TABLE if exists IncomeDetails");
+        DB.execSQL("DROP TABLE if exists GoalData");
+        DB.execSQL("DROP TABLE if exists UserDetails");
+        DB.execSQL("DROP TABLE if exists ExpenseDetails");
     }
 
     public boolean insertUserData(String ID, String name){
@@ -71,9 +79,47 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getData(){
+    public Cursor getExpenseData(){
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails", null);
+        Cursor cursor = DB.rawQuery("SELECT * FROM ExpenseDetails", null);
+        return cursor;
+    }
+
+    public Cursor getBudgetData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails", null);
+        return cursor;
+    }
+
+    public Cursor getSingleBudgetData(String category){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
+        return cursor;
+    }
+
+    public Cursor getSingleBudgetDataUsingCategory(String category){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
+        return cursor;
+    }
+
+    public Cursor getIncomeData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM IncomeDetails", null);
+        return cursor;
+    }
+
+    public Cursor getSingleIncomeDataUsingIncomeID(int id){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        String query  = "SELECT * FROM IncomeDetails WHERE incomeID = " + id;
+        Cursor cursor = DB.rawQuery(query, null);
+        return cursor;
+    }
+
+
+    public Cursor getGoalData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM GoalData", null);
         return cursor;
     }
 }
