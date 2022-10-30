@@ -79,9 +79,9 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getData(){
+    public Cursor getExpenseData(){
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails", null);
+        Cursor cursor = DB.rawQuery("SELECT * FROM ExpenseDetails", null);
         return cursor;
     }
 
@@ -116,4 +116,10 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+
+    public Cursor getGoalData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM GoalData", null);
+        return cursor;
+    }
 }

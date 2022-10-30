@@ -80,8 +80,10 @@ public class MainActivity<createBudget> extends AppCompatActivity {
                 return true;
             }
         });
-        getBudgetData();
+        generateBudChart();
         generateIncomeChart();
+        generateGoalChart();
+        generateExpReport();
 
         //notification when the budget is reached
 //        if(balancePercentage == 100f){
@@ -171,7 +173,7 @@ public class MainActivity<createBudget> extends AppCompatActivity {
         incChart.submitData(ar);
     }
 
-    public void getBudgetData() {
+    public void generateBudChart() {
         float FoodAndDrinks = 0,
                 Shopping = 0,
                 Housing = 0,
@@ -239,6 +241,146 @@ public class MainActivity<createBudget> extends AppCompatActivity {
 
 
         budChart.submitData(budAr);
+    }
+
+    public void generateGoalChart(){
+        float HolidayTrip = 0,
+                Education = 0,
+                Emergency = 0,
+                Health = 0,
+                Party = 0,
+                kidsSpoiling = 0,
+                Charity = 0,
+                home = 0,
+                vehicle = 0,
+                Other = 0;
+
+        goalChart = findViewById(R.id.goalDpvChart);
+        Cursor res3 = DB.getGoalData();
+        float totalGoals = 0;
+
+        while (res3.moveToNext()) {
+            totalGoals += res3.getFloat(2);
+
+            if (res3.getString(3).equals("Holiday Trip"))
+                HolidayTrip = res3.getFloat(2);
+            else if (res3.getString(3).equals("Education"))
+                Education = res3.getFloat(2);
+            else if (res3.getString(3).equals("Emergency Fund"))
+                Emergency = res3.getFloat(2);
+            else if (res3.getString(3).equals("Health Care"))
+                Health = res3.getFloat(2);
+            else if (res3.getString(3).equals("Party"))
+                Party = res3.getFloat(2);
+            else if (res3.getString(3).equals("Kids Spoiling"))
+                kidsSpoiling = res3.getFloat(2);
+            else if (res3.getString(3).equals("Charity"))
+                Charity = res3.getFloat(2);
+            else if (res3.getString(3).equals("New Home"))
+                home = res3.getFloat(2);
+            else if (res3.getString(3).equals("New Vehicle"))
+                vehicle = res3.getFloat(2);
+            else if (res3.getString(3).equals("Other"))
+                Other = res3.getFloat(2);
+        }
+
+        DonutSection section1 = new DonutSection("Section 1 Name", Color.parseColor("#f44336"), (HolidayTrip/totalGoals)*100);
+        DonutSection section2 = new DonutSection("Section 2 Name", Color.parseColor("#4fb200"), (Education/totalGoals)*100);
+        DonutSection section3 = new DonutSection("Section 3 Name", Color.parseColor("#3c2ada"), (Emergency/totalGoals)*100);
+        DonutSection section4 = new DonutSection("Section 4 Name", Color.parseColor("#FF6600"), (Health/totalGoals)*100);
+        DonutSection section5 = new DonutSection("Section 5 Name", Color.parseColor("#FFCC00"), (Party/totalGoals)*100);
+        DonutSection section6 = new DonutSection("Section 6 Name", Color.parseColor("#663300"), (kidsSpoiling/totalGoals)*100);
+        DonutSection section7 = new DonutSection("Section 7 Name", Color.parseColor("#003333"), (Charity/totalGoals)*100);
+        DonutSection section8 = new DonutSection("Section 8 Name", Color.parseColor("#663300"), (home/totalGoals)*100);
+        DonutSection section9 = new DonutSection("Section 9 Name", Color.parseColor("#003333"), (vehicle/totalGoals)*100);
+        DonutSection section10 = new DonutSection("Section 10 Name", Color.parseColor("#FF33FF"), (Other/totalGoals)*100);
+
+        goalChart.setCap(100f);
+        ArrayList<DonutSection> goalAr = new ArrayList();
+        goalAr.add(section1);
+        goalAr.add(section2);
+        goalAr.add(section3);
+        goalAr.add(section4);
+        goalAr.add(section5);
+        goalAr.add(section6);
+        goalAr.add(section7);
+        goalAr.add(section8);
+        goalAr.add(section9);
+        goalAr.add(section10);
+
+        goalChart.submitData(goalAr);
+
+    }
+
+    public void generateExpReport(){
+        float FoodAndDrinks = 0,
+                Shopping = 0,
+                Housing = 0,
+                Transportation = 0,
+                Vehicle = 0,
+                Entertainment = 0,
+                Communication = 0,
+                Financial = 0,
+                Investments = 0,
+                Others = 0;
+
+        expChart = findViewById(R.id.expDpvChart);
+        Cursor res = DB.getExpenseData();
+        float totalExpense = 0;
+
+        while (res.moveToNext()) {
+            totalExpense += res.getFloat(3);
+
+            if (res.getString(1).equals("Shopping"))
+                Shopping = res.getFloat(3);
+            else if (res.getString(1).equals("Housing"))
+                Housing = res.getFloat(3);
+            else if (res.getString(1).equals("Food and drinks"))
+                FoodAndDrinks = res.getFloat(3);
+            else if (res.getString(1).equals("Transportation"))
+                Transportation = res.getFloat(3);
+            else if (res.getString(1).equals("Vehicle"))
+                Vehicle = res.getFloat(3);
+            else if (res.getString(1).equals("Entertainment"))
+                Entertainment = res.getFloat(3);
+            else if (res.getString(1).equals("Communication"))
+                Communication = res.getFloat(3);
+            else if (res.getString(1).equals("Financial"))
+                Financial = res.getFloat(3);
+            else if (res.getString(4).equals("Investments"))
+                Investments = res.getFloat(2);
+            else if (res.getString(4).equals("Others"))
+                Others = res.getFloat(2);
+        }
+
+        DonutSection section1 = new DonutSection("Section 1 Name", Color.parseColor("#f44336"), (FoodAndDrinks/totalExpense)*100);
+        DonutSection section2 = new DonutSection("Section 2 Name", Color.parseColor("#4fb200"), (Housing/totalExpense)*100);
+        DonutSection section3 = new DonutSection("Section 3 Name", Color.parseColor("#3c2ada"), (Transportation/totalExpense)*100);
+        DonutSection section4 = new DonutSection("Section 4 Name", Color.parseColor("#FF6600"), (Vehicle/totalExpense)*100);
+        DonutSection section5 = new DonutSection("Section 5 Name", Color.parseColor("#FFCC00"), (Entertainment/totalExpense)*100);
+        DonutSection section6 = new DonutSection("Section 6 Name", Color.parseColor("#663300"), (Communication/totalExpense)*100);
+        DonutSection section7 = new DonutSection("Section 7 Name", Color.parseColor("#003333"), (Financial/totalExpense)*100);
+        DonutSection section8 = new DonutSection("Section 8 Name", Color.parseColor("#FF33FF"), (Investments/totalExpense)*100);
+        DonutSection section9 = new DonutSection("Section 9 Name", Color.parseColor("#00FFFF"), (Others/totalExpense)*100);
+        DonutSection section10 = new DonutSection("Section 10 Name", Color.parseColor("#9933FF"), (Shopping/totalExpense)*100);
+
+
+        expChart.setCap(100f);
+        ArrayList<DonutSection> ExpAr = new ArrayList();
+        ExpAr.add(section1);
+        ExpAr.add(section2);
+        ExpAr.add(section3);
+        ExpAr.add(section4);
+        ExpAr.add(section5);
+        ExpAr.add(section6);
+        ExpAr.add(section7);
+        ExpAr.add(section8);
+        ExpAr.add(section9);
+        ExpAr.add(section10);
+
+
+        expChart.submitData(ExpAr);
+
     }
 }
 
