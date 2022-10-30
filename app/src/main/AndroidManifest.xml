@@ -14,6 +14,18 @@
         android:theme="@style/Theme.SQLiteApp"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateExpenseDetails"
+            android:exported="false" />
+        <activity
+            android:name=".DisplayExpenseDetails"
+            android:exported="false" />
+        <activity
+            android:name=".Modify_Expense"
+            android:exported="false" />
+        <activity
+            android:name=".ExpenseCategory"
+            android:exported="false" />
+        <activity
             android:name=".Expense"
             android:exported="true">
             <intent-filter>

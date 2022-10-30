@@ -118,12 +118,12 @@ public class Expense extends AppCompatActivity {
     }
 
     public void switchToCategory(View view){
-        Intent switchActivityIntent = new Intent(this, Category.class);
+        Intent switchActivityIntent = new Intent(this, ExpenseCategory.class);
         startActivity(switchActivityIntent);
     }
 
     public void modifyIncome(View view){
-        Intent switchActivityIntent = new Intent(this, Modify_Income.class);
+        Intent switchActivityIntent = new Intent(this, Modify_Expense.class);
         startActivity(switchActivityIntent);
     }
 
@@ -148,17 +148,17 @@ public class Expense extends AppCompatActivity {
 
 
 
-    // dropdown menu methods
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String choice = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(getApplicationContext(), choice, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
+//    // dropdown menu methods
+//    @Override
+//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//        String choice = adapterView.getItemAtPosition(i).toString();
+//        Toast.makeText(getApplicationContext(), choice, Toast.LENGTH_LONG).show();
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//    }
 
     private void initDatePicker(){
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
