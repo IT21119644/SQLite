@@ -89,7 +89,9 @@ public class Expense extends AppCompatActivity {
                         Toast.makeText(Expense.this, "Home is clicked", Toast.LENGTH_SHORT).show();
                         switchToHome();
                     case R.id.nav_expenses:
-                        Toast.makeText(Expense.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Expense.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
+                        switchToExpense();
+                        break;
                     case R.id.nav_income:
                         Toast.makeText(Expense.this, "Income is clicked", Toast.LENGTH_SHORT).show();
                         switchToIncome();
@@ -99,7 +101,9 @@ public class Expense extends AppCompatActivity {
                         switchToBudget();
                         break;
                     case R.id.nav_goals:
-                        Toast.makeText(Expense.this, "Goal is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Expense.this, "Goal is clicked", Toast.LENGTH_SHORT).show();
+                        switchToGoal();
+                        break;
                     case R.id.nav_login:
                         Toast.makeText(Expense.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
                     default:
@@ -110,11 +114,8 @@ public class Expense extends AppCompatActivity {
             }
         });
 
-
-
         initDatePicker();
         btndate.setText(getTodaysDate());
-
 
     }
 
@@ -134,6 +135,17 @@ public class Expense extends AppCompatActivity {
         Intent i = new Intent(this, Income.class);
         startActivity(i);
     }
+
+    public void switchToExpense(){
+        Intent i = new Intent(this, Expense.class);
+        startActivity(i);
+    }
+
+    public void switchToGoal(){
+        Intent i = new Intent(this, GoalHome.class);
+        startActivity(i);
+    }
+
 
     private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();

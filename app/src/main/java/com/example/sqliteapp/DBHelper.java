@@ -203,6 +203,69 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getSingleGoalData(String name){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM GoalData WHERE name = ?", new String[] {name});
+        return cursor;
+    }
+
+    public boolean insertGoalData(String name, String estimated_date, float gaol_amount, String category, String goal_description, float add_savings, String today_date ){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("estimated_date", estimated_date);
+        contentValues.put("gaol_amount", gaol_amount);
+        contentValues.put("category", category);
+        contentValues.put("goal_description", goal_description);
+        contentValues.put("add_savings", add_savings);
+        contentValues.put("today_date", today_date);
+
+
+        long result = DB.insert("GoalData", null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    public boolean updateGoalData(String name, float gaol_amount, String goal_description, float add_savings ){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+//        contentValues.put("estimated_date", estimated_date);
+        contentValues.put("gaol_amount", gaol_amount);
+//        contentValues.put("category", category);
+        contentValues.put("goal_description", goal_description);
+        contentValues.put("add_savings", add_savings);
+        Cursor cursor = DB.rawQuery("Select * from GoalData where name = ?", new String[]{name});
+        if(cursor.getCount()>0) {
+            long result = DB.update("GoalData", contentValues, "name=?", new String[]{name});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        }else{
+            return false;
+        }
+
+
+    }
+
+    public boolean deleteGoalData(String name) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        Cursor cursor = DB.rawQuery("Select * from GoalData where name = ?", new String[]{name});
+        if (cursor.getCount() > 0) {
+            long result = DB.delete("GoalData", "name=?", new String[]{name});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 
 
 

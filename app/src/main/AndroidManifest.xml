@@ -65,6 +65,37 @@
             android:name=".Expense"
             android:exported="false" />
         <activity
+            android:name=".GoalModelClass"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".GoalAdaptor"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".GoalCategory"
+            android:exported="false" />
+        <activity
+            android:name=".ViewGoal"
+            android:exported="false" />
+        <activity
+            android:name=".AddNewGoal"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateGoal"
+            android:exported="false" />
+        <activity
+            android:name=".GoalHome"
+            android:exported="false" />
+        <activity
+            android:name=".Goal"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteGoal"
+            android:exported="false"
+            android:label="@string/title_activity_delete_goal"
+            android:theme="@style/Theme.SQLiteApp.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -73,17 +104,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
-
-    <!--<manifest xmlns:android ="http://schemas.android.com/apk/res/android"
-    >
-    <application>
-    <activity android:name ="com.example.sqliteapp.Update_details"
-    android:exported="false"
-
-     />
-    </application>
-    </manifest>-->
-

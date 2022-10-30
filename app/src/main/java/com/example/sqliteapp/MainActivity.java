@@ -76,7 +76,9 @@ public class MainActivity<createBudget> extends AppCompatActivity {
                         switchToBudget();
                         break;
                     case R.id.nav_goals:
-                        Toast.makeText(MainActivity.this, "Goal is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Goal is clicked", Toast.LENGTH_SHORT).show();
+                        switchToGoal();
+                        break;
                     case R.id.nav_login:
                         Toast.makeText(MainActivity.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
                     default:
@@ -114,6 +116,11 @@ public class MainActivity<createBudget> extends AppCompatActivity {
 
     public void switchToExpense(){
         Intent i = new Intent(this, Expense.class);
+        startActivity(i);
+    }
+
+    public void switchToGoal(){
+        Intent i = new Intent(this, GoalHome.class);
         startActivity(i);
     }
 

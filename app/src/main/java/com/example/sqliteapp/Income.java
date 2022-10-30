@@ -90,13 +90,17 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
                         switchToExpense();
                         break;
                     case R.id.nav_income:
-                        Toast.makeText(Income.this, "Income is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Income.this, "Income is clicked", Toast.LENGTH_SHORT).show();
+                        switchToIncome();
+                        break;
                     case R.id.nav_budget:
                         Toast.makeText(Income.this, "Budget is clicked", Toast.LENGTH_SHORT).show();
                         switchToBudget();
                         break;
                     case R.id.nav_goals:
-                        Toast.makeText(Income.this, "Goal is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Income.this, "Goal is clicked", Toast.LENGTH_SHORT).show();
+                        switchToGoal();
+                        break;
                     case R.id.nav_login:
                         Toast.makeText(Income.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
                     default:
@@ -126,6 +130,17 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
         Intent i = new Intent(this, Expense.class);
         startActivity(i);
     }
+
+    public void switchToIncome(){
+        Intent i = new Intent(this, Income.class);
+        startActivity(i);
+    }
+
+    public void switchToGoal(){
+        Intent i = new Intent(this, GoalHome.class);
+        startActivity(i);
+    }
+
 
     private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
