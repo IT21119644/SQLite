@@ -39,6 +39,9 @@
     <string name="btnSearch">Search Bar</string>
     <string name="date">June 05 2022</string>
     <string name="select">Select category</string>
+    <string name="currentExptxt">Current Expenses</string>
+    <string name="currentEx">0.00</string>
+
 
 
 </resources>

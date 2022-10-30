@@ -127,7 +127,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
     public boolean insertIncomeData(String category, String date, float amount){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -213,6 +212,65 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public boolean insertExpenseData(String category, String date, float amount){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("category", category);
+        contentValues.put("date", date);
+        contentValues.put("amount", amount);
+
+        long result = DB.insert("ExpenseDetails", null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+
+    }
+
+
+    public boolean updateExpense(String itemID, String category, String date, float amount){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("expenseID", itemID);
+        contentValues.put("Category", category);
+        contentValues.put("Date", date);
+        contentValues.put("Amount", amount);
+
+        String query  = "SELECT * FROM ExpenseDetails WHERE expenseID = " + itemID;
+        Cursor cursor = DB.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            long result = DB.update("ExpenseDetails", contentValues, "expenseID=?",new String[]{itemID});
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean deleteExpenseData(int itemID){
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        String query  = "SELECT * FROM ExpenseDetails WHERE expenseID = " + itemID;
+        Cursor cursor = DB.rawQuery(query, null);
+        if(cursor.getCount() > 0){
+            long result = DB.delete("ExpenseDetails","expenseID= "+itemID, null);
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public Cursor getSingleExpenseDataUsingIncomeID(int id){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        String query  = "SELECT * FROM ExpenseDetails WHERE expenseID = " + id;
+        Cursor cursor = DB.rawQuery(query, null);
+        return cursor;
+    }
 }
-
-
