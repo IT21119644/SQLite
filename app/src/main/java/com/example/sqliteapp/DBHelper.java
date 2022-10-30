@@ -15,7 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("CREATE TABLE GoalData(name TEXT PRIMARY KEY, estimated_date TEXT, gaol_amount REAL, category TEXT, goal_description TEXT, add_savings REAL)");
+        DB.execSQL("CREATE TABLE GoalData(name TEXT PRIMARY KEY, estimated_date TEXT, gaol_amount REAL, category TEXT, goal_description TEXT, add_savings REAL, today_date TEXT)");
     }
 
     @Override
@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("DROP TABLE if exists GoalData");
     }
 
-    public boolean insertGoalData(String name, String estimated_date, float gaol_amount, String category, String goal_description, float add_savings ){
+    public boolean insertGoalData(String name, String estimated_date, float gaol_amount, String category, String goal_description, float add_savings, String today_date ){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
@@ -32,6 +32,8 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("category", category);
         contentValues.put("goal_description", goal_description);
         contentValues.put("add_savings", add_savings);
+        contentValues.put("today_date", today_date);
+
 
         long result = DB.insert("GoalData", null, contentValues);
         if(result == -1)
@@ -40,12 +42,12 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public boolean updateGoalData(String name, String estimated_date, float gaol_amount, String category, String goal_description, float add_savings ){
+    public boolean updateGoalData(String name, float gaol_amount, String goal_description, float add_savings ){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("estimated_date", estimated_date);
+//        contentValues.put("estimated_date", estimated_date);
         contentValues.put("gaol_amount", gaol_amount);
-        contentValues.put("category", category);
+//        contentValues.put("category", category);
         contentValues.put("goal_description", goal_description);
         contentValues.put("add_savings", add_savings);
         Cursor cursor = DB.rawQuery("Select * from GoalData where name = ?", new String[]{name});

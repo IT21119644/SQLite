@@ -9,20 +9,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
+
 
 import java.util.Calendar;
 
-public class AddNewGoal extends AppCompatActivity {
+public class AddNewGoal extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText name, goalAmount, goalDescription, addSavings;
     DatePickerDialog datePickerDialog;
     Button create, estimatedDate, category;
     DBHelper DB;
-
     //@SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +39,13 @@ public class AddNewGoal extends AppCompatActivity {
         addSavings = findViewById(R.id.addSavings);
         category = findViewById(R.id.category);
 
-        create = findViewById(R.id.create);
+        Intent i = getIntent();
+        String cat = i.getStringExtra("BtnTxt");
+        if(cat != null){
+            category.setText(cat);
+        }
+
+        create = findViewById(R.id.update);
         DB = new DBHelper(this);
     }
             public void onClick(View view) {
@@ -51,6 +57,8 @@ public class AddNewGoal extends AppCompatActivity {
                 String categorySrc = category.getText().toString();
                 String addSavingsSrc = addSavings.getText().toString();
                 float addSavingsAmount = Float.parseFloat(addSavingsSrc);
+                String todayDate = getTodaysDate();
+
 
                 if( TextUtils.isEmpty(name.getText())){
                     Toast.makeText(AddNewGoal.this, "Please Insert goal name", Toast.LENGTH_LONG).show();
@@ -58,9 +66,9 @@ public class AddNewGoal extends AppCompatActivity {
                     name.setError( "Goal name is required!" );
                 }else{
 
-                Boolean cheackinsertdata = DB.insertGoalData(nameSrc, estimatedDateSrc, goalAmounts, categorySrc, goalDescriptionSrc, addSavingsAmount);
+                Boolean cheackinsertdata = DB.insertGoalData(nameSrc, estimatedDateSrc, goalAmounts, categorySrc, goalDescriptionSrc, addSavingsAmount, todayDate);
                 if(cheackinsertdata){
-                    Toast.makeText(AddNewGoal.this, "New Entry inserted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddNewGoal.this, "New Goal Added", Toast.LENGTH_SHORT).show();
                     name.setText(null);
                     goalAmount.setText(null);
                     goalDescription.setText(null);
@@ -70,13 +78,13 @@ public class AddNewGoal extends AppCompatActivity {
                     Intent switchActivityIntent = new Intent(this, GoalHome.class);
                     startActivity(switchActivityIntent);
                 }else{
-                    Toast.makeText(AddNewGoal.this, "New Entry Not inserted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddNewGoal.this, "Goal Not Added", Toast.LENGTH_SHORT).show();
                 }
                 }
             }
 
 
-    private String getTodaysDate() {
+    public String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
@@ -107,7 +115,7 @@ public class AddNewGoal extends AppCompatActivity {
     }
 
     private String makeDateString(int day, int month, int year) {
-        return day + " " + getMonthFormat(month) + " " + year;
+        return day + "-" + getMonthFormat(month) + "-" + year;
     }
 
 
@@ -151,6 +159,22 @@ public class AddNewGoal extends AppCompatActivity {
         startActivity(switchActivityIntent);
     }
 
+    public void switchToCategory(View view){
+        Intent switchActivityIntent = new Intent(this, Category.class);
+        startActivity(switchActivityIntent);
+    }
+
+    // dropdown menu methods
+
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String choice = adapterView.getItemAtPosition(i).toString();
+        Toast.makeText(getApplicationContext(), choice, Toast.LENGTH_LONG).show();
+    }
+
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+    //
 
     @Override
     protected void onStart() {

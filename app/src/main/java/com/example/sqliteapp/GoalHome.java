@@ -54,12 +54,14 @@ public class GoalHome extends AppCompatActivity {
                 btn.setWidth(5);
                 btn.setHeight(20);
                 btn.setTextSize(25);
+                btn.setAllCaps(false);
                 btn.setPadding(20, 0, 0, 0);
 
                 btn.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
 
 
                 btn.setTextColor(Color.parseColor("#000000"));
+                btn.setBackgroundColor(Color.parseColor("#FEB450"));
 
                 //Get the width of the screen
                 DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -151,7 +153,7 @@ public class GoalHome extends AppCompatActivity {
     View.OnClickListener handleOnClick(final Button button, String heading) {
         return new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(GoalHome.this, "Button is clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GoalHome.this, heading + " is clicked", Toast.LENGTH_SHORT).show();
                 Log.d("gg", "Button clicked");
                 launchViewGoal(heading);
             }

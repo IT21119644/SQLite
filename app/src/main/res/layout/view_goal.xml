@@ -30,7 +30,7 @@
         android:id="@+id/toolbar"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:background="@color/lightgrey"
+        android:background="#B85A3D"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="344dp"
-        android:background="@color/lightgrey"
+        android:background="#B85A3D"
         android:minHeight="48dp"
 
         android:onClick="switchToMainActivity"
@@ -64,15 +64,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="137dp"
-        android:layout_height="137dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="75dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progressBar"-->
+<!--        style="?android:attr/progressBarStyle"-->
+<!--        android:layout_width="137dp"-->
+<!--        android:layout_height="137dp"-->
+<!--        android:layout_marginStart="136dp"-->
+<!--        android:layout_marginTop="75dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/progress_money"
@@ -85,7 +85,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintTop_toBottomOf="@+id/dpvChart" />
 
     <TextView
         android:id="@+id/textView2"
@@ -96,7 +96,7 @@
         android:text="@string/remainingTimeTxt"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_money" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/progress_rem_time"
@@ -109,8 +109,9 @@
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/progress_money" />
+        app:layout_constraintTop_toBottomOf="@+id/goal_date" />
 
     <TextView
         android:id="@+id/textView8"
@@ -143,22 +144,23 @@
         android:layout_height="31dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:text="@string/rateToReachTheGoal"
+        android:text="@string/goalDate"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/progress_money" />
 
     <TextView
-        android:id="@+id/progress_rate"
+        android:id="@+id/goal_date"
         android:layout_width="112dp"
         android:layout_height="29dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:text="@string/rateToReachTheGoalValueTxt"
+        android:text="@string/goalDateValueTxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.987"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/progress_rem_amount" />
+        app:layout_constraintTop_toBottomOf="@+id/progress_money" />
 
     <TextView
         android:id="@+id/textView12"
@@ -169,7 +171,7 @@
         android:text="@string/goalDescriptionTxt"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/goalDesc"
@@ -180,6 +182,7 @@
         android:layout_marginEnd="40dp"
         android:background="@drawable/border"
         android:text=""
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -204,8 +207,35 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="75dp"
         android:backgroundTint="@android:color/holo_red_light"
+        android:onClick="deleteGoal"
         android:text="@string/deleteBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <app.futured.donut.DonutProgressView
+        android:id="@+id/dpvChart"
+        android:layout_width="161dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="108dp"
+        app:donut_gapAngle="270"
+        app:donut_gapWidth="20"
+        app:donut_strokeWidth="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/remainingPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/dpvChart"
+        app:layout_constraintEnd_toEndOf="@+id/dpvChart"
+        app:layout_constraintStart_toStartOf="@+id/dpvChart"
+        app:layout_constraintTop_toTopOf="@+id/dpvChart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

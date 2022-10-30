@@ -30,13 +30,24 @@
         android:id="@+id/toolbar"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:background="@color/lightgrey"
+        android:background="#B85A3D"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="           Add New Goal"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/GoalHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="208dp"
+        android:text="@string/display_goal_viewTxt"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -44,14 +55,14 @@
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="344dp"
-        android:background="@color/lightgrey"
+        android:background="#B85A3D"
+        android:contentDescription="@string/back_img_btn"
         android:minHeight="48dp"
         android:onClick="switchToMainActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:contentDescription="@string/back_img_btn" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
     <EditText
@@ -105,10 +116,11 @@
 
     <Button
         android:id="@+id/category"
-        android:layout_width="132dp"
-        android:layout_height="48dp"
+        android:layout_width="179dp"
+        android:layout_height="58dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
+        android:onClick="switchToCategory"
         android:text="@string/categoryBtnTxt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goalAmount" />
@@ -188,7 +200,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/create"
+        android:id="@+id/update"
         android:layout_width="115dp"
         android:layout_height="45dp"
         android:layout_marginEnd="150dp"
