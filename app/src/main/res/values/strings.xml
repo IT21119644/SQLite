@@ -13,6 +13,7 @@
     <string name="btnModiEx">Update</string>
     <string name="btnSearch">Search Bar</string>
     <string name="date">June 05 2022</string>
-
+    <string name="select">Select category</string>
+    
 
 </resources>

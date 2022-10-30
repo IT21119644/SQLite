@@ -105,4 +105,12 @@ public class DisplayIncomeDetails extends AppCompatActivity {
         i.putStringArrayListExtra("COOL", myArrList);
         startActivity(i);
     }
+
+    public void switchToUpdateIncome(View v){
+        Intent switchActivityIntent = new Intent(this, Update_details.class);
+        switchActivityIntent.putExtra("category", category);
+        switchActivityIntent.putExtra("date", date);
+        switchActivityIntent.putExtra("amount", String.valueOf(amount));
+        startActivity(switchActivityIntent);
+    }
 }

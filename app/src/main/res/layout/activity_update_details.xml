@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Update_details"
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:background="@drawable/purple_background">
-
 
 
   <TextView
@@ -15,7 +15,7 @@
       android:layout_width="123dp"
       android:layout_height="45dp"
       android:layout_marginStart="36dp"
-      android:layout_marginTop="24dp"
+      android:layout_marginTop="20dp"
       android:text="@string/amounttxt"
       android:textColor="#1A2FA5"
       android:textSize="20sp"
@@ -32,7 +32,7 @@
       android:textColor="#1A2FA5"
       android:textSize="20sp"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/catBtn" />
+      app:layout_constraintTop_toBottomOf="@+id/category_u" />
 
   <com.google.android.material.appbar.AppBarLayout
       android:layout_width="match_parent"
@@ -50,12 +50,26 @@
       app:title="Update"
       tools:ignore="MissingConstraints" />
 
+
+  <!-- <Button
+       android:id="@+id/catBtn"
+       android:layout_width="168dp"
+       android:layout_height="48dp"
+       android:layout_marginStart="108dp"
+       android:layout_marginTop="4dp"
+       android:onClick="switchToCategory"
+       android:text="@string/btncategory"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/category_u" />-->
+
+
+
   <TextView
       android:id="@+id/category_u"
       android:layout_width="123dp"
       android:layout_height="45dp"
-      android:layout_marginStart="36dp"
-      android:layout_marginTop="36dp"
+      android:layout_marginStart="40dp"
+      android:layout_marginTop="20dp"
       android:text="@string/category_m"
       android:textColor="#1A2FA5"
       android:textSize="20sp"
@@ -63,21 +77,12 @@
       app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
 
   <Button
-      android:id="@+id/catBtn"
-      android:layout_width="168dp"
-      android:layout_height="48dp"
-      android:layout_marginStart="108dp"
-      android:layout_marginTop="4dp"
-      android:text="@string/btncategory"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/category_u" />
-
-  <Button
       android:id="@+id/btndate"
       android:layout_width="171dp"
       android:layout_height="48dp"
-      android:layout_marginStart="108dp"
-      android:layout_marginTop="4dp"
+      android:layout_marginStart="132dp"
+      android:layout_marginTop="24dp"
+      android:onClick="openDatePicker"
       android:text="@string/date"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/date_u" />
@@ -86,13 +91,15 @@
       android:id="@+id/amount_update"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="100dp"
-      android:layout_marginTop="16dp"
+      android:layout_marginStart="108dp"
+      android:layout_marginTop="32dp"
+      android:background="@drawable/border"
       android:ems="10"
       android:inputType="textPersonName"
       android:minHeight="48dp"
       android:text="@string/amount"
       android:textAlignment="center"
+      android:textColor="@color/black"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/amount_u" />
 
@@ -100,12 +107,22 @@
       android:id="@+id/updateBtn"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="36dp"
-      android:layout_marginTop="72dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="44dp"
       android:backgroundTint="#5FD564"
       android:text="@string/btnModiEx"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/amount_update" />
+
+  <TextView
+      android:id="@+id/tablecat"
+      android:layout_width="117dp"
+      android:layout_height="29dp"
+      android:layout_marginStart="156dp"
+      android:layout_marginTop="8dp"
+      android:text="@string/category_m"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/category_u" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

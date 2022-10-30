@@ -113,7 +113,7 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
-        month +=1;
+        month = month+1;
         int day = cal.get(Calendar.DAY_OF_MONTH);
         return makeDateString(day, month, year);
     }
@@ -164,7 +164,7 @@ public class Income extends AppCompatActivity implements AdapterView.OnItemSelec
     private void initDatePicker(){
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int month, int day, int year) {
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month+1;
                 String sDate = makeDateString(day,month,year);
                 btndate.setText(sDate);
