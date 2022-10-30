@@ -41,11 +41,6 @@ public class DeleteGoal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String nameSrc = name.getText().toString();
-//                float goalAmountSrc = goalAmount.getAlpha();
-//                String goalDescriptionSrc = goalDescription.getText().toString();
-//                String estimatedDateSrc = estimatedDate.getText().toString();
-//                String categorySrc = category.getText().toString();
-//                float addSavingsSrc = addSavings.getAlpha();
 
                 Boolean checkdeletedata = DB.deleteGoalData(nameSrc);
                 if(checkdeletedata==true){
