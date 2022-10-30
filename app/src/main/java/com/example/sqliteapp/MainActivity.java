@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -69,7 +70,9 @@ public class MainActivity<createBudget> extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_budget:
-                        Toast.makeText(MainActivity.this, "Budget is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Budget is clicked", Toast.LENGTH_SHORT).show();
+                        switchToBudget();
+                        break;
                     case R.id.nav_goals:
                         Toast.makeText(MainActivity.this, "Goal is clicked", Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_login:
@@ -85,7 +88,7 @@ public class MainActivity<createBudget> extends AppCompatActivity {
         generateGoalChart();
         generateExpReport();
 
-        //notification when the budget is reached
+//        notification when the budget is reached
 //        if(balancePercentage == 100f){
 //            try {
 //                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -95,6 +98,11 @@ public class MainActivity<createBudget> extends AppCompatActivity {
 //                e.printStackTrace();
 //            }
 //        }
+    }
+
+    public void switchToBudget(){
+        Intent i = new Intent(this, Budget.class);
+        startActivity(i);
     }
 
     public void generateIncomeChart(){

@@ -3,13 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_category.xml" value="0.2129115006412997" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_display_income_details.xml" value="0.2129115006412997" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_budget.xml" value="0.2099187687045746" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_category.xml" value="0.18554938007695596" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_create_budget_ui.xml" value="0.22333333333333336" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_display_budget.xml" value="0.25" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_expenses.xml" value="0.22333333333333336" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_modify_income.xml" value="0.2129115006412997" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/item_list.xml" value="0.2129115006412997" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/nav_header.xml" value="0.259375" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_test.xml" value="0.18554938007695596" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_update_budget.xml" value="0.2129115006412997" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/fragment_blank.xml" value="0.18554938007695596" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/nav_header.xml" value="0.2129115006412997" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/menu/my_navigation.xml" value="0.2129115006412997" />
       </map>
     </option>

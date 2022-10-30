@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -31,58 +33,25 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("DROP TABLE if exists ExpenseDetails");
     }
 
-    public boolean insertUserData(String ID, String name){
+    public boolean insertBudgetData(String BudName, String date, float amount, String currency, String category, int almostComplete, int overspent, String startDate, float currentAmount){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("ID", ID);
-        contentValues.put("name", name);
+        contentValues.put("BudgetName", BudName);
+        contentValues.put("Date", date);
+        contentValues.put("Amount", amount);
+        contentValues.put("Currency", currency);
+        contentValues.put("Category", category);
+        contentValues.put("almostComplete", almostComplete);
+        contentValues.put("overspent", overspent);
+        contentValues.put("startDate", startDate);
+        contentValues.put("currentAmount", currentAmount);
 
-        long result = DB.insert("UserDetails", null, contentValues);
+
+        long result = DB.insert("BudgetDetails", null, contentValues);
         if(result == -1)
             return false;
         else
             return true;
-    }
-
-    public boolean updateUserData(String ID, String name){
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("ID", ID);
-        contentValues.put("name", name);
-
-        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails WHERE id = ?", new String[] {ID});
-        if(cursor.getCount() > 0){
-            long result = DB.update("UserDetails", contentValues, "ID=?", new String[] {ID});
-            if(result == -1)
-                return false;
-            else
-                return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public boolean deleteUserData(String ID){
-        SQLiteDatabase DB = this.getWritableDatabase();
-
-        Cursor cursor = DB.rawQuery("SELECT * FROM UserDetails WHERE ID = ?", new String[] {ID});
-        if(cursor.getCount() > 0){
-            long result = DB.delete("UserDetails","ID=?", new String[] {ID});
-            if(result == -1)
-                return false;
-            else
-                return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public Cursor getExpenseData(){
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM ExpenseDetails", null);
-        return cursor;
     }
 
     public Cursor getBudgetData(){
@@ -100,6 +69,66 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getSingleBudgetDataUsingCategory(String category){
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
+        return cursor;
+    }
+
+    public boolean deleteBudgetData(String category){
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
+        if(cursor.getCount() > 0){
+            long result = DB.delete("BudgetDetails","Category=?", new String[] {category});
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean updateBudgetCurrBalance(float newCurrAmt, String category){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("currentAmount", newCurrAmt);
+
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE  Category= ?", new String[] {category});
+        if(cursor.getCount() > 0){
+            long result = DB.update("BudgetDetails", contentValues, "BudCategory=?", new String[] {category});
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean updateBudget(String category, float amt, String compDate, String BName){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("BudgetName", BName);
+        contentValues.put("Amount", amt);
+        contentValues.put("Date", compDate);
+
+        Cursor cursor = DB.rawQuery("SELECT * FROM BudgetDetails WHERE Category = ?", new String[] {category});
+        if(cursor.getCount() > 0){
+            long result = DB.update("BudgetDetails", contentValues, "BudCategory=?", new String[] {category});
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public Cursor getExpenseData(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM ExpenseDetails", null);
         return cursor;
     }
 

@@ -11,8 +11,29 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SQLiteApp"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".UpdateBudget"
+            android:exported="false" />
+        <activity
+            android:name=".BudCategory"
+            android:exported="false" />
+        <activity
+            android:name=".DisplayBudget"
+            android:exported="false" />
+        <activity
+            android:name=".CreateBudgetUI"
+            android:exported="false" />
+        <activity
+            android:name=".BudExpenses"
+            android:exported="false" />
+        <activity
+            android:name=".Budget"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
