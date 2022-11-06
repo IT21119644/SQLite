@@ -169,6 +169,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/border"
         android:ems="10"
+        android:text="0"
         android:inputType="numberDecimal"
         android:paddingLeft="5dp"
         app:layout_constraintStart_toStartOf="parent"
