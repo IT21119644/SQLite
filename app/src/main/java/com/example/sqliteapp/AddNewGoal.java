@@ -61,9 +61,12 @@ public class AddNewGoal extends AppCompatActivity implements AdapterView.OnItemS
 
 
                 if( TextUtils.isEmpty(name.getText())){
-                    Toast.makeText(AddNewGoal.this, "Please Insert goal name", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(AddNewGoal.this, "Please Insert goal name", Toast.LENGTH_LONG).show();
 
                     name.setError( "Goal name is required!" );
+
+                }else if(goalAmounts == 0){
+                    goalAmount.setError( "Goal amount is required!" );
                 }else{
 
                 Boolean cheackinsertdata = DB.insertGoalData(nameSrc, estimatedDateSrc, goalAmounts, categorySrc, goalDescriptionSrc, addSavingsAmount, todayDate);

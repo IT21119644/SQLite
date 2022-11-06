@@ -3,8 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/drawable/walletLogo_background.xml" value="0.1565" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_budcategory.xml" value="0.2129115006412997" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_budexpenses.xml" value="0.15946985891406584" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_budget.xml" value="0.2099187687045746" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_category.xml" value="0.18554938007695596" />
@@ -20,8 +18,7 @@
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_modify_expense.xml" value="0.16666666666666666" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_test.xml" value="0.18554938007695596" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_update_budget.xml" value="0.22333333333333336" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_update_details.xml" value="0.2129115006412997" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_update_budget.xml" value="0.2129115006412997" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_update_expense_details.xml" value="0.2129115006412997" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/fragment_blank.xml" value="0.18554938007695596" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/goal_activity_category.xml" value="0.2129115006412997" />
@@ -29,9 +26,11 @@
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/nav_header.xml" value="0.2129115006412997" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/update_goal.xml" value="0.2129115006412997" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/menu/my_navigation.xml" value="0.2129115006412997" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2645" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/mipmap-anydpi-v26/wallet.xml" value="0.1" />
-        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/mipmap-anydpi-v26/walletLogo.xml" value="0.1" />
+        <entry key="..\:/Users/chabi/Desktop/MADPROJECT/app/src/main/res/drawable/custom_btn.xml" value="0.218" />
+        <entry key="..\:/Users/chabi/Desktop/MADPROJECT/app/src/main/res/layout/activity_update_budget.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/chabi/Desktop/MADPROJECT/app/src/main/res/layout/new_goal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/chabi/Desktop/MADPROJECT/app/src/main/res/layout/test.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/chabi/Desktop/MADPROJECT/app/src/main/res/layout/update_goal.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
