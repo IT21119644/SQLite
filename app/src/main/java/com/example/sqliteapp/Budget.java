@@ -148,7 +148,9 @@ public class Budget extends AppCompatActivity {
                         switchToGoal();
                         break;
                     case R.id.nav_login:
-                        Toast.makeText(Budget.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Budget.this, "Login is clicked", Toast.LENGTH_SHORT).show();
+                        switchToLogin();
+                        break;
                     default:
                         return true;
                 }
@@ -170,6 +172,11 @@ public class Budget extends AppCompatActivity {
     public void switchToExpenses(){
         Intent switchActivityIntent = new Intent(this, Expense.class);
         startActivity(switchActivityIntent);
+    }
+
+    public void switchToLogin(){
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
     public void switchToGoal(){

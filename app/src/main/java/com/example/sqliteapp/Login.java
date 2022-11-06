@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
                     PIN.setText(null);
 
                     //move to success page
-                    Intent i = new Intent(this, Homelog.class);
+                    Intent i = new Intent(this, MainActivity.class);
                     startActivity(i);
                 }
                 else{

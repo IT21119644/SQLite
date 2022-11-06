@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/drawable/walletLogo_background.xml" value="0.1565" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_budexpenses.xml" value="0.15946985891406584" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_budget.xml" value="0.2099187687045746" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/activity_category.xml" value="0.18554938007695596" />
@@ -26,6 +27,9 @@
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/nav_header.xml" value="0.2129115006412997" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/layout/update_goal.xml" value="0.2129115006412997" />
         <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/menu/my_navigation.xml" value="0.2129115006412997" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2645" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/mipmap-anydpi-v26/wallet.xml" value="0.1" />
+        <entry key="..\:/SLIIT/year 02 sem 02/MAD_Labs/MADSQLite/app/src/main/res/mipmap-anydpi-v26/walletLogo.xml" value="0.1" />
       </map>
     </option>
   </component>

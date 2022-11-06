@@ -137,7 +137,9 @@ public class GoalHome extends AppCompatActivity {
                         launchGoalHome();
                         break;
                     case R.id.nav_login:
-                        Toast.makeText(GoalHome.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(GoalHome.this, "Login is clicked", Toast.LENGTH_SHORT).show();
+                        switchToLogin();
+                        break;
                     default:
                         return true;
 
@@ -155,6 +157,11 @@ public class GoalHome extends AppCompatActivity {
 
     public void switchToHome(){
         Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void switchToLogin(){
+        Intent i = new Intent(this, Login.class);
         startActivity(i);
     }
 

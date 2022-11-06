@@ -105,7 +105,9 @@ public class Expense extends AppCompatActivity {
                         switchToGoal();
                         break;
                     case R.id.nav_login:
-                        Toast.makeText(Expense.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(Expense.this, "Login is clicked", Toast.LENGTH_SHORT).show();
+                        switchToLogin();
+                        break;
                     default:
                         return true;
 
@@ -145,6 +147,11 @@ public class Expense extends AppCompatActivity {
         Intent i = new Intent(this, GoalHome.class);
         startActivity(i);
     }
+    public void switchToLogin(){
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
+    }
+
 
 
     private String getTodaysDate() {
