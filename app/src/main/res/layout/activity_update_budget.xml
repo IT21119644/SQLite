@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UpdateBudget"
-    android:background="@drawable/background">
+    android:background="@drawable/purple_back">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -135,11 +135,12 @@
         android:layout_marginStart="152dp"
         android:layout_marginTop="56dp"
         android:background="@color/brightgreen"
+        app:backgroundTint="@color/brightgreen"
         android:onClick="onClickSave"
         android:text="@string/save_btn_text"
         android:textColor="#37474F"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePickerBtn" />
-
+        app:layout_constraintTop_toBottomOf="@+id/datePickerBtn"
+        tools:ignore="UsingOnClickInXml" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

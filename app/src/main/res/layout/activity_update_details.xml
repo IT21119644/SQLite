@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Update_details"
     android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
-    android:background="@drawable/purple_background">
+    android:background="@drawable/purple_back">
 
 
   <TextView
