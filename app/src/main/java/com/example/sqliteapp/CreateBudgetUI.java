@@ -73,12 +73,19 @@ public class CreateBudgetUI extends AppCompatActivity {
         String todayDate = dp.getTodaysDate();
         float currentAmt = 0;
 
-
-        if( TextUtils.isEmpty(BName.getText())){
-            Toast.makeText(CreateBudgetUI.this, "Please Insert budget name", Toast.LENGTH_LONG).show();
-
+        if(TextUtils.isEmpty(BName.getText())){
+            Toast.makeText(CreateBudgetUI.this, "Please Insert budget details", Toast.LENGTH_LONG).show();
             BName.setError( "Budget name is required!" );
         }
+        else if(category.equals("None")){
+            Toast.makeText(CreateBudgetUI.this, "Please Insert budget details", Toast.LENGTH_LONG).show();
+            Bcategory.setError( "Budget category is required!" );
+        }
+        else if(amountStr.equals("0")){
+            Toast.makeText(CreateBudgetUI.this, "Please Insert budget details", Toast.LENGTH_LONG).show();
+            BAmount.setError( "Budget name is required!" );
+        }
+
         else{
             boolean checkInsertData = DB.insertBudgetData(name, date, amount, "LKR", category, 1, 1, todayDate, currentAmt);
             if(checkInsertData){

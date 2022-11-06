@@ -46,12 +46,17 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("startDate", startDate);
         contentValues.put("currentAmount", currentAmount);
 
-
-        long result = DB.insert("BudgetDetails", null, contentValues);
-        if(result == -1)
+        if(BudName == null || category == null || amount == 0){
             return false;
-        else
-            return true;
+        }
+        else{
+            long result = DB.insert("BudgetDetails", null, contentValues);
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+
     }
 
     public Cursor getBudgetData(){
