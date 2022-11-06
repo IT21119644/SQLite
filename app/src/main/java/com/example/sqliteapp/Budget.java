@@ -62,18 +62,18 @@ public class Budget extends AppCompatActivity {
 
                 if(categories.get(j).equals("Shopping") || categories.get(j).equals("Housing"))
                     btn.setBackgroundColor(Color.parseColor("#FEB450"));
-                else if(categories.get(j).equals("Food and drinks") || categories.get(j).equals("Entertainment"))
+                else if(categories.get(j).equals("Food & Drinks") || categories.get(j).equals("Life & Entertainment"))
                     btn.setBackgroundColor(Color.parseColor("#EE5F5F"));
-                else if(categories.get(j).equals("Health"))
+                else if(categories.get(j).equals("Vehicle"))
                     btn.setBackgroundColor(Color.parseColor("#FBEE4A"));
-                else if(categories.get(j).equals("Transport"))
+                else if(categories.get(j).equals("Transportation"))
                     btn.setBackgroundColor(Color.parseColor("#57C7F1"));
-                else if(categories.get(j).equals("Communication"))
+                else if(categories.get(j).equals("Communication, PC"))
                     btn.setBackgroundColor(Color.parseColor("#E668FA"));
-                else if(categories.get(j).equals("Investments"))
+                else if(categories.get(j).equals("Investments") || categories.get(j).equals("Financial Expenses"))
                     btn.setBackgroundColor(Color.parseColor("#42E375"));
-
-                btn.setTextColor(Color.parseColor("#000000"));
+                else if(categories.get(j).equals("Others"))
+                    btn.setBackgroundColor(Color.parseColor("#F6E315"));
 
                 //Get the width of the screen
                 DisplayMetrics displayMetrics = new DisplayMetrics();
