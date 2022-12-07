@@ -31,11 +31,11 @@
 
         <app.futured.donut.DonutProgressView
             android:id="@+id/incDpvChart"
-            android:layout_width="155dp"
-            android:layout_height="157dp"
+            android:layout_width="173dp"
+            android:layout_height="173dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="19dp"
+            android:layout_marginStart="11dp"
             android:layout_marginTop="107dp"
             app:donut_gapAngle="270"
             app:donut_gapWidth="0"
@@ -59,11 +59,11 @@
 
         <app.futured.donut.DonutProgressView
             android:id="@+id/budDpvChart"
-            android:layout_width="160dp"
-            android:layout_height="161dp"
+            android:layout_width="168dp"
+            android:layout_height="172dp"
             android:layout_below="@+id/button2"
-            android:layout_marginStart="39dp"
-            android:layout_marginTop="105dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="106dp"
             android:layout_toEndOf="@+id/goalDpvChart"
             app:donut_gapAngle="270"
             app:donut_gapWidth="0"
@@ -72,8 +72,8 @@
 
         <app.futured.donut.DonutProgressView
             android:id="@+id/goalDpvChart"
-            android:layout_width="161dp"
-            android:layout_height="152dp"
+            android:layout_width="170dp"
+            android:layout_height="173dp"
             android:layout_below="@+id/incDpvChart"
             android:layout_alignParentStart="true"
             android:layout_marginStart="16dp"
@@ -89,8 +89,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/incDpvChart"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="33dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="14dp"
             android:onClick="ModifyIncome"
             android:text="Income Details" />
 
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/expDpvChart"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="23dp"
             android:layout_toEndOf="@+id/button"
             android:onClick="ModifyExpense"
             android:text="Expense Details" />
@@ -136,7 +136,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/my_navigation"/>
+        app:menu="@menu/my_navigation" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
