@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,5 +61,10 @@ public class ExpenseCategory extends AppCompatActivity {
         adaptor= new ExpenseAdapter(userList);
         recyclerView.setAdapter(adaptor);
         adaptor.notifyDataSetChanged();
+    }
+
+    public void backToExpense(View v){
+        Intent i = new Intent(this, Expense.class);
+        startActivity(i);
     }
 }

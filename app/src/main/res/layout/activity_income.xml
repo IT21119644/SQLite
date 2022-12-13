@@ -95,7 +95,7 @@
             android:contentDescription="@string/btnOk"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:onClick="switchToCategory"
+            android:onClick="clearInput"
             app:srcCompat="@drawable/ic_baseline_clear_24"
             tools:ignore="UsingOnClickInXml" />
 

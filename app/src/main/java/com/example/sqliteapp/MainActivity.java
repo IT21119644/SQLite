@@ -29,10 +29,7 @@ import java.util.List;
 import app.futured.donut.DonutProgressView;
 import app.futured.donut.DonutSection;
 
-public class MainActivity<createBudget> extends AppCompatActivity {
-    EditText ID, name;
-    TextView tv;
-    Button insert, read, update, delete;
+public class MainActivity extends AppCompatActivity {
     DBHelper DB;
     DonutProgressView incChart, expChart, goalChart, budChart;
 
@@ -45,7 +42,7 @@ public class MainActivity<createBudget> extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
-        tv = findViewById(R.id.amnt);
+//        tv = findViewById(R.id.amnt);
 
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
@@ -62,26 +59,28 @@ public class MainActivity<createBudget> extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch(id){
                     case R.id.nav_home:
-                        Toast.makeText(MainActivity.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
+//                        Toast.makeText(MainActivity.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
+                        switchIntent(MainActivity.class);
+                        break;
                     case R.id.nav_expenses:
-                        Toast.makeText(MainActivity.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
-                        switchToExpense();
+//                        Toast.makeText(MainActivity.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Expense.class);
                         break;
                     case R.id.nav_income:
-                        Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();
-                        switchToIncome();
+//                        Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Income.class);
                         break;
                     case R.id.nav_budget:
-                        Toast.makeText(MainActivity.this, "Budget is clicked", Toast.LENGTH_SHORT).show();
-                        switchToBudget();
+//                        Toast.makeText(MainActivity.this, "Budget is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Budget.class);
                         break;
                     case R.id.nav_goals:
-                        Toast.makeText(MainActivity.this, "Goal is clicked", Toast.LENGTH_SHORT).show();
-                        switchToGoal();
+//                        Toast.makeText(MainActivity.this, "Goal is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(GoalHome.class);
                         break;
                     case R.id.nav_login:
-                        Toast.makeText(MainActivity.this, "Login is clicked", Toast.LENGTH_SHORT).show();
-                        switchToLogin();
+//                        Toast.makeText(MainActivity.this, "Login is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Login.class);
                         break;
                     default:
                         return true;
@@ -106,28 +105,8 @@ public class MainActivity<createBudget> extends AppCompatActivity {
 //        }
     }
 
-    public void switchToBudget(){
-        Intent i = new Intent(this, Budget.class);
-        startActivity(i);
-    }
-
-    public void switchToIncome(){
-        Intent i = new Intent(this, Income.class);
-        startActivity(i);
-    }
-
-    public void switchToExpense(){
-        Intent i = new Intent(this, Expense.class);
-        startActivity(i);
-    }
-
-    public void switchToGoal(){
-        Intent i = new Intent(this, GoalHome.class);
-        startActivity(i);
-    }
-
-    public void switchToLogin(){
-        Intent i = new Intent(this, Login.class);
+    public void switchIntent(Class<?> cls){
+        Intent i = new Intent(this, cls);
         startActivity(i);
     }
 

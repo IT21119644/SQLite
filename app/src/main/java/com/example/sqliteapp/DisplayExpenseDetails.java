@@ -112,4 +112,9 @@ public class DisplayExpenseDetails extends AppCompatActivity {
         switchActivityIntent.putExtra("amount", String.valueOf(amount));
         startActivity(switchActivityIntent);
     }
+
+    public void switchToModifyExpense(View v){
+        Intent i = new Intent(this, Modify_Expense.class);
+        startActivity(i);
+    }
 }

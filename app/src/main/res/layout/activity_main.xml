@@ -29,103 +29,126 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <app.futured.donut.DonutProgressView
-            android:id="@+id/incDpvChart"
-            android:layout_width="173dp"
-            android:layout_height="173dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="107dp"
-            app:donut_gapAngle="270"
-            app:donut_gapWidth="0"
-            app:donut_strokeCap="butt"
-            app:donut_strokeWidth="40dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <app.futured.donut.DonutProgressView
-            android:id="@+id/expDpvChart"
-            android:layout_width="159dp"
-            android:layout_height="150dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="108dp"
-            android:layout_marginEnd="26dp"
-            android:layout_toEndOf="@+id/incDpvChart"
-            app:donut_gapAngle="270"
-            app:donut_gapWidth="0"
-            app:donut_strokeCap="butt"
-            app:donut_strokeWidth="40dp" />
+            <app.futured.donut.DonutProgressView
+                android:id="@+id/incDpvChart"
+                android:layout_width="109dp"
+                android:layout_height="117dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="92dp"
+                app:donut_gapAngle="270"
+                app:donut_gapWidth="0"
+                app:donut_strokeCap="butt"
+                app:donut_strokeWidth="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.646"
+                app:layout_constraintStart_toEndOf="@+id/goalDpvChart"
+                app:layout_constraintTop_toBottomOf="@+id/button2" />
 
-        <app.futured.donut.DonutProgressView
-            android:id="@+id/budDpvChart"
-            android:layout_width="168dp"
-            android:layout_height="172dp"
-            android:layout_below="@+id/button2"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="106dp"
-            android:layout_toEndOf="@+id/goalDpvChart"
-            app:donut_gapAngle="270"
-            app:donut_gapWidth="0"
-            app:donut_strokeCap="butt"
-            app:donut_strokeWidth="40dp" />
+            <app.futured.donut.DonutProgressView
+                android:id="@+id/expDpvChart"
+                android:layout_width="109dp"
+                android:layout_height="117dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="112dp"
+                android:layout_toEndOf="@+id/incDpvChart"
+                app:donut_gapAngle="270"
+                app:donut_gapWidth="0"
+                app:donut_strokeCap="butt"
+                app:donut_strokeWidth="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.254"
+                app:layout_constraintStart_toEndOf="@+id/budDpvChart"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <app.futured.donut.DonutProgressView
-            android:id="@+id/goalDpvChart"
-            android:layout_width="170dp"
-            android:layout_height="173dp"
-            android:layout_below="@+id/incDpvChart"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="185dp"
-            app:donut_gapAngle="270"
-            app:donut_gapWidth="0"
-            app:donut_strokeCap="butt"
-            app:donut_strokeWidth="40dp" />
+            <app.futured.donut.DonutProgressView
+                android:id="@+id/budDpvChart"
+                android:layout_width="109dp"
+                android:layout_height="117dp"
+                android:layout_below="@+id/button2"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="112dp"
+                android:layout_toEndOf="@+id/goalDpvChart"
+                app:donut_gapAngle="270"
+                app:donut_gapWidth="0"
+                app:donut_strokeCap="butt"
+                app:donut_strokeWidth="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="138dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/incDpvChart"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="14dp"
-            android:onClick="ModifyIncome"
-            android:text="Income Details" />
+            <app.futured.donut.DonutProgressView
+                android:id="@+id/goalDpvChart"
+                android:layout_width="109dp"
+                android:layout_height="117dp"
+                android:layout_below="@+id/incDpvChart"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="92dp"
+                app:donut_gapAngle="270"
+                app:donut_gapWidth="0"
+                app:donut_strokeCap="butt"
+                app:donut_strokeWidth="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button4" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="153dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/expDpvChart"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="23dp"
-            android:layout_toEndOf="@+id/button"
-            android:onClick="ModifyExpense"
-            android:text="Expense Details" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="175dp"
+                android:layout_height="57dp"
+                android:layout_below="@+id/incDpvChart"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="20dp"
+                android:onClick="ModifyIncome"
+                android:text="Income Details"
+                app:layout_constraintStart_toEndOf="@+id/button3"
+                app:layout_constraintTop_toBottomOf="@+id/incDpvChart" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/goalDpvChart"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="34dp"
-            android:layout_marginBottom="-79dp"
-            android:onClick="switchToGoal"
-            android:text="Goal Details" />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="171dp"
+                android:layout_height="56dp"
+                android:layout_below="@+id/expDpvChart"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_toEndOf="@+id/button"
+                android:onClick="ModifyExpense"
+                android:text="Expense Details"
+                app:layout_constraintStart_toEndOf="@+id/button4"
+                app:layout_constraintTop_toBottomOf="@+id/expDpvChart" />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="158dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/budDpvChart"
-            android:layout_marginStart="53dp"
-            android:layout_marginTop="26dp"
-            android:layout_toEndOf="@+id/button3"
-            android:onClick="switchToBudget"
-            android:text="Budget Details" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="153dp"
+                android:layout_height="57dp"
+                android:layout_alignBottom="@+id/goalDpvChart"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:onClick="switchToGoal"
+                android:text="Goal Details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goalDpvChart" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="176dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:onClick="switchToBudget"
+                android:text="Budget Details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/budDpvChart" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </RelativeLayout>

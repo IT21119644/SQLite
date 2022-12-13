@@ -64,7 +64,7 @@ public class Modify_Expense extends AppCompatActivity {
                 buttonLayoutParams.width = buttonWidth;
 
                 if(j == 0)
-                    buttonLayoutParams.setMargins(80, 300, 80, 0);
+                    buttonLayoutParams.setMargins(80, 50, 80, 0);
                 else
                     buttonLayoutParams.setMargins(80, 20, 80, 0);
 
@@ -96,5 +96,10 @@ public class Modify_Expense extends AppCompatActivity {
         switchActivityIntent.putExtra("BName", heading);
         switchActivityIntent.putExtra("incID", String.valueOf(id));
         startActivity(switchActivityIntent);
+    }
+
+    public void switchToExpense(View v){
+        Intent i = new Intent(this, Expense.class);
+        startActivity(i);
     }
 }

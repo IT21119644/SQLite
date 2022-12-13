@@ -86,27 +86,28 @@ public class Expense extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch(id){
                     case R.id.nav_home:
-                        Toast.makeText(Expense.this, "Home is clicked", Toast.LENGTH_SHORT).show();
-                        switchToHome();
+//                        Toast.makeText(MainActivity.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
+                        switchIntent(MainActivity.class);
+                        break;
                     case R.id.nav_expenses:
-                        Toast.makeText(Expense.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
-                        switchToExpense();
+//                        Toast.makeText(MainActivity.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Expense.class);
                         break;
                     case R.id.nav_income:
-                        Toast.makeText(Expense.this, "Income is clicked", Toast.LENGTH_SHORT).show();
-                        switchToIncome();
+//                        Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Income.class);
                         break;
                     case R.id.nav_budget:
-                        Toast.makeText(Expense.this, "Budget is clicked", Toast.LENGTH_SHORT).show();
-                        switchToBudget();
+//                        Toast.makeText(MainActivity.this, "Budget is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Budget.class);
                         break;
                     case R.id.nav_goals:
-                        Toast.makeText(Expense.this, "Goal is clicked", Toast.LENGTH_SHORT).show();
-                        switchToGoal();
+//                        Toast.makeText(MainActivity.this, "Goal is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(GoalHome.class);
                         break;
                     case R.id.nav_login:
-                        Toast.makeText(Expense.this, "Login is clicked", Toast.LENGTH_SHORT).show();
-                        switchToLogin();
+//                        Toast.makeText(MainActivity.this, "Login is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Login.class);
                         break;
                     default:
                         return true;
@@ -120,39 +121,10 @@ public class Expense extends AppCompatActivity {
         btndate.setText(getTodaysDate());
 
     }
-
-    public void switchToBudget(){
-        Intent i = new Intent(this, Budget.class);
+    public void switchIntent(Class<?> cls){
+        Intent i = new Intent(this, cls);
         startActivity(i);
     }
-
-
-    public void switchToHome(){
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
-    }
-
-
-    public void switchToIncome(){
-        Intent i = new Intent(this, Income.class);
-        startActivity(i);
-    }
-
-    public void switchToExpense(){
-        Intent i = new Intent(this, Expense.class);
-        startActivity(i);
-    }
-
-    public void switchToGoal(){
-        Intent i = new Intent(this, GoalHome.class);
-        startActivity(i);
-    }
-    public void switchToLogin(){
-        Intent i = new Intent(this, Login.class);
-        startActivity(i);
-    }
-
-
 
     private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
@@ -164,10 +136,6 @@ public class Expense extends AppCompatActivity {
     }
 
     public void switchToCategory(View view){
-//        Intent switchActivityIntent = new Intent(this, ExpenseCategory.class);
-//        Intent switchActivityIntent = new Intent(this, BudCategory.class);
-//        startActivity(switchActivityIntent);
-
         Intent switchActivityIntent = new Intent(this, ExpenseCategory.class);
         switchActivityIntent.putExtra("fromPage", this.getClass().getSimpleName());
         startActivity(switchActivityIntent);
@@ -176,6 +144,10 @@ public class Expense extends AppCompatActivity {
     public void modifyIncome(View view){
         Intent switchActivityIntent = new Intent(this, Modify_Expense.class);
         startActivity(switchActivityIntent);
+    }
+
+    public void clearInput(View v){
+        amountT.setText(null);
     }
 
 

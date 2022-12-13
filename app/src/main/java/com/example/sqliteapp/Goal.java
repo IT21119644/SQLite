@@ -47,19 +47,29 @@ public class Goal extends AppCompatActivity implements AdapterView.OnItemSelecte
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch(id){
                     case R.id.nav_home:
-                        Toast.makeText(Goal.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
+//                        Toast.makeText(MainActivity.this, "Home is clicked", Toast.LENGTH_SHORT).show();break;
+                        switchIntent(MainActivity.class);
+                        break;
                     case R.id.nav_expenses:
-                        Toast.makeText(Goal.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();break;
+//                        Toast.makeText(MainActivity.this, "Expenses is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Expense.class);
+                        break;
                     case R.id.nav_income:
-                        Toast.makeText(Goal.this, "Income is clicked", Toast.LENGTH_SHORT).show();break;
+//                        Toast.makeText(MainActivity.this, "Income is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Income.class);
+                        break;
                     case R.id.nav_budget:
-                        Toast.makeText(Goal.this, "Budget is clicked", Toast.LENGTH_SHORT).show();break;
+//                        Toast.makeText(MainActivity.this, "Budget is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Budget.class);
+                        break;
                     case R.id.nav_goals:
-                        Toast.makeText(Goal.this, "Goal is clicked", Toast.LENGTH_SHORT).show();
-                        launchGoalHome();
+//                        Toast.makeText(MainActivity.this, "Goal is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(GoalHome.class);
                         break;
                     case R.id.nav_login:
-                        Toast.makeText(Goal.this, "Login is clicked", Toast.LENGTH_SHORT).show();break;
+//                        Toast.makeText(MainActivity.this, "Login is clicked", Toast.LENGTH_SHORT).show();
+                        switchIntent(Login.class);
+                        break;
                     default:
                         return true;
 
@@ -67,6 +77,11 @@ public class Goal extends AppCompatActivity implements AdapterView.OnItemSelecte
                 return true;
             }
         });
+    }
+
+    public void switchIntent(Class<?> cls){
+        Intent i = new Intent(this, cls);
+        startActivity(i);
     }
 
     public void launchGoalHome() {
