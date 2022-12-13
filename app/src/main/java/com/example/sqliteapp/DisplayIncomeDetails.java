@@ -114,4 +114,9 @@ public class DisplayIncomeDetails extends AppCompatActivity {
         switchActivityIntent.putExtra("amount", String.valueOf(amount));
         startActivity(switchActivityIntent);
     }
+
+    public void switchToModifyIncome(View v){
+        Intent i = new Intent(this, Modify_Income.class);
+        startActivity(i);
+    }
 }
