@@ -27,6 +27,34 @@ public class Login extends AppCompatActivity {
         DB = new DBHelper(this);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        checkSession();
+
+    }
+
+    private void checkSession() {
+        SessionManagement sessionManagement = new SessionManagement(Login.this);
+        int userId = sessionManagement.getSession();
+
+        if(userId != -1){
+            //If id logged in, move to main activity
+            movetoMainActivity();
+        }
+        else{
+            //do nothing
+        }
+    }
+
+    private void movetoMainActivity() {
+        Intent i = new Intent(this, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
+
+
 
     public void login(View v){
         String pin = PIN.getText().toString();
@@ -42,9 +70,16 @@ public class Login extends AppCompatActivity {
                 if(pinNo == existingPin){
                     PIN.setText(null);
 
+                    //log to the app and save the session of the user
+                    //move to main activity
+                    User user = new User(12, "Ranuja");
+
+                    SessionManagement sessionManagement = new SessionManagement(Login.this);
+                    sessionManagement.saveSession(user);
+
+
                     //move to success page
-                    Intent i = new Intent(this, MainActivity.class);
-                    startActivity(i);
+                    movetoMainActivity();
                 }
                 else{
                     count++;

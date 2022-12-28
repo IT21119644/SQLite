@@ -138,7 +138,8 @@ public class GoalHome extends AppCompatActivity {
                         break;
                     case R.id.nav_login:
 //                        Toast.makeText(MainActivity.this, "Login is clicked", Toast.LENGTH_SHORT).show();
-                        switchIntent(Login.class);
+//                        switchIntent(Login.class);
+                        logOut();
                         break;
                     default:
                         return true;
@@ -153,6 +154,20 @@ public class GoalHome extends AppCompatActivity {
     public void switchIntent(Class<?> cls){
         Intent i = new Intent(this, cls);
         startActivity(i);
+    }
+
+    public void logOut(){
+        // remove the session and open login screen
+        SessionManagement sessionManagement = new SessionManagement(GoalHome.this);
+        sessionManagement.removeSession();
+        moveToLogin();
+    }
+
+    private void moveToLogin() {
+        Intent i = new Intent(GoalHome.this, Login.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+
     }
 
     public void launchAddGoal(View v) {
