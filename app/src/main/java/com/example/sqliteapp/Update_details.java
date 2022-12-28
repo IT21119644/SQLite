@@ -37,9 +37,6 @@ public class Update_details extends AppCompatActivity {
     DBHelper Database = new DBHelper(this);
     int intId;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -208,6 +205,7 @@ public class Update_details extends AppCompatActivity {
     public void backToDisplayBudget(View v){
         Intent intent = new Intent(this, DisplayIncomeDetails.class);
         intent.putExtra("incID", idU);
+        intent.putExtra("BName", categoryU);
 
         startActivity(intent);
     }

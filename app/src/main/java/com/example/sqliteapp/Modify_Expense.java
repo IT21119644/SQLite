@@ -49,8 +49,23 @@ public class Modify_Expense extends AppCompatActivity {
 
                 btn.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
 
+                if(incCat.get(j).equals("Shopping") || incCat.get(j).equals("Housing"))
+                    btn.setBackgroundColor(Color.parseColor("#FEB450"));
+                else if(incCat.get(j).equals("Food & Drinks") || incCat.get(j).equals("Life & Entertainment"))
+                    btn.setBackgroundColor(Color.parseColor("#EE5F5F"));
+                else if(incCat.get(j).equals("Vehicle"))
+                    btn.setBackgroundColor(Color.parseColor("#FBEE4A"));
+                else if(incCat.get(j).equals("Transportation"))
+                    btn.setBackgroundColor(Color.parseColor("#57C7F1"));
+                else if(incCat.get(j).equals("Communication, PC"))
+                    btn.setBackgroundColor(Color.parseColor("#E668FA"));
+                else if(incCat.get(j).equals("Investments") || incCat.get(j).equals("Financial Expenses"))
+                    btn.setBackgroundColor(Color.parseColor("#42E375"));
+                else if(incCat.get(j).equals("Others"))
+                    btn.setBackgroundColor(Color.parseColor("#F6E315"));
+
                 btn.setTextColor(Color.parseColor("#000000"));
-                btn.setBackgroundColor(Color.parseColor("#42E375"));
+//                btn.setBackgroundColor(Color.parseColor("#42E375"));
 
                 //Get the width of the screen
                 DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -86,12 +101,12 @@ public class Modify_Expense extends AppCompatActivity {
         return new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(Modify_Expense.this, "Button is clicked", Toast.LENGTH_SHORT).show();
-                switchToDisplayBudget(heading, id);
+                switchToDisplayExpenseDetails(heading, id);
             }
         };
     }
 
-    public void switchToDisplayBudget(String heading, int id){
+    public void switchToDisplayExpenseDetails(String heading, int id){
         Intent switchActivityIntent = new Intent(this, DisplayExpenseDetails.class);
         switchActivityIntent.putExtra("BName", heading);
         switchActivityIntent.putExtra("incID", String.valueOf(id));

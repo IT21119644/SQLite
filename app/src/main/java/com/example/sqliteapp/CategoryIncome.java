@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,5 +65,10 @@ public class CategoryIncome extends AppCompatActivity {
         adaptor= new Adaptor(userList);
         recyclerView.setAdapter(adaptor);
         adaptor.notifyDataSetChanged();
+    }
+
+    public void backToIncome(View v){
+        Intent i = new Intent(this, Income.class);
+        startActivity(i);
     }
 }

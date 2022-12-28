@@ -108,6 +108,8 @@
                 android:layout_marginTop="20dp"
                 android:onClick="ModifyIncome"
                 android:text="Income Details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/button3"
                 app:layout_constraintTop_toBottomOf="@+id/incDpvChart" />
 
@@ -121,6 +123,8 @@
                 android:layout_toEndOf="@+id/button"
                 android:onClick="ModifyExpense"
                 android:text="Expense Details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.041"
                 app:layout_constraintStart_toEndOf="@+id/button4"
                 app:layout_constraintTop_toBottomOf="@+id/expDpvChart" />
 

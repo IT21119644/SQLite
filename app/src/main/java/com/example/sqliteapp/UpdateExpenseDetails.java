@@ -8,6 +8,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -148,10 +149,10 @@ public class UpdateExpenseDetails extends AppCompatActivity {
         startActivity(switchActivityIntent);
     }
 
-    public void backToDisplayBudget(View v){
+    public void backToDisplayExpense(View v){
         Intent intent = new Intent(this, DisplayExpenseDetails.class);
+        intent.putExtra("BName", categoryU);
         intent.putExtra("incID", idU);
-
         startActivity(intent);
     }
 }

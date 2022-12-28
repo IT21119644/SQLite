@@ -49,7 +49,22 @@ public class Modify_Income extends AppCompatActivity {
                 btn.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
 
                 btn.setTextColor(Color.parseColor("#000000"));
-                btn.setBackgroundColor(Color.parseColor("#42E375"));
+
+                if(incCat.get(j).equals("Checks, Coupons") || incCat.get(j).equals("Child Support"))
+                    btn.setBackgroundColor(Color.parseColor("#FEB450"));
+                else if(incCat.get(j).equals("Dues & Grants") || incCat.get(j).equals("Gifts"))
+                    btn.setBackgroundColor(Color.parseColor("#EE5F5F"));
+                else if(incCat.get(j).equals("Interests, Dividends"))
+                    btn.setBackgroundColor(Color.parseColor("#FBEE4A"));
+                else if(incCat.get(j).equals("Lending, Renting"))
+                    btn.setBackgroundColor(Color.parseColor("#57C7F1"));
+                else if(incCat.get(j).equals("Lottery, Gambling") || incCat.get(j).equals("Wage, Invoices"))
+                    btn.setBackgroundColor(Color.parseColor("#E668FA"));
+                else if(incCat.get(j).equals("Refunds (Tax,Purchase)") || incCat.get(j).equals("Rental Income"))
+                    btn.setBackgroundColor(Color.parseColor("#42E375"));
+                else if(incCat.get(j).equals("Sale") && incCat.get(j).equals("Other"))
+                    btn.setBackgroundColor(Color.parseColor("#F6E315"));
+//                btn.setBackgroundColor(Color.parseColor("#42E375"));
 
                 //Get the width of the screen
                 DisplayMetrics displayMetrics = new DisplayMetrics();

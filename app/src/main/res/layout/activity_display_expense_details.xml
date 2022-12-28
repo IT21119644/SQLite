@@ -55,11 +55,13 @@
 
     <TextView
         android:id="@+id/head"
-        android:layout_width="188dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="144dp"
+        android:layout_width="299dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="80dp"
         android:text="Expense Details"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
 
@@ -67,10 +69,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="80dp"
         android:text="Category"
-        android:textSize="16sp"
+        android:textColor="#1A2FA5"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/head" />
 
@@ -78,10 +81,11 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
+        android:textColor="#1A2FA5"
         android:text="Date"
-        android:textSize="16sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -89,21 +93,24 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:text="Amount"
-        android:textSize="16sp"
+        android:textColor="#1A2FA5"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/catTxtV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="176dp"
+        android:layout_height="34dp"
         android:layout_marginStart="88dp"
         android:layout_marginTop="80dp"
         android:text="TextView"
-        android:textSize="16sp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/head" />
 
@@ -114,7 +121,9 @@
         android:layout_marginStart="116dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
-        android:textSize="16sp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/catTxtV" />
 
@@ -125,7 +134,9 @@
         android:layout_marginStart="96dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
-        android:textSize="16sp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/dateTxtV" />
 

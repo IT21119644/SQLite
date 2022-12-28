@@ -24,7 +24,7 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#B85A3D"
+                android:background="@color/lightgrey"
                 app:navigationIcon="@drawable/ic_baseline_menu_24"
                 app:title="Goals"
                 app:titleTextColor="@color/white"/>

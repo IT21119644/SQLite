@@ -32,7 +32,8 @@ public class DisplayIncomeDetails extends AppCompatActivity {
         idInt = Integer.parseInt(id);
 
         TextView t = findViewById(R.id.head);
-        String disp = textVal+": " + id;
+//        String disp = textVal+": " + id;
+        String disp = textVal;
         t.setText(disp);
 
         cat = findViewById(R.id.catTxtV);

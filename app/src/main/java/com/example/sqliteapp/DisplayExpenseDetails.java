@@ -30,8 +30,12 @@ public class DisplayExpenseDetails extends AppCompatActivity {
         idInt = Integer.parseInt(id);
 
         TextView t = findViewById(R.id.head);
-        String disp = textVal+": " + id;
+//        String disp = textVal+": " + id;
+        String disp = textVal;
+
+//        String categoryU = i.getStringExtra("categoryU");
         t.setText(disp);
+
 
         cat = findViewById(R.id.catTxtV);
         dat = findViewById(R.id.dateTxtV);
